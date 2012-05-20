@@ -38,11 +38,6 @@
     NSLog(@"Open Map");
 }
 
-/*- (IBAction)openPrefs:(id)sender {
-    NSLog(@"Open Preferences");
-    [preferencesWindow makeKeyAndOrderFront:self];
-}*/
-
 
 
 @end

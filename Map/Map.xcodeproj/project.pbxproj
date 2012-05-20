@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		277AB0BA1568B49A00226191 /* AdvancedPrefsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 277AB0B81568B49A00226191 /* AdvancedPrefsViewController.m */; };
+		277AB0BB1568B49A00226191 /* AdvancedPrefsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 277AB0B91568B49A00226191 /* AdvancedPrefsViewController.xib */; };
 		27A3E5DF156852B2009FB65C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27A3E5DE156852B2009FB65C /* Cocoa.framework */; };
 		27A3E5E9156852B2009FB65C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27A3E5E7156852B2009FB65C /* InfoPlist.strings */; };
 		27A3E5EB156852B2009FB65C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A3E5EA156852B2009FB65C /* main.m */; };
@@ -36,6 +38,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		277AB0B71568B49A00226191 /* AdvancedPrefsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvancedPrefsViewController.h; sourceTree = "<group>"; };
+		277AB0B81568B49A00226191 /* AdvancedPrefsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvancedPrefsViewController.m; sourceTree = "<group>"; };
+		277AB0B91568B49A00226191 /* AdvancedPrefsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdvancedPrefsViewController.xib; sourceTree = "<group>"; };
 		27A3E5DA156852B2009FB65C /* Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Map.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27A3E5DE156852B2009FB65C /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		27A3E5E1156852B2009FB65C /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -97,6 +102,16 @@
 			name = GeneralPrefs;
 			sourceTree = "<group>";
 		};
+		277AB0BC1568B8B600226191 /* AdvancedPrefs */ = {
+			isa = PBXGroup;
+			children = (
+				277AB0B71568B49A00226191 /* AdvancedPrefsViewController.h */,
+				277AB0B81568B49A00226191 /* AdvancedPrefsViewController.m */,
+				277AB0B91568B49A00226191 /* AdvancedPrefsViewController.xib */,
+			);
+			name = AdvancedPrefs;
+			sourceTree = "<group>";
+		};
 		27A3E5CF156852B1009FB65C = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +160,7 @@
 				27A3E5F0156852B2009FB65C /* AppDelegate.h */,
 				27A3E5F1156852B2009FB65C /* AppDelegate.m */,
 				27A3E5F3156852B2009FB65C /* MainMenu.xib */,
+				277AB0BC1568B8B600226191 /* AdvancedPrefs */,
 				277AB0B41568B2CB00226191 /* GeneralPrefs */,
 				27A3E5E5156852B2009FB65C /* Supporting Files */,
 			);
@@ -270,6 +286,7 @@
 				27A3E6141568627F009FB65C /* demoIcon.png in Resources */,
 				27A3E6151568627F009FB65C /* demoIconWhite.png in Resources */,
 				27FA85A11568A81300E9CEE6 /* GeneralPrefsViewController.xib in Resources */,
+				277AB0BB1568B49A00226191 /* AdvancedPrefsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,6 +326,7 @@
 				27A3E61B156876CA009FB65C /* PreferencesPanel.m in Sources */,
 				27FA859A1568A57600E9CEE6 /* OSBPreferencesController.m in Sources */,
 				27FA85A41568ACB600E9CEE6 /* GeneralPrefsViewController.m in Sources */,
+				277AB0BA1568B49A00226191 /* AdvancedPrefsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
