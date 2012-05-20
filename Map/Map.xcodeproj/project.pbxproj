@@ -17,6 +17,8 @@
 		27A3E5FE156852B3009FB65C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27A3E5DE156852B2009FB65C /* Cocoa.framework */; };
 		27A3E606156852B3009FB65C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27A3E604156852B3009FB65C /* InfoPlist.strings */; };
 		27A3E609156852B3009FB65C /* MapTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A3E608156852B3009FB65C /* MapTests.m */; };
+		27A3E6141568627F009FB65C /* demoIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 27A3E6121568627F009FB65C /* demoIcon.png */; };
+		27A3E6151568627F009FB65C /* demoIconWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 27A3E6131568627F009FB65C /* demoIconWhite.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		27A3E605156852B3009FB65C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		27A3E607156852B3009FB65C /* MapTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapTests.h; sourceTree = "<group>"; };
 		27A3E608156852B3009FB65C /* MapTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapTests.m; sourceTree = "<group>"; };
+		27A3E6121568627F009FB65C /* demoIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = demoIcon.png; sourceTree = "<group>"; };
+		27A3E6131568627F009FB65C /* demoIconWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = demoIconWhite.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +129,8 @@
 		27A3E5E5156852B2009FB65C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				27A3E6121568627F009FB65C /* demoIcon.png */,
+				27A3E6131568627F009FB65C /* demoIconWhite.png */,
 				27A3E5E6156852B2009FB65C /* Map-Info.plist */,
 				27A3E5E7156852B2009FB65C /* InfoPlist.strings */,
 				27A3E5EA156852B2009FB65C /* main.m */,
@@ -227,6 +233,8 @@
 				27A3E5E9156852B2009FB65C /* InfoPlist.strings in Resources */,
 				27A3E5EF156852B2009FB65C /* Credits.rtf in Resources */,
 				27A3E5F5156852B2009FB65C /* MainMenu.xib in Resources */,
+				27A3E6141568627F009FB65C /* demoIcon.png in Resources */,
+				27A3E6151568627F009FB65C /* demoIconWhite.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
