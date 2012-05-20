@@ -15,8 +15,8 @@
     NSImage *statusImageHighlighted;
 }
 
-- (IBAction)openMap:(id)sender;
+//@property (assign) IBOutlet NSPanel *preferencesWindow;
 
-@property (assign) IBOutlet NSPanel *preferencesWindow;
+- (IBAction)openMap:(id)sender;
 
 @end

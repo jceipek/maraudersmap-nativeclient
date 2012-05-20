@@ -10,7 +10,7 @@
 
 @implementation AppDelegate
 
-@synthesize preferencesWindow = _window;
+//@synthesize preferencesWindow;
 
 - (void) awakeFromNib {
     statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
@@ -35,7 +35,14 @@
 }
 
 - (IBAction)openMap:(id)sender {
-    NSLog(@"Hi!");
+    NSLog(@"Open Map");
 }
+
+/*- (IBAction)openPrefs:(id)sender {
+    NSLog(@"Open Preferences");
+    [preferencesWindow makeKeyAndOrderFront:self];
+}*/
+
+
 
 @end
