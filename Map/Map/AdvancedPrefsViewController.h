@@ -8,6 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface AdvancedPrefsViewController : NSViewController
+@interface AdvancedPrefsViewController : NSViewController 
+
+@property IBOutlet NSTextField *frequencyIndicator;
+@property IBOutlet NSSlider *updateFrequencySlider;
 
 @end
