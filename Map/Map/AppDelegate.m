@@ -18,20 +18,21 @@
     statusImage = [[NSImage alloc] initWithContentsOfFile:[bundle pathForResource:@"demoIcon" ofType:@"png"]];
     statusImageHighlighted = [[NSImage alloc] initWithContentsOfFile:[bundle pathForResource:@"demoIconWhite" ofType:@"png"]];
     
-    
     [statusItem setImage:statusImage];
     [statusItem setAlternateImage:statusImageHighlighted];
     
-    
-    
     [statusItem setMenu:statusMenu];
     [statusItem setHighlightMode:YES];
+    
+    WifiScanner *scanner = [[WifiScanner alloc] init];
+    [scanner scan];
     
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Insert code here to initialize your application
+    
 }
 
 - (IBAction)openMap:(id)sender {

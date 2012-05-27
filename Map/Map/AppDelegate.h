@@ -8,6 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 
+#include "WifiScanner.h"
+
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
     IBOutlet NSMenu *statusMenu;
     NSStatusItem *statusItem;

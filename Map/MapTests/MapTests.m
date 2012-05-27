@@ -26,13 +26,14 @@
 
 
 #import "SliderHelper.h"
-- (void)testSliderHelper {
-    float val;
-    
-    val = linearInterp(0.0f, 100.0f, 4.0f, 0.0f, 500.0f);
+
+- (void)testSliderHelper {     
+    float val = linearInterp(0.0f, 100.0f, 4.0f, 0.0f, 500.0f);
     STAssertEqualsWithAccuracy(4.0f, val, 0.000001f,
-                   @"bad amount; 4.0f != %f",
-                   val);
+                               @"bad amount; 4.0f != %f",
+                               val);
 }
+
+
 
 @end

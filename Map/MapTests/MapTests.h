@@ -8,6 +8,10 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 
+
+#import <Foundation/Foundation.h>
+#import <CoreFoundation/CoreFoundation.h>
+
 @interface MapTests : SenTestCase
 
 @end
