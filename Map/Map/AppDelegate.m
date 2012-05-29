@@ -24,8 +24,9 @@
     [statusItem setMenu:statusMenu];
     [statusItem setHighlightMode:YES];
     
-    WifiScanner *scanner = [[WifiScanner alloc] init];
-    [scanner scan];
+    //TODO:
+    //WifiScanner *scanner = [[WifiScanner alloc] init];
+    //[scanner scan];
     
 }
 
@@ -39,6 +40,18 @@
     NSLog(@"Open Map");
 }
 
+- (IBAction)manualRefresh:(id)sender {
+    NSLog(@"Refresh");
+}
 
+- (IBAction)correctLocation:(id)sender {
+    NSLog(@"Correct Location");
+}
+
+- (IBAction)toggleOnline:(id)sender {
+    NSLog(@"Toggle Online");
+}
+
+// Preferences and Quit handled separately, but quit extra stuff must be defined for proper cleanup later.
 
 @end

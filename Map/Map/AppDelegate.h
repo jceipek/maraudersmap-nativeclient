@@ -20,5 +20,8 @@
 //@property (assign) IBOutlet NSPanel *preferencesWindow;
 
 - (IBAction)openMap:(id)sender;
+- (IBAction)manualRefresh:(id)sender;
+- (IBAction)correctLocation:(id)sender;
+- (IBAction)toggleOnline:(id)sender;
 
 @end

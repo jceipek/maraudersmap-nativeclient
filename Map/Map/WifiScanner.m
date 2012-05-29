@@ -45,6 +45,7 @@
     NSLog(@"%@", [scan_networks objectAtIndex:0]);
     NSLog(@"Bye");
     
+    // XXX: Doesn't work for some reason!
     apple80211Close(&airportHandle);
 }
 
