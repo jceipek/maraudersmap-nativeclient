@@ -23,5 +23,6 @@
 - (IBAction)manualRefresh:(id)sender;
 - (IBAction)correctLocation:(id)sender;
 - (IBAction)toggleOnline:(id)sender;
+- (IBAction)quit:(id)sender;
 
 @end

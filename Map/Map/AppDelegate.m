@@ -52,6 +52,9 @@
     NSLog(@"Toggle Online");
 }
 
-// Preferences and Quit handled separately, but quit extra stuff must be defined for proper cleanup later.
+- (IBAction)quit:(id)sender {
+    // Cleanup
+    [NSApp terminate:self];
+}
 
 @end
