@@ -24,6 +24,11 @@
     [statusItem setMenu:statusMenu];
     [statusItem setHighlightMode:YES];
     
+    NSLog(@"%@",[locationIndicator view]);
+    [locationIndicator setView:[[[NSViewController alloc] initWithNibName:@"LocationIndicatorView" bundle:nil] view]];
+    
+    
+    
     //TODO:
     //WifiScanner *scanner = [[WifiScanner alloc] init];
     //[scanner scan];

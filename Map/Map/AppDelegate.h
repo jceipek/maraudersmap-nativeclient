@@ -12,6 +12,7 @@
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
     IBOutlet NSMenu *statusMenu;
+    IBOutlet NSMenuItem *locationIndicator;
     NSStatusItem *statusItem;
     NSImage *statusImage;
     NSImage *statusImageHighlighted;
