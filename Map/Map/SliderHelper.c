@@ -17,7 +17,7 @@ value will be stored in ret.
 */
 void secondsArrayFromTimeUnitTuples(struct timeUnitTuple array[], int length, int ret[]) {    
     for (int i=0; i<length; i++) {
-        int multiplier;
+        int multiplier = 0;
         if (strncmp(array[i].unit, "s", 2) == 0) {
             multiplier = 1;
         } else if (strncmp(array[i].unit, "m", 2) == 0){

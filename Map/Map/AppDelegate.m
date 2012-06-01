@@ -10,8 +10,6 @@
 
 @implementation AppDelegate
 
-//@synthesize preferencesWindow;
-
 - (void) awakeFromNib {
     statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
     NSBundle *bundle = [NSBundle mainBundle];
@@ -24,8 +22,15 @@
     [statusItem setMenu:statusMenu];
     [statusItem setHighlightMode:YES];
     
-    NSLog(@"%@",[locationIndicator view]);
-    [locationIndicator setView:[[[NSViewController alloc] initWithNibName:@"LocationIndicatorView" bundle:nil] view]];
+    
+    locationViewController = [[LocationViewController alloc] initWithNibName:@"LocationViewController" bundle:nil];
+    //[locationViewController loadView];
+
+    NSLog(@"Assigned0");
+    locationView = [locationViewController view];
+    NSLog(@"Assigned1%@", locationView);
+    [locationIndicator setView: locationView];
+    NSLog(@"Assigned2");
     
     
     
@@ -43,6 +48,7 @@
 
 - (IBAction)openMap:(id)sender {
     NSLog(@"Open Map");
+    [[NSWorkspace sharedWorkspace] openFile:@"http://map.fwol.in"];
 }
 
 - (IBAction)manualRefresh:(id)sender {

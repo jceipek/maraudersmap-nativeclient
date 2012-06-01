@@ -8,7 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 
-#include "WifiScanner.h"
+#import "WifiScanner.h"
+#import "LocationViewController.h"
+//#import "LocViewController.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
     IBOutlet NSMenu *statusMenu;
@@ -16,6 +18,9 @@
     NSStatusItem *statusItem;
     NSImage *statusImage;
     NSImage *statusImageHighlighted;
+    
+    LocationViewController *locationViewController;
+    NSView *locationView;
 }
 
 //@property (assign) IBOutlet NSPanel *preferencesWindow;

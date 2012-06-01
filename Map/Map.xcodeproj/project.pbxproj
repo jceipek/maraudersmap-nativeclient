@@ -11,9 +11,10 @@
 		2707CC771572A23200AEFA93 /* Apple80211 in Frameworks */ = {isa = PBXBuildFile; fileRef = 2707CC761572A23200AEFA93 /* Apple80211 */; };
 		2707CC801572B91D00AEFA93 /* CoreWLAN.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2707CC7F1572B91D00AEFA93 /* CoreWLAN.framework */; };
 		2707CCA11572CF0600AEFA93 /* WifiScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 2707CCA01572CF0600AEFA93 /* WifiScanner.m */; };
+		276D087415772042003F8232 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 276D087315772042003F8232 /* LocationViewController.m */; };
 		277AB0BA1568B49A00226191 /* AdvancedPrefsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 277AB0B81568B49A00226191 /* AdvancedPrefsViewController.m */; };
 		277AB0BB1568B49A00226191 /* AdvancedPrefsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 277AB0B91568B49A00226191 /* AdvancedPrefsViewController.xib */; };
-		2788833315770CCC00B49E8A /* LocationIndicatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2788833215770CCC00B49E8A /* LocationIndicatorView.xib */; };
+		2788833315770CCC00B49E8A /* LocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2788833215770CCC00B49E8A /* LocationViewController.xib */; };
 		27A3E5DF156852B2009FB65C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27A3E5DE156852B2009FB65C /* Cocoa.framework */; };
 		27A3E5E9156852B2009FB65C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27A3E5E7156852B2009FB65C /* InfoPlist.strings */; };
 		27A3E5EB156852B2009FB65C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A3E5EA156852B2009FB65C /* main.m */; };
@@ -50,10 +51,12 @@
 		2707CC7F1572B91D00AEFA93 /* CoreWLAN.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreWLAN.framework; path = System/Library/Frameworks/CoreWLAN.framework; sourceTree = SDKROOT; };
 		2707CC9F1572CF0600AEFA93 /* WifiScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WifiScanner.h; sourceTree = "<group>"; };
 		2707CCA01572CF0600AEFA93 /* WifiScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WifiScanner.m; sourceTree = "<group>"; };
+		276D087215772042003F8232 /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
+		276D087315772042003F8232 /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
 		277AB0B71568B49A00226191 /* AdvancedPrefsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvancedPrefsViewController.h; sourceTree = "<group>"; };
 		277AB0B81568B49A00226191 /* AdvancedPrefsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvancedPrefsViewController.m; sourceTree = "<group>"; };
 		277AB0B91568B49A00226191 /* AdvancedPrefsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdvancedPrefsViewController.xib; sourceTree = "<group>"; };
-		2788833215770CCC00B49E8A /* LocationIndicatorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationIndicatorView.xib; sourceTree = "<group>"; };
+		2788833215770CCC00B49E8A /* LocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationViewController.xib; sourceTree = "<group>"; };
 		27A3E5DA156852B2009FB65C /* Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Map.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27A3E5DE156852B2009FB65C /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		27A3E5E1156852B2009FB65C /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -181,7 +184,9 @@
 		27A3E5E4156852B2009FB65C /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				2788833215770CCC00B49E8A /* LocationIndicatorView.xib */,
+				2788833215770CCC00B49E8A /* LocationViewController.xib */,
+				276D087215772042003F8232 /* LocationViewController.h */,
+				276D087315772042003F8232 /* LocationViewController.m */,
 				27FA85971568A57600E9CEE6 /* 3rdPartyLibs */,
 				27A3E619156876CA009FB65C /* PreferencesPanel.h */,
 				2707CC9F1572CF0600AEFA93 /* WifiScanner.h */,
@@ -319,7 +324,7 @@
 				27A3E6151568627F009FB65C /* demoIconWhite.png in Resources */,
 				27FA85A11568A81300E9CEE6 /* GeneralPrefsViewController.xib in Resources */,
 				277AB0BB1568B49A00226191 /* AdvancedPrefsViewController.xib in Resources */,
-				2788833315770CCC00B49E8A /* LocationIndicatorView.xib in Resources */,
+				2788833315770CCC00B49E8A /* LocationViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,6 +367,7 @@
 				277AB0BA1568B49A00226191 /* AdvancedPrefsViewController.m in Sources */,
 				2707CC6F1571B7EF00AEFA93 /* SliderHelper.c in Sources */,
 				2707CCA11572CF0600AEFA93 /* WifiScanner.m in Sources */,
+				276D087415772042003F8232 /* LocationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
