@@ -15,6 +15,7 @@
     NSBundle *bundle = [NSBundle mainBundle];
     statusImage = [[NSImage alloc] initWithContentsOfFile:[bundle pathForResource:@"demoIcon" ofType:@"png"]];
     statusImageHighlighted = [[NSImage alloc] initWithContentsOfFile:[bundle pathForResource:@"demoIconWhite" ofType:@"png"]];
+    statusImageDisabled = [[NSImage alloc] initWithContentsOfFile:[bundle pathForResource:@"demoIconDisabled" ofType:@"png"]];
     
     [statusItem setImage:statusImage];
     [statusItem setAlternateImage:statusImageHighlighted];
@@ -38,7 +39,7 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Insert code here to initialize your application
-    
+    isOnline = TRUE;
 }
 
 - (IBAction)openMap:(id)sender {
@@ -56,6 +57,14 @@
 
 - (IBAction)toggleOnline:(id)sender {
     NSLog(@"Toggle Online");
+    if (isOnline) {
+        [toggleOnlineItem setTitle:@"Go Online"];
+        [statusItem setImage:statusImageDisabled];
+    } else {
+        [toggleOnlineItem setTitle:@"Go Offline"];
+        [statusItem setImage:statusImage];
+    }
+    isOnline = !isOnline;
 }
 
 - (IBAction)quit:(id)sender {

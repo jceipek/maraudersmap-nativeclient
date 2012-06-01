@@ -15,12 +15,16 @@
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
     IBOutlet NSMenu *statusMenu;
     IBOutlet NSMenuItem *locationIndicator;
+    IBOutlet NSMenuItem *toggleOnlineItem;
     NSStatusItem *statusItem;
     NSImage *statusImage;
     NSImage *statusImageHighlighted;
+    NSImage *statusImageDisabled;
     
     LocationViewController *locationViewController;
     NSView *locationView;
+    
+    BOOL isOnline;
 }
 
 //@property (assign) IBOutlet NSPanel *preferencesWindow;
