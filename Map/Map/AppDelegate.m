@@ -26,14 +26,9 @@
     locationViewController = [[LocationViewController alloc] initWithNibName:@"LocationViewController" bundle:nil];
     //[locationViewController loadView];
 
-    NSLog(@"Assigned0");
     locationView = [locationViewController view];
-    NSLog(@"Assigned1%@", locationView);
     [locationIndicator setView: locationView];
-    NSLog(@"Assigned2");
-    
-    
-    
+
     //TODO:
     //WifiScanner *scanner = [[WifiScanner alloc] init];
     //[scanner scan];
@@ -48,7 +43,7 @@
 
 - (IBAction)openMap:(id)sender {
     NSLog(@"Open Map");
-    [[NSWorkspace sharedWorkspace] openFile:@"http://map.fwol.in"];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://map.fwol.in"]];
 }
 
 - (IBAction)manualRefresh:(id)sender {
