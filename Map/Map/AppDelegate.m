@@ -34,12 +34,17 @@
     //WifiScanner *scanner = [[WifiScanner alloc] init];
     //[scanner scan];
     
+    [statusMenu setDelegate:self];
+    
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Insert code here to initialize your application
     isOnline = TRUE;
+    
+    [prefsPanel center];
+    
 }
 
 - (IBAction)openMap:(id)sender {
@@ -58,11 +63,13 @@
 - (IBAction)toggleOnline:(id)sender {
     NSLog(@"Toggle Online");
     if (isOnline) {
-        [toggleOnlineItem setTitle:@"Go Online"];
+        [toggleOnlineItem setTitle:NSLocalizedString(@"Go Online", nil)];
         [statusItem setImage:statusImageDisabled];
+        // TODO: Actually go offline
     } else {
-        [toggleOnlineItem setTitle:@"Go Offline"];
+        [toggleOnlineItem setTitle:NSLocalizedString(@"Go Offline", nil)];
         [statusItem setImage:statusImage];
+        // TODO: Actually go online
     }
     isOnline = !isOnline;
 }
@@ -70,6 +77,11 @@
 - (IBAction)quit:(id)sender {
     // Cleanup
     [NSApp terminate:self];
+}
+
+- (void)menuWillOpen:(NSMenu *)menu {
+    NSLog(@"Great!");
+    [locationViewController startSpinner];
 }
 
 @end

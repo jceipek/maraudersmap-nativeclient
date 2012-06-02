@@ -12,6 +12,7 @@
 		2707CC801572B91D00AEFA93 /* CoreWLAN.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2707CC7F1572B91D00AEFA93 /* CoreWLAN.framework */; };
 		2707CCA11572CF0600AEFA93 /* WifiScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 2707CCA01572CF0600AEFA93 /* WifiScanner.m */; };
 		275AB0541578612300EFD9B5 /* demoIconDisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 275AB0531578612300EFD9B5 /* demoIconDisabled.png */; };
+		275AB05C157866A500EFD9B5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 275AB05E157866A500EFD9B5 /* Localizable.strings */; };
 		276D087415772042003F8232 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 276D087315772042003F8232 /* LocationViewController.m */; };
 		277AB0BA1568B49A00226191 /* AdvancedPrefsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 277AB0B81568B49A00226191 /* AdvancedPrefsViewController.m */; };
 		277AB0BB1568B49A00226191 /* AdvancedPrefsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 277AB0B91568B49A00226191 /* AdvancedPrefsViewController.xib */; };
@@ -53,6 +54,12 @@
 		2707CC9F1572CF0600AEFA93 /* WifiScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WifiScanner.h; sourceTree = "<group>"; };
 		2707CCA01572CF0600AEFA93 /* WifiScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WifiScanner.m; sourceTree = "<group>"; };
 		275AB0531578612300EFD9B5 /* demoIconDisabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = demoIconDisabled.png; sourceTree = "<group>"; };
+		275AB0581578660B00EFD9B5 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = de; path = "/Users/jceipek/Development/Group Projects/maraudersmap-nativeclient/Map/Map/de.lproj/Credits.rtf"; sourceTree = "<absolute>"; };
+		275AB0591578660B00EFD9B5 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = "/Users/jceipek/Development/Group Projects/maraudersmap-nativeclient/Map/Map/de.lproj/InfoPlist.strings"; sourceTree = "<absolute>"; };
+		275AB05A1578660B00EFD9B5 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = "/Users/jceipek/Development/Group Projects/maraudersmap-nativeclient/Map/Map/de.lproj/MainMenu.xib"; sourceTree = "<absolute>"; };
+		275AB05B1578660B00EFD9B5 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = "/Users/jceipek/Development/Group Projects/maraudersmap-nativeclient/Map/MapTests/de.lproj/InfoPlist.strings"; sourceTree = "<absolute>"; };
+		275AB05D157866A500EFD9B5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		275AB05F157866C700EFD9B5 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		276D087215772042003F8232 /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
 		276D087315772042003F8232 /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
 		277AB0B71568B49A00226191 /* AdvancedPrefsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvancedPrefsViewController.h; sourceTree = "<group>"; };
@@ -121,6 +128,14 @@
 			path = Map;
 			sourceTree = "<group>";
 		};
+		275AB0551578645D00EFD9B5 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				275AB05E157866A500EFD9B5 /* Localizable.strings */,
+			);
+			name = Localization;
+			sourceTree = "<group>";
+		};
 		277AB0B41568B2CB00226191 /* GeneralPrefs */ = {
 			isa = PBXGroup;
 			children = (
@@ -186,14 +201,15 @@
 		27A3E5E4156852B2009FB65C /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				275AB0551578645D00EFD9B5 /* Localization */,
 				2788833215770CCC00B49E8A /* LocationViewController.xib */,
 				276D087215772042003F8232 /* LocationViewController.h */,
 				276D087315772042003F8232 /* LocationViewController.m */,
 				27FA85971568A57600E9CEE6 /* 3rdPartyLibs */,
 				27A3E619156876CA009FB65C /* PreferencesPanel.h */,
+				27A3E61A156876CA009FB65C /* PreferencesPanel.m */,
 				2707CC9F1572CF0600AEFA93 /* WifiScanner.h */,
 				2707CCA01572CF0600AEFA93 /* WifiScanner.m */,
-				27A3E61A156876CA009FB65C /* PreferencesPanel.m */,
 				27A3E5F0156852B2009FB65C /* AppDelegate.h */,
 				27A3E5F1156852B2009FB65C /* AppDelegate.m */,
 				2707CC6E1571B7EF00AEFA93 /* SliderHelper.c */,
@@ -303,6 +319,8 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				de,
+				"harry-potter",
 			);
 			mainGroup = 27A3E5CF156852B1009FB65C;
 			productRefGroup = 27A3E5DB156852B2009FB65C /* Products */;
@@ -329,6 +347,7 @@
 				277AB0BB1568B49A00226191 /* AdvancedPrefsViewController.xib in Resources */,
 				2788833315770CCC00B49E8A /* LocationViewController.xib in Resources */,
 				275AB0541578612300EFD9B5 /* demoIconDisabled.png in Resources */,
+				275AB05C157866A500EFD9B5 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,10 +413,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		275AB05E157866A500EFD9B5 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				275AB05D157866A500EFD9B5 /* en */,
+				275AB05F157866C700EFD9B5 /* de */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		27A3E5E7156852B2009FB65C /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				27A3E5E8156852B2009FB65C /* en */,
+				275AB0591578660B00EFD9B5 /* de */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -406,6 +435,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				27A3E5EE156852B2009FB65C /* en */,
+				275AB0581578660B00EFD9B5 /* de */,
 			);
 			name = Credits.rtf;
 			sourceTree = "<group>";
@@ -414,6 +444,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				27A3E5F4156852B2009FB65C /* en */,
+				275AB05A1578660B00EFD9B5 /* de */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -422,6 +453,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				27A3E605156852B3009FB65C /* en */,
+				275AB05B1578660B00EFD9B5 /* de */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";

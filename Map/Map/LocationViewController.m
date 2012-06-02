@@ -22,9 +22,20 @@
     if (self) {
         // Initialization code here.
         NSLog(@"Init Location View Controller");
+        [spinner setUsesThreadedAnimation:YES];
+        
     }
     
     return self;
 }
+
+- (void) startSpinner {
+    [spinner performSelector:@selector(startAnimation:) withObject:self afterDelay:0.0 inModes:[NSArray arrayWithObject:NSEventTrackingRunLoopMode]];
+}
+
+- (void) stopSpinner {
+    [spinner stopAnimation:self];
+}
+\
 
 @end

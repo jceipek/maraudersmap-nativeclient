@@ -1,6 +1,8 @@
 //
 // Copyright (c) 2011 Christian Kienle
 //
+// Extended by Julian Ceipek 2012 on 6/01/12.
+//
 
 #import <Cocoa/Cocoa.h>
 

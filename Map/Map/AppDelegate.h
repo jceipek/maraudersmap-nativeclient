@@ -10,24 +10,24 @@
 
 #import "WifiScanner.h"
 #import "LocationViewController.h"
-//#import "LocViewController.h"
+#import "PreferencesPanel.h"
 
-@interface AppDelegate : NSObject <NSApplicationDelegate> {
+@interface AppDelegate : NSObject <NSApplicationDelegate, NSMenuDelegate> {
     IBOutlet NSMenu *statusMenu;
     IBOutlet NSMenuItem *locationIndicator;
     IBOutlet NSMenuItem *toggleOnlineItem;
+    IBOutlet PreferencesPanel *prefsPanel;
+    
     NSStatusItem *statusItem;
     NSImage *statusImage;
     NSImage *statusImageHighlighted;
     NSImage *statusImageDisabled;
-    
+
     LocationViewController *locationViewController;
     NSView *locationView;
     
     BOOL isOnline;
 }
-
-//@property (assign) IBOutlet NSPanel *preferencesWindow;
 
 - (IBAction)openMap:(id)sender;
 - (IBAction)manualRefresh:(id)sender;

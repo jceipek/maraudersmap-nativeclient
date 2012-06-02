@@ -15,4 +15,7 @@
 
 @property IBOutlet NSTextField *curLoc;
 
+- (void)startSpinner;
+- (void)stopSpinner;
+
 @end

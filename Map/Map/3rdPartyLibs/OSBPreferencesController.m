@@ -64,8 +64,9 @@
 }
 
 - (IBAction)showPreferencesWindow:(id)sender {
-   [self.window center];
-   [self.window makeKeyAndOrderFront:sender];
+    [self.window center];
+    [NSApp activateIgnoringOtherApps:TRUE]; // Make app active even if menu bar application
+    [self.window makeKeyAndOrderFront:sender];
 }
 
 #pragma mark Private

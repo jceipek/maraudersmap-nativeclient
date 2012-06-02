@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  Map
+
+  Created by Julian Ceipek on 5/31/12.
+  Copyright (c) 2012 Franklin W. Olin College of Engineering. All rights reserved.
+*/
+
+"Go Online" = "Go Online";
+"Go Offline" = "Go Offline";
