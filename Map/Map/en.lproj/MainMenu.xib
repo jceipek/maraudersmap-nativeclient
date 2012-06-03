@@ -233,6 +233,7 @@
 					<string key="NSFrameSize">{469, 289}</string>
 					<reference key="NSSuperview"/>
 					<reference key="NSWindow"/>
+					<reference key="NSNextKeyView"/>
 					<string key="NSReuseIdentifierKey">_NS:207</string>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1680, 1028}}</string>
@@ -551,6 +552,7 @@
 						<string key="manualRefresh:">id</string>
 						<string key="openMap:">id</string>
 						<string key="quit:">id</string>
+						<string key="sliderMoved:">id</string>
 						<string key="toggleOnline:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
@@ -568,6 +570,10 @@
 						</object>
 						<object class="IBActionInfo" key="quit:">
 							<string key="name">quit:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="sliderMoved:">
+							<string key="name">sliderMoved:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="toggleOnline:">

@@ -35,4 +35,7 @@
 - (IBAction)toggleOnline:(id)sender;
 - (IBAction)quit:(id)sender;
 
+- (IBAction)sliderMoved:(id)sender;
+- (void)sliderDoneMoving:(id)sender;
+
 @end

@@ -15,7 +15,7 @@
 element corresponds. The length of the array must be specified, and the resulting
 value will be stored in ret.
 */
-void secondsArrayFromTimeUnitTuples(struct timeUnitTuple array[], int length, int ret[]) {    
+void secondsArrayFromTimeUnitTuples(struct timeUnitTuple array[], int length, float ret[]) {    
     for (int i=0; i<length; i++) {
         int multiplier = 0;
         if (strncmp(array[i].unit, "s", 2) == 0) {
@@ -29,8 +29,33 @@ void secondsArrayFromTimeUnitTuples(struct timeUnitTuple array[], int length, in
     }
 }
 
-float linearInterp(float min, float max, float curr, float desMin, float desMax) {
-    //float ticks = max - min;
-    //float intervals = desMax - desMin; 
-    return 4.0f;
+/* Takes in a ratio float between 0 and 1 and returns a float based on an interpolation
+ between two values of an input array of a given length such that the indicies of
+ those values are the closest to the input float in terms of ratio. 
+ 
+ For example, consider the input 0.6; [0, 100, 1000]; 3.
+ The closest indicies to ratio value 0.6 are 1 and 2, for ratio values 0.5 and 1.0, respectively
+ Then...
+ 100  = m*0.5 + b
+ 1000 = m*1.0 + b
+ 
+ 100 - 1000 = m*0.5 - m*1.0 + b-b
+ -900 = -0.5 * m
+ 450 = m
+ 
+ 1000 - 450 * 1.0 = b = 550
+ 
+ 450 * 0.6 + 550 = 820
+ 
+ return value is thus 820
+*/
+float unevenArrayInterp(float curr, float array[], int length) {
+    
+    int lowerIndex = (int)(length * curr);
+    int upperIndex = (int)((length + 0.5f) * curr);
+    
+    float m = (array[lowerIndex] - array[upperIndex])/((lowerIndex/length) - (upperIndex/length));
+    float b = array[upperIndex] - m * (upperIndex/length);
+    
+    return m * curr + b;
 }

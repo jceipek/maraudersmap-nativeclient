@@ -10,10 +10,4 @@
 
 @implementation PreferencesPanel
 
-/*
-- (BOOL)windowShouldClose:(id)sender{
-    [self orderOut:self]; // Hide window instead of closing it
-    return NO;
-}*/
-
 @end

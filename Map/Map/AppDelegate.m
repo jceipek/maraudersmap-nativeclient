@@ -84,4 +84,20 @@
     [locationViewController startSpinner];
 }
 
+- (IBAction)sliderMoved:(id)sender
+{
+    // update the value here
+    NSLog(@"InExpensive operation");
+    [NSObject cancelPreviousPerformRequestsWithTarget:self
+     selector:@selector(sliderDoneMoving:) object:sender];
+     [self performSelector:@selector(sliderDoneMoving:)
+                withObject:sender afterDelay:0];
+}
+
+- (void)sliderDoneMoving:(id)sender
+{
+    // do your expensive update here
+    NSLog(@"Expensive operation");
+}
+
 @end

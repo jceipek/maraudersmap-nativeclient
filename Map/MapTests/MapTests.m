@@ -24,16 +24,28 @@
     [super tearDown];
 }
 
-
 #import "SliderHelper.h"
 
 - (void)testSliderHelper {     
-    float val = linearInterp(0.0f, 100.0f, 4.0f, 0.0f, 500.0f);
-    STAssertEqualsWithAccuracy(4.0f, val, 0.000001f,
-                               @"bad amount; 4.0f != %f",
-                               val);
+    float test;
+    float testArray[] = {0.0f, 100.0f, 1000.0f};
+    
+    test = unevenArrayInterp(0.0f, testArray, 3);
+    STAssertEqualsWithAccuracy(0.0f, test, 0.000001f,
+                               @"unevenArrayInterp is broken; 0.0f != %f",
+                               test);
+    test = unevenArrayInterp(0.5f, testArray, 3);
+    STAssertEqualsWithAccuracy(100.0f, test, 0.000001f,
+                               @"unevenArrayInterp is broken; 100.0f != %f",
+                               test);
+    test = unevenArrayInterp(1.0f, testArray, 3);
+    STAssertEqualsWithAccuracy(1000.0f, test, 0.000001f,
+                               @"unevenArrayInterp is broken; 1000.0f != %f",
+                               test);
+    test = unevenArrayInterp(0.6f, testArray, 3);
+    STAssertEqualsWithAccuracy(850.0f, test, 0.000001f,
+                               @"unevenArrayInterp is broken; 850.0f != %f",
+                               test);
 }
-
-
 
 @end

@@ -86,6 +86,7 @@
 						<string key="NSFrame">{{173, 4}, {16, 16}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:926</string>
 						<int key="NSpiFlags">28938</int>
 						<double key="NSMaxValue">100</double>

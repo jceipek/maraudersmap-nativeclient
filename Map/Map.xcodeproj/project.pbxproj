@@ -136,6 +136,36 @@
 			name = Localization;
 			sourceTree = "<group>";
 		};
+		276041B1157AFE01004BD2B4 /* LocationView */ = {
+			isa = PBXGroup;
+			children = (
+				2788833215770CCC00B49E8A /* LocationViewController.xib */,
+				276D087215772042003F8232 /* LocationViewController.h */,
+				276D087315772042003F8232 /* LocationViewController.m */,
+			);
+			name = LocationView;
+			sourceTree = "<group>";
+		};
+		276041B2157AFF38004BD2B4 /* PreferencesPanel */ = {
+			isa = PBXGroup;
+			children = (
+				277AB0BC1568B8B600226191 /* AdvancedPrefs */,
+				277AB0B41568B2CB00226191 /* GeneralPrefs */,
+				27A3E619156876CA009FB65C /* PreferencesPanel.h */,
+				27A3E61A156876CA009FB65C /* PreferencesPanel.m */,
+			);
+			name = PreferencesPanel;
+			sourceTree = "<group>";
+		};
+		276041B3157AFFDD004BD2B4 /* WifiScanning */ = {
+			isa = PBXGroup;
+			children = (
+				2707CC9F1572CF0600AEFA93 /* WifiScanner.h */,
+				2707CCA01572CF0600AEFA93 /* WifiScanner.m */,
+			);
+			name = WifiScanning;
+			sourceTree = "<group>";
+		};
 		277AB0B41568B2CB00226191 /* GeneralPrefs */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +179,8 @@
 		277AB0BC1568B8B600226191 /* AdvancedPrefs */ = {
 			isa = PBXGroup;
 			children = (
+				2707CC711571C5BF00AEFA93 /* SliderHelper.h */,
+				2707CC6E1571B7EF00AEFA93 /* SliderHelper.c */,
 				277AB0B71568B49A00226191 /* AdvancedPrefsViewController.h */,
 				277AB0B81568B49A00226191 /* AdvancedPrefsViewController.m */,
 				277AB0B91568B49A00226191 /* AdvancedPrefsViewController.xib */,
@@ -202,21 +234,11 @@
 			isa = PBXGroup;
 			children = (
 				275AB0551578645D00EFD9B5 /* Localization */,
-				2788833215770CCC00B49E8A /* LocationViewController.xib */,
-				276D087215772042003F8232 /* LocationViewController.h */,
-				276D087315772042003F8232 /* LocationViewController.m */,
-				27FA85971568A57600E9CEE6 /* 3rdPartyLibs */,
-				27A3E619156876CA009FB65C /* PreferencesPanel.h */,
-				27A3E61A156876CA009FB65C /* PreferencesPanel.m */,
-				2707CC9F1572CF0600AEFA93 /* WifiScanner.h */,
-				2707CCA01572CF0600AEFA93 /* WifiScanner.m */,
 				27A3E5F0156852B2009FB65C /* AppDelegate.h */,
 				27A3E5F1156852B2009FB65C /* AppDelegate.m */,
-				2707CC6E1571B7EF00AEFA93 /* SliderHelper.c */,
-				2707CC711571C5BF00AEFA93 /* SliderHelper.h */,
-				27A3E5F3156852B2009FB65C /* MainMenu.xib */,
-				277AB0BC1568B8B600226191 /* AdvancedPrefs */,
-				277AB0B41568B2CB00226191 /* GeneralPrefs */,
+				27FA85971568A57600E9CEE6 /* 3rdPartyLibs */,
+				276041B3157AFFDD004BD2B4 /* WifiScanning */,
+				27E606D0157B06F70035FF17 /* Interface */,
 				27A3E5E5156852B2009FB65C /* Supporting Files */,
 			);
 			path = Map;
@@ -254,6 +276,16 @@
 				27A3E604156852B3009FB65C /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		27E606D0157B06F70035FF17 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				276041B1157AFE01004BD2B4 /* LocationView */,
+				276041B2157AFF38004BD2B4 /* PreferencesPanel */,
+				27A3E5F3156852B2009FB65C /* MainMenu.xib */,
+			);
+			name = Interface;
 			sourceTree = "<group>";
 		};
 		27FA85971568A57600E9CEE6 /* 3rdPartyLibs */ = {
