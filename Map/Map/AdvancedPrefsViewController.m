@@ -10,7 +10,4 @@
 
 @implementation AdvancedPrefsViewController
 
-@synthesize frequencyIndicator;
-@synthesize updateFrequencySlider;
-
 @end

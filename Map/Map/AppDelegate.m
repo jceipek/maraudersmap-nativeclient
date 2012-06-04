@@ -10,6 +10,9 @@
 
 @implementation AppDelegate
 
+@synthesize frequencyIndicator;
+@synthesize updateFrequencySlider;
+
 - (void) awakeFromNib {
     statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
     NSBundle *bundle = [NSBundle mainBundle];
@@ -87,6 +90,7 @@
 - (IBAction)sliderMoved:(id)sender
 {
     // update the value here
+    [frequencyIndicator setStringValue:[[NSString alloc] initWithFormat:@"%f", [updateFrequencySlider floatValue]]];
     NSLog(@"InExpensive operation");
     [NSObject cancelPreviousPerformRequestsWithTarget:self
      selector:@selector(sliderDoneMoving:) object:sender];

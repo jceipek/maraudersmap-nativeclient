@@ -23,9 +23,7 @@
         // Initialization code here.
         NSLog(@"Init Location View Controller");
         [spinner setUsesThreadedAnimation:YES];
-        
     }
-    
     return self;
 }
 
@@ -36,6 +34,5 @@
 - (void) stopSpinner {
     [spinner stopAnimation:self];
 }
-\
 
 @end

@@ -38,4 +38,7 @@
 - (IBAction)sliderMoved:(id)sender;
 - (void)sliderDoneMoving:(id)sender;
 
+@property IBOutlet NSTextField *frequencyIndicator;
+@property IBOutlet NSSlider *updateFrequencySlider;
+
 @end

@@ -10,7 +10,4 @@
 
 @interface AdvancedPrefsViewController : NSViewController
 
-@property IBOutlet NSTextField *frequencyIndicator;
-@property IBOutlet NSSlider *updateFrequencySlider;
-
 @end
