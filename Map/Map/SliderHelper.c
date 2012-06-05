@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Franklin W. Olin College of Engineering. All rights reserved.
 //
 
-#include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include "SliderHelper.h"
 
@@ -15,7 +15,11 @@
 element corresponds. The length of the array must be specified, and the resulting
 value will be stored in ret.
 */
-void secondsArrayFromTimeUnitTuples(struct timeUnitTuple array[], int length, float ret[]) {    
+float *secondsArrayFromTimeUnitTuples(struct timeUnitTuple *array, int length) {   
+    float *ret = malloc(length * sizeof(float));
+    if (ret == NULL) {
+        return NULL;
+    }
     for (int i=0; i<length; i++) {
         int multiplier = 0;
         if (strncmp(array[i].unit, "s", 2) == 0) {
@@ -27,6 +31,7 @@ void secondsArrayFromTimeUnitTuples(struct timeUnitTuple array[], int length, fl
         }
         ret[i] = array[i].quantity * multiplier;
     }
+    return ret;
 }
 
 /* Takes in a ratio float between 0 and 1 and returns a float based on an interpolation
@@ -49,8 +54,7 @@ void secondsArrayFromTimeUnitTuples(struct timeUnitTuple array[], int length, fl
  
  return value is thus 820
 */
-float unevenArrayInterp(float curr, float array[], int length) {
-    
+float unevenArrayInterp(float curr, float *array, int length) {
     int lowerIndex = (int)(length * curr);
     int upperIndex = (int)((length + 0.5f) * curr);
     

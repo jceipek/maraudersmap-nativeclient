@@ -28,11 +28,8 @@
     NSView *locationView;
     
     BOOL isOnline;
-    
-    float secondIntervals[6];
-    
-    
 }
+
 
 - (IBAction)openMap:(id)sender;
 - (IBAction)manualRefresh:(id)sender;

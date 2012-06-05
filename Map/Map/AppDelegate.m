@@ -13,6 +13,8 @@
 @synthesize frequencyIndicator;
 @synthesize updateFrequencySlider;
 
+float *secondIntervals;
+
 - (void) awakeFromNib {
     statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
     NSBundle *bundle = [NSBundle mainBundle];
@@ -46,8 +48,11 @@
     // Insert code here to initialize your application
     isOnline = TRUE;
     
+     NSLog(@"THREAD: %@", [NSThread currentThread]);
+    
     [prefsPanel center];
     
+    // START
     struct timeUnitTuple intervals[] = {
         {10, "s"},
         {1, "m"},
@@ -56,15 +61,15 @@
         {30, "m"},
         {1, "hr"}};
     
-    secondsArrayFromTimeUnitTuples(intervals, 6, secondIntervals);
-    
-    for (int i=0; i<6; i++) {
-        NSLog(@"This %f", secondIntervals[i]);
+    secondIntervals = secondsArrayFromTimeUnitTuples(intervals, 6);
+    if(secondIntervals == NULL) {
+        [NSException raise:@"Out of memory!" format:@"Not enough memory to allocate intervals array!"];
     }
     
     for (int i=0; i<6; i++) {
         NSLog(@"This %f", secondIntervals[i]);
     }
+    
 }
 
 - (IBAction)openMap:(id)sender {
@@ -106,13 +111,21 @@
 
 - (IBAction)sliderMoved:(id)sender
 {
+    
+    NSLog(@"THREAD: %@", [NSThread currentThread]);
     for (int i=0; i<6; i++) {
         NSLog(@"This %f", secondIntervals[i]);
     }
     
     // update the value here
-    float value = unevenArrayInterp([updateFrequencySlider floatValue], secondIntervals, 6);
+    
+    float sliderValue = [updateFrequencySlider floatValue];
+    NSLog(@"The slidervalue is %f", sliderValue);
+    float value = unevenArrayInterp(sliderValue, secondIntervals, 6);
+    NSLog(@"The value is %f", value);
+
     [frequencyIndicator setStringValue:[[NSString alloc] initWithFormat:@"%f", value]];
+    
     NSLog(@"InExpensive operation");
     [NSObject cancelPreviousPerformRequestsWithTarget:self
                                              selector:@selector(sliderDoneMoving:) object:sender];
@@ -124,6 +137,10 @@
 {
     // do your expensive update here
     NSLog(@"Expensive operation");
+}
+
+- (void)dealloc {
+    free(secondIntervals);
 }
 
 @end

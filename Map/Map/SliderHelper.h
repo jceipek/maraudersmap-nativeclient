@@ -14,7 +14,7 @@ struct timeUnitTuple {
     char unit[2];
 };
 
-void secondsArrayFromTimeUnitTuples(struct timeUnitTuple array[], int length, float ret[]);
+float *secondsArrayFromTimeUnitTuples(struct timeUnitTuple array[], int length);
 float unevenArrayInterp(float curr, float array[], int length);
 
 #endif
