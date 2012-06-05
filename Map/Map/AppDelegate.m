@@ -29,10 +29,10 @@
     
     locationViewController = [[LocationViewController alloc] initWithNibName:@"LocationViewController" bundle:nil];
     //[locationViewController loadView];
-
+    
     locationView = [locationViewController view];
     [locationIndicator setView: locationView];
-
+    
     //TODO:
     //WifiScanner *scanner = [[WifiScanner alloc] init];
     //[scanner scan];
@@ -48,6 +48,23 @@
     
     [prefsPanel center];
     
+    struct timeUnitTuple intervals[] = {
+        {10, "s"},
+        {1, "m"},
+        {5, "m"},
+        {10, "m"},
+        {30, "m"},
+        {1, "hr"}};
+    
+    secondsArrayFromTimeUnitTuples(intervals, 6, secondIntervals);
+    
+    for (int i=0; i<6; i++) {
+        NSLog(@"This %f", secondIntervals[i]);
+    }
+    
+    for (int i=0; i<6; i++) {
+        NSLog(@"This %f", secondIntervals[i]);
+    }
 }
 
 - (IBAction)openMap:(id)sender {
@@ -89,13 +106,18 @@
 
 - (IBAction)sliderMoved:(id)sender
 {
+    for (int i=0; i<6; i++) {
+        NSLog(@"This %f", secondIntervals[i]);
+    }
+    
     // update the value here
-    [frequencyIndicator setStringValue:[[NSString alloc] initWithFormat:@"%f", [updateFrequencySlider floatValue]]];
+    float value = unevenArrayInterp([updateFrequencySlider floatValue], secondIntervals, 6);
+    [frequencyIndicator setStringValue:[[NSString alloc] initWithFormat:@"%f", value]];
     NSLog(@"InExpensive operation");
     [NSObject cancelPreviousPerformRequestsWithTarget:self
-     selector:@selector(sliderDoneMoving:) object:sender];
-     [self performSelector:@selector(sliderDoneMoving:)
-                withObject:sender afterDelay:0];
+                                             selector:@selector(sliderDoneMoving:) object:sender];
+    [self performSelector:@selector(sliderDoneMoving:)
+               withObject:sender afterDelay:0];
 }
 
 - (void)sliderDoneMoving:(id)sender

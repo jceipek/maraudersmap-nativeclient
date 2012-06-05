@@ -11,6 +11,7 @@
 #import "WifiScanner.h"
 #import "LocationViewController.h"
 #import "PreferencesPanel.h"
+#import "SliderHelper.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate, NSMenuDelegate> {
     IBOutlet NSMenu *statusMenu;
@@ -27,6 +28,10 @@
     NSView *locationView;
     
     BOOL isOnline;
+    
+    float secondIntervals[6];
+    
+    
 }
 
 - (IBAction)openMap:(id)sender;
