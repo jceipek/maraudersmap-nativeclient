@@ -34,7 +34,12 @@ float *secondsArrayFromTimeUnitTuples(struct timeUnitTuple *array, int length) {
     return ret;
 }
 
-/* Takes in a ratio float between 0 and 1 and returns a float based on an interpolation
+float floatMod(float a, float b) {
+    int result = (int)(a/b);
+    return a - (float)result * b;
+}
+
+/* Takes in a ratio float between 0 and 1 and returns a float based on a linear interpolation
  between two values of an input array of a given length such that the indicies of
  those values are the closest to the input float in terms of ratio. 
  
@@ -46,20 +51,19 @@ float *secondsArrayFromTimeUnitTuples(struct timeUnitTuple *array, int length) {
  
  100 - 1000 = m*0.5 - m*1.0 + b-b
  -900 = -0.5 * m
- 450 = m
+ 1800 = m
  
- 1000 - 450 * 1.0 = b = 550
+ 1000 - 1800 * 1.0 = b = -800
  
- 450 * 0.6 + 550 = 820
+ 1800 * 0.6 + -800 = 280
  
- return value is thus 820
+ return value is thus 280
 */
 float unevenArrayInterp(float curr, float *array, int length) {
+    length -= 1;
+    float tweenRatio = floatMod(curr, (1.0f/length)) * length;
     int lowerIndex = (int)(length * curr);
-    int upperIndex = (int)((length + 0.5f) * curr);
+    int upperIndex = (int)(length * curr + 0.9f);
     
-    float m = (array[lowerIndex] - array[upperIndex])/((lowerIndex/length) - (upperIndex/length));
-    float b = array[upperIndex] - m * (upperIndex/length);
-    
-    return m * curr + b;
+    return ((array[upperIndex] - array[lowerIndex]) * tweenRatio) + array[lowerIndex];
 }
