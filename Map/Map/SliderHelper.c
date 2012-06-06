@@ -8,6 +8,7 @@
 
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 #include "SliderHelper.h"
 
 /* 
@@ -66,4 +67,53 @@ float unevenArrayInterp(float curr, float *array, int length) {
     int upperIndex = (int)(length * curr + 0.9f);
     
     return ((array[upperIndex] - array[lowerIndex]) * tweenRatio) + array[lowerIndex];
+}
+
+struct timeUnitTuple timeUnitTupleFromSeconds(float seconds) {
+    struct timeUnitTuple retTuple;
+    if (seconds >= 3600) {
+        float hours = seconds/3600.0f;
+        retTuple.quantity = hours;
+        strcpy(retTuple.unit, "hr");
+        return retTuple;
+    } else if (seconds >= 60) {
+        float minutes = seconds/60.0f;
+        retTuple.quantity = minutes;
+        strcpy(retTuple.unit, "m");
+        return retTuple;
+    } else {
+        retTuple.quantity = seconds;
+        strcpy(retTuple.unit, "s");
+        return retTuple;
+    }
+}
+
+char *timeUnitTupleLongForm(struct timeUnitTuple tuple, char* longForm) {
+    char *pluralizedUnit;
+    if (strncmp(tuple.unit, "s", 2) == 0) {
+        pluralizedUnit = getPluralChar(tuple.quantity, "second");
+        sprintf(longForm, "%.0f %s", tuple.quantity, pluralizedUnit);
+        free(pluralizedUnit);
+    } else if (strncmp(tuple.unit, "m", 2) == 0){
+        pluralizedUnit = getPluralChar(tuple.quantity, "minute");
+        sprintf(longForm, "%.0f %s", tuple.quantity, pluralizedUnit);    
+        free(pluralizedUnit);
+    } else if (strncmp(tuple.unit, "hr", 2) == 0) {
+        pluralizedUnit = getPluralChar(tuple.quantity, "hour");
+        sprintf(longForm, "%.0f %s", tuple.quantity, pluralizedUnit);
+        free(pluralizedUnit);
+    }
+    return longForm;
+}
+
+char *getPluralChar(float number, char *unit) {
+    int length = strlen(unit);
+    char *retUnit = malloc((length + 2) * sizeof(char));
+    if ((int)number > 1) {
+        sprintf(retUnit, "%ss", unit);
+        return retUnit;
+    } else {
+        sprintf(retUnit, "%s", unit);
+        return retUnit;
+    }
 }

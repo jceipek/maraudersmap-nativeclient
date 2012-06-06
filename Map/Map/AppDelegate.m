@@ -66,10 +66,6 @@ float *secondIntervals;
         [NSException raise:@"Out of memory!" format:@"Not enough memory to allocate intervals array!"];
     }
     
-    for (int i=0; i<6; i++) {
-        NSLog(@"This %f", secondIntervals[i]);
-    }
-    
 }
 
 - (IBAction)openMap:(id)sender {
@@ -111,22 +107,13 @@ float *secondIntervals;
 
 - (IBAction)sliderMoved:(id)sender
 {
-    
-    NSLog(@"THREAD: %@", [NSThread currentThread]);
-    for (int i=0; i<6; i++) {
-        NSLog(@"This %f", secondIntervals[i]);
-    }
-    
     // update the value here
+    float value = unevenArrayInterp([updateFrequencySlider floatValue], secondIntervals, 6);
     
-    float sliderValue = [updateFrequencySlider floatValue];
-    NSLog(@"The slidervalue is %f", sliderValue);
-    float value = unevenArrayInterp(sliderValue, secondIntervals, 6);
-    NSLog(@"The value is %f", value);
+    char longForm[50];
 
-    [frequencyIndicator setStringValue:[[NSString alloc] initWithFormat:@"%f", value]];
+    [frequencyIndicator setStringValue:[[NSString alloc] initWithFormat:@"%s", timeUnitTupleLongForm(timeUnitTupleFromSeconds(value), longForm)]];
     
-    NSLog(@"InExpensive operation");
     [NSObject cancelPreviousPerformRequestsWithTarget:self
                                              selector:@selector(sliderDoneMoving:) object:sender];
     [self performSelector:@selector(sliderDoneMoving:)
@@ -135,6 +122,7 @@ float *secondIntervals;
 
 - (void)sliderDoneMoving:(id)sender
 {
+    [frequencyIndicator setStringValue:@""];
     // do your expensive update here
     NSLog(@"Expensive operation");
 }
