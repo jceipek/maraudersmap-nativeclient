@@ -16,6 +16,7 @@
 float *secondIntervals;
 
 - (void) awakeFromNib {
+    
     statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
     NSBundle *bundle = [NSBundle mainBundle];
     statusImage = [[NSImage alloc] initWithContentsOfFile:[bundle pathForResource:@"demoIcon" ofType:@"png"]];
@@ -30,14 +31,13 @@ float *secondIntervals;
     
     
     locationViewController = [[LocationViewController alloc] initWithNibName:@"LocationViewController" bundle:nil];
-    //[locationViewController loadView];
     
     locationView = [locationViewController view];
     [locationIndicator setView: locationView];
     
     //TODO:
-    //WifiScanner *scanner = [[WifiScanner alloc] init];
-    //[scanner scan];
+    WifiScanner *scanner = [[WifiScanner alloc] init];
+    [scanner scan];
     
     [statusMenu setDelegate:self];
     
@@ -47,8 +47,6 @@ float *secondIntervals;
 {
     // Insert code here to initialize your application
     isOnline = TRUE;
-    
-     NSLog(@"THREAD: %@", [NSThread currentThread]);
     
     [prefsPanel center];
     

@@ -7,18 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#include <dlfcn.h>
+#import <CoreWLAN/CoreWLAN.h>
 
 @interface WifiScanner : NSObject {
-    void *libHandle;
-    void *airportHandle;    
-    int (*apple80211Open)(void *);
-    int (*apple80211Bind)(void *, NSString *);
-    int (*apple80211Close)(void *);
-    int (*apple80211Associate)(void *, NSDictionary*, NSString*);
-    int (*apple80211Scan)(void *, NSArray **, void *);
-	int (*apple80211GetPower)(void *, char *);
-	int (*apple80211SetPower)(void*, char*);
+    NSMutableArray *scanResults;
+    CWInterface *currentInterface;
 }
 
 - (void) scan;

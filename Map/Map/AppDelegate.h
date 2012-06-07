@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <CoreWLAN/CoreWLAN.h>
 
 #import "WifiScanner.h"
 #import "LocationViewController.h"
