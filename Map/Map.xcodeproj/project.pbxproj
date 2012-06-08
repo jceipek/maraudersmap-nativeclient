@@ -32,6 +32,9 @@
 		27A3E609156852B3009FB65C /* MapTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A3E608156852B3009FB65C /* MapTests.m */; };
 		27A3E6141568627F009FB65C /* demoIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 27A3E6121568627F009FB65C /* demoIcon.png */; };
 		27A3E6151568627F009FB65C /* demoIconWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 27A3E6131568627F009FB65C /* demoIconWhite.png */; };
+		27DDE1A71581A71900FB2626 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = 27DDE1A31581A71900FB2626 /* CHANGELOG.md */; };
+		27DDE1A81581A71900FB2626 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DDE1A51581A71900FB2626 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		27DDE1A91581A71900FB2626 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 27DDE1A61581A71900FB2626 /* README.md */; };
 		27FA859A1568A57600E9CEE6 /* OSBPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FA85991568A57600E9CEE6 /* OSBPreferencesController.m */; };
 /* End PBXBuildFile section */
 
@@ -46,7 +49,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2707CC731572997E00AEFA93 /* Apple80211.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Apple80211.h; sourceTree = "<group>"; };
 		2707CC761572A23200AEFA93 /* Apple80211 */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = Apple80211; path = ../../../../../../System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Apple80211; sourceTree = "<group>"; };
 		2707CC7F1572B91D00AEFA93 /* CoreWLAN.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreWLAN.framework; path = System/Library/Frameworks/CoreWLAN.framework; sourceTree = SDKROOT; };
 		27429576158199DD004EE5C2 /* WifiScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WifiScanner.h; sourceTree = "<group>"; };
@@ -92,6 +94,10 @@
 		27A3E608156852B3009FB65C /* MapTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapTests.m; sourceTree = "<group>"; };
 		27A3E6121568627F009FB65C /* demoIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = demoIcon.png; sourceTree = "<group>"; };
 		27A3E6131568627F009FB65C /* demoIconWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = demoIconWhite.png; sourceTree = "<group>"; };
+		27DDE1A31581A71900FB2626 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG.md; sourceTree = "<group>"; };
+		27DDE1A41581A71900FB2626 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		27DDE1A51581A71900FB2626 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		27DDE1A61581A71900FB2626 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		27FA85981568A57600E9CEE6 /* OSBPreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSBPreferencesController.h; sourceTree = "<group>"; };
 		27FA85991568A57600E9CEE6 /* OSBPreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSBPreferencesController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -119,15 +125,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2707CC721572996900AEFA93 /* Apple80211 */ = {
-			isa = PBXGroup;
-			children = (
-				2707CC731572997E00AEFA93 /* Apple80211.h */,
-			);
-			name = Apple80211;
-			path = Map;
-			sourceTree = "<group>";
-		};
 		27429575158199DD004EE5C2 /* WifiScanning */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,7 +193,7 @@
 				2707CC761572A23200AEFA93 /* Apple80211 */,
 				27A3E5E4156852B2009FB65C /* Map */,
 				27A3E601156852B3009FB65C /* MapTests */,
-				27A3E5DD156852B2009FB65C /* Frameworks */,
+				27DDE19515819C0C00FB2626 /* Frameworks */,
 				27A3E5DB156852B2009FB65C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -208,28 +205,6 @@
 				27A3E5FB156852B3009FB65C /* MapTests.octest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		27A3E5DD156852B2009FB65C /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				2707CC721572996900AEFA93 /* Apple80211 */,
-				2707CC7F1572B91D00AEFA93 /* CoreWLAN.framework */,
-				27A3E5DE156852B2009FB65C /* Cocoa.framework */,
-				27A3E5FC156852B3009FB65C /* SenTestingKit.framework */,
-				27A3E5E0156852B2009FB65C /* Other Frameworks */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		27A3E5E0156852B2009FB65C /* Other Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				27A3E5E1156852B2009FB65C /* AppKit.framework */,
-				27A3E5E2156852B2009FB65C /* CoreData.framework */,
-				27A3E5E3156852B2009FB65C /* Foundation.framework */,
-			);
-			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
 		27A3E5E4156852B2009FB65C /* Map */ = {
@@ -280,6 +255,31 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		27DDE19515819C0C00FB2626 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2707CC7F1572B91D00AEFA93 /* CoreWLAN.framework */,
+				27A3E5DE156852B2009FB65C /* Cocoa.framework */,
+				27A3E5FC156852B3009FB65C /* SenTestingKit.framework */,
+				27A3E5E1156852B2009FB65C /* AppKit.framework */,
+				27A3E5E2156852B2009FB65C /* CoreData.framework */,
+				27A3E5E3156852B2009FB65C /* Foundation.framework */,
+			);
+			name = Frameworks;
+			path = Map/Frameworks;
+			sourceTree = "<group>";
+		};
+		27DDE1A21581A71900FB2626 /* JSONKit */ = {
+			isa = PBXGroup;
+			children = (
+				27DDE1A31581A71900FB2626 /* CHANGELOG.md */,
+				27DDE1A41581A71900FB2626 /* JSONKit.h */,
+				27DDE1A51581A71900FB2626 /* JSONKit.m */,
+				27DDE1A61581A71900FB2626 /* README.md */,
+			);
+			path = JSONKit;
+			sourceTree = "<group>";
+		};
 		27E606D0157B06F70035FF17 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
@@ -293,6 +293,7 @@
 		27FA85971568A57600E9CEE6 /* 3rdPartyLibs */ = {
 			isa = PBXGroup;
 			children = (
+				27DDE1A21581A71900FB2626 /* JSONKit */,
 				27FA85981568A57600E9CEE6 /* OSBPreferencesController.h */,
 				27FA85991568A57600E9CEE6 /* OSBPreferencesController.m */,
 			);
@@ -382,6 +383,8 @@
 				2742958B15819AC9004EE5C2 /* LocationViewController.xib in Resources */,
 				2742958D15819AC9004EE5C2 /* AdvancedPrefsViewController.xib in Resources */,
 				2742959015819AC9004EE5C2 /* GeneralPrefsViewController.xib in Resources */,
+				27DDE1A71581A71900FB2626 /* CHANGELOG.md in Resources */,
+				27DDE1A91581A71900FB2626 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,6 +428,7 @@
 				2742958E15819AC9004EE5C2 /* SliderHelper.c in Sources */,
 				2742958F15819AC9004EE5C2 /* GeneralPrefsViewController.m in Sources */,
 				2742959115819AC9004EE5C2 /* PreferencesPanel.m in Sources */,
+				27DDE1A81581A71900FB2626 /* JSONKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,6 +520,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -537,6 +542,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				SDKROOT = macosx;
 			};
@@ -545,13 +551,15 @@
 		27A3E60D156852B3009FB65C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Map/Frameworks\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Map/Map-Prefix.pch";
 				INFOPLIST_FILE = "Map/Map-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks/Apple80211.framework/Versions/A\"",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -560,13 +568,15 @@
 		27A3E60E156852B3009FB65C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Map/Frameworks\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Map/Map-Prefix.pch";
 				INFOPLIST_FILE = "Map/Map-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks/Apple80211.framework/Versions/A\"",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
