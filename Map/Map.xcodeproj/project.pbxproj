@@ -7,16 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2707CC6F1571B7EF00AEFA93 /* SliderHelper.c in Sources */ = {isa = PBXBuildFile; fileRef = 2707CC6E1571B7EF00AEFA93 /* SliderHelper.c */; };
 		2707CC771572A23200AEFA93 /* Apple80211 in Frameworks */ = {isa = PBXBuildFile; fileRef = 2707CC761572A23200AEFA93 /* Apple80211 */; };
 		2707CC801572B91D00AEFA93 /* CoreWLAN.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2707CC7F1572B91D00AEFA93 /* CoreWLAN.framework */; };
-		2707CCA11572CF0600AEFA93 /* WifiScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 2707CCA01572CF0600AEFA93 /* WifiScanner.m */; };
+		27429578158199DD004EE5C2 /* WifiScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 27429577158199DD004EE5C2 /* WifiScanner.m */; };
+		2742958A15819AC9004EE5C2 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2742957B15819AC9004EE5C2 /* LocationViewController.m */; };
+		2742958B15819AC9004EE5C2 /* LocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2742957C15819AC9004EE5C2 /* LocationViewController.xib */; };
+		2742958C15819AC9004EE5C2 /* AdvancedPrefsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2742958015819AC9004EE5C2 /* AdvancedPrefsViewController.m */; };
+		2742958D15819AC9004EE5C2 /* AdvancedPrefsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2742958115819AC9004EE5C2 /* AdvancedPrefsViewController.xib */; };
+		2742958E15819AC9004EE5C2 /* SliderHelper.c in Sources */ = {isa = PBXBuildFile; fileRef = 2742958215819AC9004EE5C2 /* SliderHelper.c */; };
+		2742958F15819AC9004EE5C2 /* GeneralPrefsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2742958615819AC9004EE5C2 /* GeneralPrefsViewController.m */; };
+		2742959015819AC9004EE5C2 /* GeneralPrefsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2742958715819AC9004EE5C2 /* GeneralPrefsViewController.xib */; };
+		2742959115819AC9004EE5C2 /* PreferencesPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2742958915819AC9004EE5C2 /* PreferencesPanel.m */; };
 		275AB0541578612300EFD9B5 /* demoIconDisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 275AB0531578612300EFD9B5 /* demoIconDisabled.png */; };
 		275AB05C157866A500EFD9B5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 275AB05E157866A500EFD9B5 /* Localizable.strings */; };
-		276D087415772042003F8232 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 276D087315772042003F8232 /* LocationViewController.m */; };
-		277AB0BA1568B49A00226191 /* AdvancedPrefsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 277AB0B81568B49A00226191 /* AdvancedPrefsViewController.m */; };
-		277AB0BB1568B49A00226191 /* AdvancedPrefsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 277AB0B91568B49A00226191 /* AdvancedPrefsViewController.xib */; };
-		2788833315770CCC00B49E8A /* LocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2788833215770CCC00B49E8A /* LocationViewController.xib */; };
 		27A3E5DF156852B2009FB65C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27A3E5DE156852B2009FB65C /* Cocoa.framework */; };
 		27A3E5E9156852B2009FB65C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27A3E5E7156852B2009FB65C /* InfoPlist.strings */; };
 		27A3E5EB156852B2009FB65C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A3E5EA156852B2009FB65C /* main.m */; };
@@ -29,10 +32,7 @@
 		27A3E609156852B3009FB65C /* MapTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A3E608156852B3009FB65C /* MapTests.m */; };
 		27A3E6141568627F009FB65C /* demoIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 27A3E6121568627F009FB65C /* demoIcon.png */; };
 		27A3E6151568627F009FB65C /* demoIconWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 27A3E6131568627F009FB65C /* demoIconWhite.png */; };
-		27A3E61B156876CA009FB65C /* PreferencesPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A3E61A156876CA009FB65C /* PreferencesPanel.m */; };
 		27FA859A1568A57600E9CEE6 /* OSBPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FA85991568A57600E9CEE6 /* OSBPreferencesController.m */; };
-		27FA85A11568A81300E9CEE6 /* GeneralPrefsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27FA85A01568A81300E9CEE6 /* GeneralPrefsViewController.xib */; };
-		27FA85A41568ACB600E9CEE6 /* GeneralPrefsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FA85A31568ACB600E9CEE6 /* GeneralPrefsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,13 +46,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2707CC6E1571B7EF00AEFA93 /* SliderHelper.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SliderHelper.c; sourceTree = "<group>"; };
-		2707CC711571C5BF00AEFA93 /* SliderHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SliderHelper.h; sourceTree = "<group>"; };
 		2707CC731572997E00AEFA93 /* Apple80211.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Apple80211.h; sourceTree = "<group>"; };
 		2707CC761572A23200AEFA93 /* Apple80211 */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = Apple80211; path = ../../../../../../System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Apple80211; sourceTree = "<group>"; };
 		2707CC7F1572B91D00AEFA93 /* CoreWLAN.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreWLAN.framework; path = System/Library/Frameworks/CoreWLAN.framework; sourceTree = SDKROOT; };
-		2707CC9F1572CF0600AEFA93 /* WifiScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WifiScanner.h; sourceTree = "<group>"; };
-		2707CCA01572CF0600AEFA93 /* WifiScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WifiScanner.m; sourceTree = "<group>"; };
+		27429576158199DD004EE5C2 /* WifiScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WifiScanner.h; sourceTree = "<group>"; };
+		27429577158199DD004EE5C2 /* WifiScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WifiScanner.m; sourceTree = "<group>"; };
+		2742957A15819AC9004EE5C2 /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
+		2742957B15819AC9004EE5C2 /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
+		2742957C15819AC9004EE5C2 /* LocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationViewController.xib; sourceTree = "<group>"; };
+		2742957F15819AC9004EE5C2 /* AdvancedPrefsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvancedPrefsViewController.h; sourceTree = "<group>"; };
+		2742958015819AC9004EE5C2 /* AdvancedPrefsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvancedPrefsViewController.m; sourceTree = "<group>"; };
+		2742958115819AC9004EE5C2 /* AdvancedPrefsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdvancedPrefsViewController.xib; sourceTree = "<group>"; };
+		2742958215819AC9004EE5C2 /* SliderHelper.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SliderHelper.c; sourceTree = "<group>"; };
+		2742958315819AC9004EE5C2 /* SliderHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SliderHelper.h; sourceTree = "<group>"; };
+		2742958515819AC9004EE5C2 /* GeneralPrefsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneralPrefsViewController.h; sourceTree = "<group>"; };
+		2742958615819AC9004EE5C2 /* GeneralPrefsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneralPrefsViewController.m; sourceTree = "<group>"; };
+		2742958715819AC9004EE5C2 /* GeneralPrefsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GeneralPrefsViewController.xib; sourceTree = "<group>"; };
+		2742958815819AC9004EE5C2 /* PreferencesPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesPanel.h; sourceTree = "<group>"; };
+		2742958915819AC9004EE5C2 /* PreferencesPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesPanel.m; sourceTree = "<group>"; };
 		275AB0531578612300EFD9B5 /* demoIconDisabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = demoIconDisabled.png; sourceTree = "<group>"; };
 		275AB0581578660B00EFD9B5 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = de; path = "/Users/jceipek/Development/Group Projects/maraudersmap-nativeclient/Map/Map/de.lproj/Credits.rtf"; sourceTree = "<absolute>"; };
 		275AB0591578660B00EFD9B5 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = "/Users/jceipek/Development/Group Projects/maraudersmap-nativeclient/Map/Map/de.lproj/InfoPlist.strings"; sourceTree = "<absolute>"; };
@@ -60,12 +71,6 @@
 		275AB05B1578660B00EFD9B5 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = "/Users/jceipek/Development/Group Projects/maraudersmap-nativeclient/Map/MapTests/de.lproj/InfoPlist.strings"; sourceTree = "<absolute>"; };
 		275AB05D157866A500EFD9B5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		275AB05F157866C700EFD9B5 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
-		276D087215772042003F8232 /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
-		276D087315772042003F8232 /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
-		277AB0B71568B49A00226191 /* AdvancedPrefsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvancedPrefsViewController.h; sourceTree = "<group>"; };
-		277AB0B81568B49A00226191 /* AdvancedPrefsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvancedPrefsViewController.m; sourceTree = "<group>"; };
-		277AB0B91568B49A00226191 /* AdvancedPrefsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdvancedPrefsViewController.xib; sourceTree = "<group>"; };
-		2788833215770CCC00B49E8A /* LocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationViewController.xib; sourceTree = "<group>"; };
 		27A3E5DA156852B2009FB65C /* Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Map.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27A3E5DE156852B2009FB65C /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		27A3E5E1156852B2009FB65C /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -87,13 +92,8 @@
 		27A3E608156852B3009FB65C /* MapTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapTests.m; sourceTree = "<group>"; };
 		27A3E6121568627F009FB65C /* demoIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = demoIcon.png; sourceTree = "<group>"; };
 		27A3E6131568627F009FB65C /* demoIconWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = demoIconWhite.png; sourceTree = "<group>"; };
-		27A3E619156876CA009FB65C /* PreferencesPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesPanel.h; sourceTree = "<group>"; };
-		27A3E61A156876CA009FB65C /* PreferencesPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesPanel.m; sourceTree = "<group>"; };
 		27FA85981568A57600E9CEE6 /* OSBPreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSBPreferencesController.h; sourceTree = "<group>"; };
 		27FA85991568A57600E9CEE6 /* OSBPreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSBPreferencesController.m; sourceTree = "<group>"; };
-		27FA85A01568A81300E9CEE6 /* GeneralPrefsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GeneralPrefsViewController.xib; sourceTree = "<group>"; };
-		27FA85A21568ACB600E9CEE6 /* GeneralPrefsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneralPrefsViewController.h; sourceTree = "<group>"; };
-		27FA85A31568ACB600E9CEE6 /* GeneralPrefsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneralPrefsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,64 +128,66 @@
 			path = Map;
 			sourceTree = "<group>";
 		};
+		27429575158199DD004EE5C2 /* WifiScanning */ = {
+			isa = PBXGroup;
+			children = (
+				27429576158199DD004EE5C2 /* WifiScanner.h */,
+				27429577158199DD004EE5C2 /* WifiScanner.m */,
+			);
+			path = WifiScanning;
+			sourceTree = "<group>";
+		};
+		2742957915819AC9004EE5C2 /* LocationView */ = {
+			isa = PBXGroup;
+			children = (
+				2742957A15819AC9004EE5C2 /* LocationViewController.h */,
+				2742957B15819AC9004EE5C2 /* LocationViewController.m */,
+				2742957C15819AC9004EE5C2 /* LocationViewController.xib */,
+			);
+			name = LocationView;
+			path = Interface/LocationView;
+			sourceTree = "<group>";
+		};
+		2742957D15819AC9004EE5C2 /* PreferencesPanel */ = {
+			isa = PBXGroup;
+			children = (
+				2742957E15819AC9004EE5C2 /* AdvancedPrefs */,
+				2742958415819AC9004EE5C2 /* GeneralPrefs */,
+				2742958815819AC9004EE5C2 /* PreferencesPanel.h */,
+				2742958915819AC9004EE5C2 /* PreferencesPanel.m */,
+			);
+			name = PreferencesPanel;
+			path = Interface/PreferencesPanel;
+			sourceTree = "<group>";
+		};
+		2742957E15819AC9004EE5C2 /* AdvancedPrefs */ = {
+			isa = PBXGroup;
+			children = (
+				2742957F15819AC9004EE5C2 /* AdvancedPrefsViewController.h */,
+				2742958015819AC9004EE5C2 /* AdvancedPrefsViewController.m */,
+				2742958115819AC9004EE5C2 /* AdvancedPrefsViewController.xib */,
+				2742958215819AC9004EE5C2 /* SliderHelper.c */,
+				2742958315819AC9004EE5C2 /* SliderHelper.h */,
+			);
+			path = AdvancedPrefs;
+			sourceTree = "<group>";
+		};
+		2742958415819AC9004EE5C2 /* GeneralPrefs */ = {
+			isa = PBXGroup;
+			children = (
+				2742958515819AC9004EE5C2 /* GeneralPrefsViewController.h */,
+				2742958615819AC9004EE5C2 /* GeneralPrefsViewController.m */,
+				2742958715819AC9004EE5C2 /* GeneralPrefsViewController.xib */,
+			);
+			path = GeneralPrefs;
+			sourceTree = "<group>";
+		};
 		275AB0551578645D00EFD9B5 /* Localization */ = {
 			isa = PBXGroup;
 			children = (
 				275AB05E157866A500EFD9B5 /* Localizable.strings */,
 			);
 			name = Localization;
-			sourceTree = "<group>";
-		};
-		276041B1157AFE01004BD2B4 /* LocationView */ = {
-			isa = PBXGroup;
-			children = (
-				2788833215770CCC00B49E8A /* LocationViewController.xib */,
-				276D087215772042003F8232 /* LocationViewController.h */,
-				276D087315772042003F8232 /* LocationViewController.m */,
-			);
-			name = LocationView;
-			sourceTree = "<group>";
-		};
-		276041B2157AFF38004BD2B4 /* PreferencesPanel */ = {
-			isa = PBXGroup;
-			children = (
-				277AB0BC1568B8B600226191 /* AdvancedPrefs */,
-				277AB0B41568B2CB00226191 /* GeneralPrefs */,
-				27A3E619156876CA009FB65C /* PreferencesPanel.h */,
-				27A3E61A156876CA009FB65C /* PreferencesPanel.m */,
-			);
-			name = PreferencesPanel;
-			sourceTree = "<group>";
-		};
-		276041B3157AFFDD004BD2B4 /* WifiScanning */ = {
-			isa = PBXGroup;
-			children = (
-				2707CC9F1572CF0600AEFA93 /* WifiScanner.h */,
-				2707CCA01572CF0600AEFA93 /* WifiScanner.m */,
-			);
-			name = WifiScanning;
-			sourceTree = "<group>";
-		};
-		277AB0B41568B2CB00226191 /* GeneralPrefs */ = {
-			isa = PBXGroup;
-			children = (
-				27FA85A21568ACB600E9CEE6 /* GeneralPrefsViewController.h */,
-				27FA85A31568ACB600E9CEE6 /* GeneralPrefsViewController.m */,
-				27FA85A01568A81300E9CEE6 /* GeneralPrefsViewController.xib */,
-			);
-			name = GeneralPrefs;
-			sourceTree = "<group>";
-		};
-		277AB0BC1568B8B600226191 /* AdvancedPrefs */ = {
-			isa = PBXGroup;
-			children = (
-				2707CC711571C5BF00AEFA93 /* SliderHelper.h */,
-				2707CC6E1571B7EF00AEFA93 /* SliderHelper.c */,
-				277AB0B71568B49A00226191 /* AdvancedPrefsViewController.h */,
-				277AB0B81568B49A00226191 /* AdvancedPrefsViewController.m */,
-				277AB0B91568B49A00226191 /* AdvancedPrefsViewController.xib */,
-			);
-			name = AdvancedPrefs;
 			sourceTree = "<group>";
 		};
 		27A3E5CF156852B1009FB65C = {
@@ -237,7 +239,7 @@
 				27A3E5F0156852B2009FB65C /* AppDelegate.h */,
 				27A3E5F1156852B2009FB65C /* AppDelegate.m */,
 				27FA85971568A57600E9CEE6 /* 3rdPartyLibs */,
-				276041B3157AFFDD004BD2B4 /* WifiScanning */,
+				27429575158199DD004EE5C2 /* WifiScanning */,
 				27E606D0157B06F70035FF17 /* Interface */,
 				27A3E5E5156852B2009FB65C /* Supporting Files */,
 			);
@@ -281,8 +283,8 @@
 		27E606D0157B06F70035FF17 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
-				276041B1157AFE01004BD2B4 /* LocationView */,
-				276041B2157AFF38004BD2B4 /* PreferencesPanel */,
+				2742957915819AC9004EE5C2 /* LocationView */,
+				2742957D15819AC9004EE5C2 /* PreferencesPanel */,
 				27A3E5F3156852B2009FB65C /* MainMenu.xib */,
 			);
 			name = Interface;
@@ -375,11 +377,11 @@
 				27A3E5F5156852B2009FB65C /* MainMenu.xib in Resources */,
 				27A3E6141568627F009FB65C /* demoIcon.png in Resources */,
 				27A3E6151568627F009FB65C /* demoIconWhite.png in Resources */,
-				27FA85A11568A81300E9CEE6 /* GeneralPrefsViewController.xib in Resources */,
-				277AB0BB1568B49A00226191 /* AdvancedPrefsViewController.xib in Resources */,
-				2788833315770CCC00B49E8A /* LocationViewController.xib in Resources */,
 				275AB0541578612300EFD9B5 /* demoIconDisabled.png in Resources */,
 				275AB05C157866A500EFD9B5 /* Localizable.strings in Resources */,
+				2742958B15819AC9004EE5C2 /* LocationViewController.xib in Resources */,
+				2742958D15819AC9004EE5C2 /* AdvancedPrefsViewController.xib in Resources */,
+				2742959015819AC9004EE5C2 /* GeneralPrefsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,13 +418,13 @@
 			files = (
 				27A3E5EB156852B2009FB65C /* main.m in Sources */,
 				27A3E5F2156852B2009FB65C /* AppDelegate.m in Sources */,
-				27A3E61B156876CA009FB65C /* PreferencesPanel.m in Sources */,
 				27FA859A1568A57600E9CEE6 /* OSBPreferencesController.m in Sources */,
-				27FA85A41568ACB600E9CEE6 /* GeneralPrefsViewController.m in Sources */,
-				277AB0BA1568B49A00226191 /* AdvancedPrefsViewController.m in Sources */,
-				2707CC6F1571B7EF00AEFA93 /* SliderHelper.c in Sources */,
-				2707CCA11572CF0600AEFA93 /* WifiScanner.m in Sources */,
-				276D087415772042003F8232 /* LocationViewController.m in Sources */,
+				27429578158199DD004EE5C2 /* WifiScanner.m in Sources */,
+				2742958A15819AC9004EE5C2 /* LocationViewController.m in Sources */,
+				2742958C15819AC9004EE5C2 /* AdvancedPrefsViewController.m in Sources */,
+				2742958E15819AC9004EE5C2 /* SliderHelper.c in Sources */,
+				2742958F15819AC9004EE5C2 /* GeneralPrefsViewController.m in Sources */,
+				2742959115819AC9004EE5C2 /* PreferencesPanel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

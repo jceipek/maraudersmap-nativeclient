@@ -12,7 +12,6 @@
 #import "WifiScanner.h"
 #import "LocationViewController.h"
 #import "PreferencesPanel.h"
-#import "SliderHelper.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate, NSMenuDelegate> {
     IBOutlet NSMenu *statusMenu;
@@ -37,11 +36,5 @@
 - (IBAction)correctLocation:(id)sender;
 - (IBAction)toggleOnline:(id)sender;
 - (IBAction)quit:(id)sender;
-
-- (IBAction)sliderMoved:(id)sender;
-- (void)sliderDoneMoving:(id)sender;
-
-@property IBOutlet NSTextField *frequencyIndicator;
-@property IBOutlet NSSlider *updateFrequencySlider;
 
 @end
