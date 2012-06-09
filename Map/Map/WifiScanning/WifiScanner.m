@@ -20,6 +20,7 @@
     return self;
 }
 
+// From http://stackoverflow.com/questions/718429/creating-url-query-parameters-from-nsdictionary-objects-in-objectivec
 +(NSString*)urlEscapeString:(NSString *)unencodedString 
 {
     CFStringRef originalStringRef = (__bridge_retained CFStringRef)unencodedString;
