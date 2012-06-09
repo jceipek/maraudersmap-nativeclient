@@ -12,7 +12,11 @@
 @interface WifiScanner : NSObject {
     NSMutableArray *scanResults;
     CWInterface *currentInterface;
+    
 }
+
++(NSString*)urlEscapeString:(NSString *)unencodedString;
++(NSString*)addQueryStringToUrlString:(NSString *)urlString withDictionary:(NSDictionary *)dictionary;
 
 - (void) scan;
 
