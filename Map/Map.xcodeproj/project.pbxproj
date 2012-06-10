@@ -163,8 +163,8 @@
 				2742957F15819AC9004EE5C2 /* AdvancedPrefsViewController.h */,
 				2742958015819AC9004EE5C2 /* AdvancedPrefsViewController.m */,
 				2742958115819AC9004EE5C2 /* AdvancedPrefsViewController.xib */,
-				2742958215819AC9004EE5C2 /* SliderHelper.c */,
 				2742958315819AC9004EE5C2 /* SliderHelper.h */,
+				2742958215819AC9004EE5C2 /* SliderHelper.c */,
 			);
 			path = AdvancedPrefs;
 			sourceTree = "<group>";
