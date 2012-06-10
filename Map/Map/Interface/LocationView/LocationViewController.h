@@ -15,6 +15,7 @@
 
 @property (nonatomic, strong) IBOutlet NSTextField *curLoc;
 
+
 - (void)startSpinner;
 - (void)stopSpinner;
 
