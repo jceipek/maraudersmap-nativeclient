@@ -67,11 +67,11 @@
 		2742958815819AC9004EE5C2 /* PreferencesPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesPanel.h; sourceTree = "<group>"; };
 		2742958915819AC9004EE5C2 /* PreferencesPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesPanel.m; sourceTree = "<group>"; };
 		275AB0531578612300EFD9B5 /* demoIconDisabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = demoIconDisabled.png; sourceTree = "<group>"; };
-		275AB0581578660B00EFD9B5 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = de; path = "/Users/jceipek/Development/Group Projects/maraudersmap-nativeclient/Map/Map/de.lproj/Credits.rtf"; sourceTree = "<absolute>"; };
 		275AB0591578660B00EFD9B5 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = "/Users/jceipek/Development/Group Projects/maraudersmap-nativeclient/Map/Map/de.lproj/InfoPlist.strings"; sourceTree = "<absolute>"; };
 		275AB05A1578660B00EFD9B5 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = "/Users/jceipek/Development/Group Projects/maraudersmap-nativeclient/Map/Map/de.lproj/MainMenu.xib"; sourceTree = "<absolute>"; };
 		275AB05D157866A500EFD9B5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		275AB05F157866C700EFD9B5 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2761A2831584221E00E17BC2 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = de; path = de.lproj/Credits.rtf; sourceTree = "<group>"; };
 		2772829015841D9400D130D0 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		27A3E5DA156852B2009FB65C /* Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Map.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27A3E5DE156852B2009FB65C /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -473,7 +473,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				27A3E5EE156852B2009FB65C /* en */,
-				275AB0581578660B00EFD9B5 /* de */,
+				2761A2831584221E00E17BC2 /* de */,
 			);
 			name = Credits.rtf;
 			sourceTree = "<group>";
