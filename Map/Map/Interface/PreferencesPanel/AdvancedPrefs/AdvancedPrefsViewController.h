@@ -16,7 +16,7 @@
 - (IBAction)sliderMoved:(id)sender;
 - (void)sliderDoneMoving:(id)sender;
 
-@property IBOutlet NSTextField *frequencyIndicator;
-@property IBOutlet NSSlider *updateFrequencySlider;
+@property (nonatomic, strong) IBOutlet NSTextField *frequencyIndicator;
+@property (nonatomic, strong) IBOutlet NSSlider *updateFrequencySlider;
 
 @end

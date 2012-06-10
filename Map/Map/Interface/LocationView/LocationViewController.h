@@ -13,7 +13,8 @@
     
 }
 
-@property (nonatomic, retain) IBOutlet NSTextField *curLoc;
+@property (nonatomic, strong) IBOutlet NSTextField *curLoc;
+
 
 - (void)startSpinner;
 - (void)stopSpinner;
