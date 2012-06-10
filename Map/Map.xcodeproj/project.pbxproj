@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2707CC771572A23200AEFA93 /* Apple80211 in Frameworks */ = {isa = PBXBuildFile; fileRef = 2707CC761572A23200AEFA93 /* Apple80211 */; };
 		2707CC801572B91D00AEFA93 /* CoreWLAN.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2707CC7F1572B91D00AEFA93 /* CoreWLAN.framework */; };
 		27429578158199DD004EE5C2 /* WifiScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 27429577158199DD004EE5C2 /* WifiScanner.m */; };
 		2742958A15819AC9004EE5C2 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2742957B15819AC9004EE5C2 /* LocationViewController.m */; };
@@ -49,7 +48,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2707CC761572A23200AEFA93 /* Apple80211 */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = Apple80211; path = ../../../../../../System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Apple80211; sourceTree = "<group>"; };
 		2707CC7F1572B91D00AEFA93 /* CoreWLAN.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreWLAN.framework; path = System/Library/Frameworks/CoreWLAN.framework; sourceTree = SDKROOT; };
 		27429576158199DD004EE5C2 /* WifiScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WifiScanner.h; sourceTree = "<group>"; };
 		27429577158199DD004EE5C2 /* WifiScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WifiScanner.m; sourceTree = "<group>"; };
@@ -108,7 +106,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2707CC801572B91D00AEFA93 /* CoreWLAN.framework in Frameworks */,
-				2707CC771572A23200AEFA93 /* Apple80211 in Frameworks */,
 				27A3E5DF156852B2009FB65C /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -190,7 +187,6 @@
 		27A3E5CF156852B1009FB65C = {
 			isa = PBXGroup;
 			children = (
-				2707CC761572A23200AEFA93 /* Apple80211 */,
 				27A3E5E4156852B2009FB65C /* Map */,
 				27A3E601156852B3009FB65C /* MapTests */,
 				27DDE19515819C0C00FB2626 /* Frameworks */,
@@ -551,10 +547,6 @@
 		27A3E60D156852B3009FB65C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/Map/Frameworks\"",
-				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Map/Map-Prefix.pch";
 				INFOPLIST_FILE = "Map/Map-Info.plist";
@@ -568,10 +560,6 @@
 		27A3E60E156852B3009FB65C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/Map/Frameworks\"",
-				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Map/Map-Prefix.pch";
 				INFOPLIST_FILE = "Map/Map-Info.plist";
