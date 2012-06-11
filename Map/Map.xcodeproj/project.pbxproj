@@ -40,9 +40,9 @@
 		278739F415856AAF00DDC24C /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 278739DD15856AAF00DDC24C /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		278739F515856AAF00DDC24C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 278739DE15856AAF00DDC24C /* README.md */; };
 		278739FA15856AD200DDC24C /* OSBPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278739F915856AD200DDC24C /* OSBPreferencesController.m */; };
-		27873A1315856B8700DDC24C /* About.txt in Resources */ = {isa = PBXBuildFile; fileRef = 278739FE15856B8700DDC24C /* About.txt */; };
+		27873A1315856B8700DDC24C /* About_CocoaAsyncSocket.txt in Resources */ = {isa = PBXBuildFile; fileRef = 278739FE15856B8700DDC24C /* About_CocoaAsyncSocket.txt */; };
 		27873A1415856B8700DDC24C /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 27873A0015856B8700DDC24C /* GCDAsyncSocket.m */; };
-		27873A1515856B8700DDC24C /* About.txt in Resources */ = {isa = PBXBuildFile; fileRef = 27873A0215856B8700DDC24C /* About.txt */; };
+		27873A1515856B8700DDC24C /* About_CocoaLumberjack.txt in Resources */ = {isa = PBXBuildFile; fileRef = 27873A0215856B8700DDC24C /* About_CocoaLumberjack.txt */; };
 		27873A1615856B8700DDC24C /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 27873A0415856B8700DDC24C /* DDAbstractDatabaseLogger.m */; };
 		27873A1715856B8700DDC24C /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 27873A0615856B8700DDC24C /* DDASLLogger.m */; };
 		27873A1815856B8700DDC24C /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 27873A0815856B8700DDC24C /* DDFileLogger.m */; };
@@ -139,10 +139,10 @@
 		278739DE15856AAF00DDC24C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		278739F815856AD200DDC24C /* OSBPreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSBPreferencesController.h; sourceTree = "<group>"; };
 		278739F915856AD200DDC24C /* OSBPreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSBPreferencesController.m; sourceTree = "<group>"; };
-		278739FE15856B8700DDC24C /* About.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = About.txt; sourceTree = "<group>"; };
+		278739FE15856B8700DDC24C /* About_CocoaAsyncSocket.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = About_CocoaAsyncSocket.txt; sourceTree = "<group>"; };
 		278739FF15856B8700DDC24C /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
 		27873A0015856B8700DDC24C /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
-		27873A0215856B8700DDC24C /* About.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = About.txt; sourceTree = "<group>"; };
+		27873A0215856B8700DDC24C /* About_CocoaLumberjack.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = About_CocoaLumberjack.txt; sourceTree = "<group>"; };
 		27873A0315856B8700DDC24C /* DDAbstractDatabaseLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAbstractDatabaseLogger.h; sourceTree = "<group>"; };
 		27873A0415856B8700DDC24C /* DDAbstractDatabaseLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAbstractDatabaseLogger.m; sourceTree = "<group>"; };
 		27873A0515856B8700DDC24C /* DDASLLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDASLLogger.h; sourceTree = "<group>"; };
@@ -386,7 +386,7 @@
 		278739FD15856B8700DDC24C /* CocoaAsyncSocket */ = {
 			isa = PBXGroup;
 			children = (
-				278739FE15856B8700DDC24C /* About.txt */,
+				278739FE15856B8700DDC24C /* About_CocoaAsyncSocket.txt */,
 				278739FF15856B8700DDC24C /* GCDAsyncSocket.h */,
 				27873A0015856B8700DDC24C /* GCDAsyncSocket.m */,
 			);
@@ -396,7 +396,7 @@
 		27873A0115856B8700DDC24C /* CocoaLumberjack */ = {
 			isa = PBXGroup;
 			children = (
-				27873A0215856B8700DDC24C /* About.txt */,
+				27873A0215856B8700DDC24C /* About_CocoaLumberjack.txt */,
 				27873A0315856B8700DDC24C /* DDAbstractDatabaseLogger.h */,
 				27873A0415856B8700DDC24C /* DDAbstractDatabaseLogger.m */,
 				27873A0515856B8700DDC24C /* DDASLLogger.h */,
@@ -602,8 +602,8 @@
 				278739F215856AAF00DDC24C /* LICENSE.txt in Resources */,
 				278739F315856AAF00DDC24C /* CHANGELOG.md in Resources */,
 				278739F515856AAF00DDC24C /* README.md in Resources */,
-				27873A1315856B8700DDC24C /* About.txt in Resources */,
-				27873A1515856B8700DDC24C /* About.txt in Resources */,
+				27873A1315856B8700DDC24C /* About_CocoaAsyncSocket.txt in Resources */,
+				27873A1515856B8700DDC24C /* About_CocoaLumberjack.txt in Resources */,
 				27873A1D15856B8700DDC24C /* README.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
