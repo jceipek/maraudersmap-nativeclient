@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2707CC801572B91D00AEFA93 /* CoreWLAN.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2707CC7F1572B91D00AEFA93 /* CoreWLAN.framework */; };
+		27344AA21586F60600C73FDE /* AuthHTTPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 27344AA11586F60600C73FDE /* AuthHTTPConnection.m */; };
 		27429578158199DD004EE5C2 /* WifiScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 27429577158199DD004EE5C2 /* WifiScanner.m */; };
 		2742958A15819AC9004EE5C2 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2742957B15819AC9004EE5C2 /* LocationViewController.m */; };
 		2742958B15819AC9004EE5C2 /* LocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2742957C15819AC9004EE5C2 /* LocationViewController.xib */; };
@@ -78,6 +79,8 @@
 
 /* Begin PBXFileReference section */
 		2707CC7F1572B91D00AEFA93 /* CoreWLAN.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreWLAN.framework; path = System/Library/Frameworks/CoreWLAN.framework; sourceTree = SDKROOT; };
+		27344AA01586F60600C73FDE /* AuthHTTPConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthHTTPConnection.h; sourceTree = "<group>"; };
+		27344AA11586F60600C73FDE /* AuthHTTPConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthHTTPConnection.m; sourceTree = "<group>"; };
 		27429576158199DD004EE5C2 /* WifiScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WifiScanner.h; sourceTree = "<group>"; };
 		27429577158199DD004EE5C2 /* WifiScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WifiScanner.m; sourceTree = "<group>"; };
 		2742957A15819AC9004EE5C2 /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
@@ -212,6 +215,8 @@
 			children = (
 				27429576158199DD004EE5C2 /* WifiScanner.h */,
 				27429577158199DD004EE5C2 /* WifiScanner.m */,
+				27344AA01586F60600C73FDE /* AuthHTTPConnection.h */,
+				27344AA11586F60600C73FDE /* AuthHTTPConnection.m */,
 			);
 			path = WifiScanning;
 			sourceTree = "<group>";
@@ -427,7 +432,6 @@
 		27A3E5CF156852B1009FB65C = {
 			isa = PBXGroup;
 			children = (
-				27873A1E15856CFC00DDC24C /* Security.framework */,
 				27A3E5E4156852B2009FB65C /* Map */,
 				27A3E601156852B3009FB65C /* MapTests */,
 				27DDE19515819C0C00FB2626 /* Frameworks */,
@@ -495,6 +499,7 @@
 		27DDE19515819C0C00FB2626 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				27873A1E15856CFC00DDC24C /* Security.framework */,
 				2707CC7F1572B91D00AEFA93 /* CoreWLAN.framework */,
 				27A3E5DE156852B2009FB65C /* Cocoa.framework */,
 				27A3E5FC156852B3009FB65C /* SenTestingKit.framework */,
@@ -673,6 +678,7 @@
 				27873A1A15856B8700DDC24C /* DDTTYLogger.m in Sources */,
 				27873A1B15856B8700DDC24C /* ContextFilterLogFormatter.m in Sources */,
 				27873A1C15856B8700DDC24C /* DispatchQueueLogFormatter.m in Sources */,
+				27344AA21586F60600C73FDE /* AuthHTTPConnection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

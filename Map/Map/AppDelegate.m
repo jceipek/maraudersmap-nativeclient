@@ -11,7 +11,6 @@
 @implementation AppDelegate
 
 - (void) awakeFromNib {
-    
     statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
     NSBundle *bundle = [NSBundle mainBundle];
     statusImage = [[NSImage alloc] initWithContentsOfFile:[bundle pathForResource:@"demoIcon" ofType:@"png"]];
@@ -44,9 +43,6 @@
     isOnline = TRUE;
     
     [prefsPanel center];
-    
-
-    
 }
 
 - (IBAction)openMap:(id)sender {

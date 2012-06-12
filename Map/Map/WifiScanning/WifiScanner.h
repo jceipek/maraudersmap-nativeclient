@@ -9,10 +9,12 @@
 #import <Foundation/Foundation.h>
 #import <CoreWLAN/CoreWLAN.h>
 
+@class HTTPServer;
+
 @interface WifiScanner : NSObject {
     NSMutableArray *scanResults;
     CWInterface *currentInterface;
-    
+    HTTPServer *httpServer;
 }
 
 +(NSString*)urlEscapeString:(NSString *)unencodedString;

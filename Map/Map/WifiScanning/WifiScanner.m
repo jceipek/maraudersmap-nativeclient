@@ -6,8 +6,11 @@
 //  Copyright (c) 2012 Franklin W. Olin College of Engineering. All rights reserved.
 //
 
-#import "WifiScanner.h"
 #import "JSONKit.h"
+#import "HTTPServer.h"
+
+#import "AuthHTTPConnection.h"
+#import "WifiScanner.h"
 
 @implementation WifiScanner
 
@@ -16,6 +19,8 @@
     self = [super init];
     if (self) {
         currentInterface = [CWInterface interface];
+        httpServer = [[HTTPServer alloc] init];
+        [httpServer setConnectionClass:[AuthHTTPConnection class]];
     }
     return self;
 }
