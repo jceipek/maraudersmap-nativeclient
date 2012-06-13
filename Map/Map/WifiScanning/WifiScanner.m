@@ -12,15 +12,35 @@
 #import "AuthHTTPConnection.h"
 #import "WifiScanner.h"
 
+#import "DDLog.h"
+#import "DDTTYLogger.h"
+
 @implementation WifiScanner
 
 - (id)init
 {
     self = [super init];
     if (self) {
+        [DDLog addLogger:[DDTTYLogger sharedInstance]];
+        
         currentInterface = [CWInterface interface];
         httpServer = [[HTTPServer alloc] init];
         [httpServer setConnectionClass:[AuthHTTPConnection class]];
+        
+        // Tell the server to broadcast its presence via Bonjour.
+        // This allows browsers such as Safari to automatically discover our service.
+        [httpServer setType:@"_http._tcp."];
+        
+        // Serve files from our embedded Web folder
+        NSString *webPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Web"];
+        [httpServer setDocumentRoot:webPath];
+        NSLog(@"Path: %@",webPath);
+        
+        NSError *error = nil;
+        if(![httpServer start:&error])
+        {
+            NSLog(@"Error starting HTTP Server: %@", error);
+        }
     }
     return self;
 }

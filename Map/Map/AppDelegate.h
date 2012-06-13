@@ -13,8 +13,6 @@
 #import "LocationViewController.h"
 #import "PreferencesPanel.h"
 
-
-
 @interface AppDelegate : NSObject <NSApplicationDelegate, NSMenuDelegate> {
     IBOutlet NSMenu *statusMenu;
     IBOutlet NSMenuItem *locationIndicator;

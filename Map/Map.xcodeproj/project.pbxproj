@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2706C825158854A90012832F /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 2706C824158854A90012832F /* index.html */; };
+		2706C82C1588552B0012832F /* index.html in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2706C824158854A90012832F /* index.html */; };
 		2707CC801572B91D00AEFA93 /* CoreWLAN.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2707CC7F1572B91D00AEFA93 /* CoreWLAN.framework */; };
 		27344AA21586F60600C73FDE /* AuthHTTPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 27344AA11586F60600C73FDE /* AuthHTTPConnection.m */; };
 		27429578158199DD004EE5C2 /* WifiScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 27429577158199DD004EE5C2 /* WifiScanner.m */; };
@@ -77,7 +79,21 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		2706C829158854FC0012832F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Web;
+			dstSubfolderSpec = 7;
+			files = (
+				2706C82C1588552B0012832F /* index.html in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		2706C824158854A90012832F /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		2707CC7F1572B91D00AEFA93 /* CoreWLAN.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreWLAN.framework; path = System/Library/Frameworks/CoreWLAN.framework; sourceTree = SDKROOT; };
 		27344AA01586F60600C73FDE /* AuthHTTPConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthHTTPConnection.h; sourceTree = "<group>"; };
 		27344AA11586F60600C73FDE /* AuthHTTPConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthHTTPConnection.m; sourceTree = "<group>"; };
@@ -210,6 +226,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2706C823158854A90012832F /* Web */ = {
+			isa = PBXGroup;
+			children = (
+				2706C824158854A90012832F /* index.html */,
+			);
+			path = Web;
+			sourceTree = "<group>";
+		};
 		27429575158199DD004EE5C2 /* WifiScanning */ = {
 			isa = PBXGroup;
 			children = (
@@ -490,6 +514,7 @@
 		27A3E602156852B3009FB65C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2706C823158854A90012832F /* Web */,
 				27A3E603156852B3009FB65C /* MapTests-Info.plist */,
 				27A3E604156852B3009FB65C /* InfoPlist.strings */,
 			);
@@ -531,6 +556,7 @@
 				27A3E5D6156852B2009FB65C /* Sources */,
 				27A3E5D7156852B2009FB65C /* Frameworks */,
 				27A3E5D8156852B2009FB65C /* Resources */,
+				2706C829158854FC0012832F /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -618,6 +644,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				27A3E606156852B3009FB65C /* InfoPlist.strings in Resources */,
+				2706C825158854A90012832F /* index.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

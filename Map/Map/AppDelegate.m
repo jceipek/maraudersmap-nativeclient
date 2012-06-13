@@ -23,7 +23,6 @@
     [statusItem setMenu:statusMenu];
     [statusItem setHighlightMode:YES];
     
-    
     locationViewController = [[LocationViewController alloc] initWithNibName:@"LocationViewController" bundle:nil];
     
     locationView = [locationViewController view];
