@@ -7,12 +7,23 @@
 //
 
 #import "AuthHTTPConnection.h"
+#import "HTTPMessage.h"
+#import "HTTPDataResponse.h"
+#import "DDNumber.h"
+#import "HTTPLogging.h"
+
+
+// Log levels : off, error, warn, info, verbose
+// Other flags: trace
+static const int httpLogLevel = HTTP_LOG_LEVEL_WARN; // | HTTP_LOG_FLAG_TRACE;
 
 @implementation AuthHTTPConnection
 
 - (BOOL)supportsMethod:(NSString *)method atPath:(NSString *)path
 {
-	
+	HTTPLogTrace();
+    
+    
 	// Add support for POST
 	
 	if ([method isEqualToString:@"POST"])
@@ -23,6 +34,7 @@
 			
 			return requestContentLength < 50;
 		}*/
+        return YES;
 	}
 	
 	return [super supportsMethod:method atPath:path];

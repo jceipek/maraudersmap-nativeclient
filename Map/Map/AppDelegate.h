@@ -27,6 +27,8 @@
     LocationViewController *locationViewController;
     NSView *locationView;
     
+    WifiScanner *wifiScanner;
+    
     BOOL isOnline;
 }
 
