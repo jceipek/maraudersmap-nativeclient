@@ -27,10 +27,8 @@
     
     locationView = [locationViewController view];
     [locationIndicator setView: locationView];
-    
-    //TODO:
-    wifiScanner = [[WifiScanner alloc] init];
-    [wifiScanner scan];
+
+    networkManager = [[NetworkManager alloc] init];
     
     [statusMenu setDelegate:self];
     
@@ -50,9 +48,7 @@
 }
 
 - (IBAction)manualRefresh:(id)sender {
-    NSLog(@"Refresh");
-    [wifiScanner info];
-    
+    NSLog(@"Refresh");    
 }
 
 - (IBAction)correctLocation:(id)sender {

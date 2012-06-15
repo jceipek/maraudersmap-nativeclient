@@ -9,9 +9,9 @@
 #import <Cocoa/Cocoa.h>
 #import <CoreWLAN/CoreWLAN.h>
 
-#import "WifiScanner.h"
 #import "LocationViewController.h"
 #import "PreferencesPanel.h"
+#import "NetworkManager.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate, NSMenuDelegate> {
     IBOutlet NSMenu *statusMenu;
@@ -27,7 +27,7 @@
     LocationViewController *locationViewController;
     NSView *locationView;
     
-    WifiScanner *wifiScanner;
+    NetworkManager *networkManager;
     
     BOOL isOnline;
 }
