@@ -53,6 +53,7 @@
 
 - (IBAction)correctLocation:(id)sender {
     NSLog(@"Correct Location");
+    [networkManager initiateAuthentication];
 }
 
 - (IBAction)toggleOnline:(id)sender {
