@@ -10,71 +10,72 @@
 #import "HTTPMessage.h"
 #import "HTTPRedirectResponse.h"
 
+#import "NSString+NSString_URLManipulation.h"
+#import "DDData.h"
+
 @implementation AuthHTTPConnection
 
 - (BOOL)supportsMethod:(NSString *)method atPath:(NSString *)path
 {
-    
-	// Add support for POST
-	
-	if ([method isEqualToString:@"POST"])
-	{
-        NSLog(@"AUTHPATH: %@", path);
+	// Add support for POST    
+    if ([method isEqualToString:@"POST"] && [path isEqualToString:@"/"]) {
+        
         NSLog(@"requestContentLength: %llu", requestContentLength);
-        //NSLog(@"request: %@", request);
-        //NSLog(@"REQUEST URL: %@", [[NSString alloc] initWithContentsOfURL:[request url] encoding:NSUTF8StringEncoding error:nil]);
-        //NSLog(@"REQUEST MESSAGE DATA: %@", [[NSString alloc] initWithData:[request messageData] encoding:NSUTF8StringEncoding]);
-        //NSLog(@"Params: %@", [self parseGetParams]);
-        //NSLog(@"REQUEST MESSAGE BODY: %@", [[NSString alloc] initWithData:[request body] encoding:NSUTF8StringEncoding]);
-        
-        NSString *postStr = nil;
-        NSData *postData = [request body];
-		if (postData)
-		{
-			postStr = [[NSString alloc] initWithData:postData encoding:NSUTF8StringEncoding];
-		}
-        
-        
-		/*if ([path isEqualToString:@"/post.html"])
-		{
-			// Let's be extra cautious, and make sure the upload isn't 5 gigs
-			
-			return requestContentLength < 50;
-		}*/
-        return YES;
-	}
-	
+        // Make sure the request isn't too big!
+        if (requestContentLength < 3000) {
+            return TRUE;
+        } else {
+            NSLog(@"Request is too big!");
+            return FALSE;
+        }
+
+    }
+    
 	return [super supportsMethod:method atPath:path];
 }
 
 - (NSObject<HTTPResponse> *)httpResponseForMethod:(NSString *)method URI:(NSString *)path
-{
+{    
+    NSString *postStr = nil;
+    NSData *postData = [request body];
 
+    if (postData)
+    {
+        postStr = [[NSString alloc] initWithData:postData encoding:NSUTF8StringEncoding];
+        NSLog(@"THE POST STRING: %@", postStr);
+        NSLog(@"URL DECODED: %@", [postStr urlDecodeString]);
+        
+        NSDictionary *theParams = [self parseParams:[postStr urlDecodeString]];
+        
+        for(id key in theParams) {
+            NSData *encodedData = [[theParams objectForKey:key] dataUsingEncoding:NSUTF8StringEncoding];
+            NSString *string = [[NSString alloc] initWithData:[encodedData base64Decoded] encoding:NSUTF8StringEncoding];
+            NSLog(@"KEY: %@ ; Value: %@", key, [theParams objectForKey:key]);
+            NSLog(@"KEY: %@ ; Decoded Value: %@", key, string);
+        }
+
+    }
 	
 	if ([method isEqualToString:@"POST"])
 	{
-
-		
-		NSString *postStr = nil;
-		
-		NSData *postData = [request body];
-		if (postData)
-		{
-			postStr = [[NSString alloc] initWithData:postData encoding:NSUTF8StringEncoding];
-            NSLog(@"THE POST STRING: %@", postStr);
-		}
-		
-        //self.send_response(303)
-		//self.send_header('Location', Settings.WEB_ADDRESS)
-		//self.end_headers()
-		//self.wfile.write('User authenticated. Redirecting to the map.')
-		
-		return [[HTTPRedirectResponse alloc] initWithPath:@"http://map.fwol.in/ui/index.html"];
-	}
-	
-	return [super httpResponseForMethod:method URI:path];
+        return [[HTTPRedirectResponse alloc] initWithPath:@"http://map.fwol.in/ui/index.html"];
+    }
+    
+    return [super httpResponseForMethod:method URI:path];
 }
 
-
+- (void)processBodyData:(NSData *)postDataChunk
+{	
+	// Remember: In order to support LARGE POST uploads, the data is read in chunks.
+	// This prevents a 50 MB upload from being stored in RAM.
+	// The size of the chunks are limited by the POST_CHUNKSIZE definition.
+	// Therefore, this method may be called multiple times for the same POST request.
+	
+	BOOL result = [request appendData:postDataChunk];
+	if (!result)
+	{
+		NSLog(@"Unable to append data to request!");
+	}
+}
 
 @end

@@ -68,6 +68,7 @@
 		27A3E6141568627F009FB65C /* demoIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 27A3E6121568627F009FB65C /* demoIcon.png */; };
 		27A3E6151568627F009FB65C /* demoIconWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 27A3E6131568627F009FB65C /* demoIconWhite.png */; };
 		27F9E14B158AD2F5008AD07A /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F9E14A158AD2F5008AD07A /* NetworkManager.m */; };
+		27F9E14F158C27E7008AD07A /* NSString+NSString_URLManipulation.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F9E14E158C27E7008AD07A /* NSString+NSString_URLManipulation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -204,6 +205,8 @@
 		27CAEB45158422C10036D787 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		27F9E149158AD2F5008AD07A /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
 		27F9E14A158AD2F5008AD07A /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
+		27F9E14D158C27E7008AD07A /* NSString+NSString_URLManipulation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+NSString_URLManipulation.h"; sourceTree = "<group>"; };
+		27F9E14E158C27E7008AD07A /* NSString+NSString_URLManipulation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+NSString_URLManipulation.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -484,6 +487,8 @@
 				27A3E5F1156852B2009FB65C /* AppDelegate.m */,
 				27F9E149158AD2F5008AD07A /* NetworkManager.h */,
 				27F9E14A158AD2F5008AD07A /* NetworkManager.m */,
+				27F9E14D158C27E7008AD07A /* NSString+NSString_URLManipulation.h */,
+				27F9E14E158C27E7008AD07A /* NSString+NSString_URLManipulation.m */,
 				27429575158199DD004EE5C2 /* WifiScanning */,
 				27E606D0157B06F70035FF17 /* Interface */,
 				27A3E5E5156852B2009FB65C /* Supporting Files */,
@@ -712,6 +717,7 @@
 				27873A1C15856B8700DDC24C /* DispatchQueueLogFormatter.m in Sources */,
 				27344AA21586F60600C73FDE /* AuthHTTPConnection.m in Sources */,
 				27F9E14B158AD2F5008AD07A /* NetworkManager.m in Sources */,
+				27F9E14F158C27E7008AD07A /* NSString+NSString_URLManipulation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
