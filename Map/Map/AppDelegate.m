@@ -13,8 +13,14 @@
 - (void) awakeFromNib {
     statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
     NSBundle *bundle = [NSBundle mainBundle];
+    
+    // Normal image for the icon in the menu bar
     statusImage = [[NSImage alloc] initWithContentsOfFile:[bundle pathForResource:@"demoIcon" ofType:@"png"]];
+    
+    // Image for the icon in the menu bar while you click on it
     statusImageHighlighted = [[NSImage alloc] initWithContentsOfFile:[bundle pathForResource:@"demoIconWhite" ofType:@"png"]];
+    
+    // Image for the icon in the menu bar when you are offline
     statusImageDisabled = [[NSImage alloc] initWithContentsOfFile:[bundle pathForResource:@"demoIconDisabled" ofType:@"png"]];
     
     [statusItem setImage:statusImage];
@@ -23,12 +29,14 @@
     [statusItem setMenu:statusMenu];
     [statusItem setHighlightMode:YES];
     
+    // Set up the view for the current location menu item (The progress spinner can only be added via a custom view)
     locationViewController = [[LocationViewController alloc] initWithNibName:@"LocationViewController" bundle:nil];
-    
     locationView = [locationViewController view];
     [locationIndicator setView: locationView];
 
+    // Set up the networkManager for tasks like wifi scanning, authentication, and API requests
     networkManager = [[NetworkManager alloc] init];
+    [networkManager initiateAuthentication];
     
     [statusMenu setDelegate:self];
     
@@ -42,18 +50,19 @@
     [prefsPanel center];
 }
 
+// Open a web browser with the map's main address
 - (IBAction)openMap:(id)sender {
     NSLog(@"Open Map");
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://map.fwol.in"]];
 }
 
 - (IBAction)manualRefresh:(id)sender {
-    NSLog(@"Refresh");    
+    NSLog(@"Refresh");  
+    [networkManager scan];
 }
 
 - (IBAction)correctLocation:(id)sender {
     NSLog(@"Correct Location");
-    [networkManager initiateAuthentication];
 }
 
 - (IBAction)toggleOnline:(id)sender {
