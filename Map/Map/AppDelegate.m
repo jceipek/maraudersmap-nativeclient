@@ -56,6 +56,7 @@
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://map.fwol.in"]];
 }
 
+// Initiate a location scan manually
 - (IBAction)manualRefresh:(id)sender {
     NSLog(@"Refresh");  
     [networkManager scan];
@@ -80,7 +81,7 @@
 }
 
 - (IBAction)quit:(id)sender {
-    // Cleanup
+    // TODO: Cleanup
     [NSApp terminate:self];
 }
 

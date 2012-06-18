@@ -46,6 +46,32 @@
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:requestURL]];
 }
 
+/*-(void)getLocations {
+ [NSHTTPCookie cookieWithProperties:<#(NSDictionary *)#>]
+ // http://www.calaresu.com/2011/06/01/using-cookies-with-cocoa-nshttpcookie/
+ 
+ 
+ // getting the stored cookies 
+ NSArray* cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage]
+ cookiesForURL:[NSURL URLWithString:@"http://www.calaresu.com"]];
+ // Make a new header from the cookies 
+ NSDictionary* headers = [NSHTTPCookie requestHeaderFieldsWithCookies:cookies]
+ 
+ 
+ NSMutableURLRequest* req = [[NSMutableURLRequest alloc] init];
+ 
+ [req setURL:[NSURL URLWithString:@"http://www.calaresu.com/cookie.php"]];
+ 
+ [req setAllHTTPHeaderFields:headers];
+ //Send the request 
+ 
+ [NSURLConnection sendSynchronousRequest:req
+ 
+ returningResponse:&response
+ 
+ error:&error];
+ }*/
+
 -(void)scan {
     NSString *urlWithQueryString = [@"https://themap" addQueryStringToUrlStringWithDictionary:[wifiScanner scan]];
     NSLog(@"%@", urlWithQueryString);

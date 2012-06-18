@@ -47,6 +47,9 @@
         
         NSDictionary *theParams = [self parseParams:[postStr urlDecodeString]];
         
+        // TODO: Save the session and browserid properties in a persistent data store
+        // They can then be used in a cookie
+        
         for(id key in theParams) {
             NSData *encodedData = [[theParams objectForKey:key] dataUsingEncoding:NSUTF8StringEncoding];
             NSString *string = [[NSString alloc] initWithData:[encodedData base64Decoded] encoding:NSUTF8StringEncoding];
