@@ -46,8 +46,13 @@
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:requestURL]];
 }
 
+-(void)getPlaces {
+    //http://map.fwol.in/api/places
+    
+}
+
 /*-(void)getLocations {
- [NSHTTPCookie cookieWithProperties:<#(NSDictionary *)#>]
+ [NSHTTPCookie cookieWithProperties:NSDICT]
  // http://www.calaresu.com/2011/06/01/using-cookies-with-cocoa-nshttpcookie/
  
  
