@@ -21,7 +21,9 @@
     
 }
 
+
 -(void)initiateAuthentication;
+-(void)getLocations;
 -(void)scan;
 
 @end

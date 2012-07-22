@@ -64,6 +64,7 @@
 
 - (IBAction)correctLocation:(id)sender {
     NSLog(@"Correct Location");
+    [networkManager getLocations];
 }
 
 - (IBAction)toggleOnline:(id)sender {

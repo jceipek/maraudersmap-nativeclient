@@ -77,6 +77,55 @@
  error:&error];
  }*/
 
+-(void)getLocations {
+    // TODO: LOAD THESE IN
+    NSString *browserID;
+    NSString *session;
+    
+    NSDictionary *properties = [NSDictionary dictionaryWithObjectsAndKeys:
+                                @"map.fwol.in", NSHTTPCookieDomain,
+                                @"\\", NSHTTPCookiePath,  // IMPORTANT!
+                                @"browserid", NSHTTPCookieName,
+                                browserID, NSHTTPCookieValue,
+                                nil];
+    NSHTTPCookie *browserIDCookie = [NSHTTPCookie cookieWithProperties:properties];
+    
+    properties = [NSDictionary dictionaryWithObjectsAndKeys:
+                                @"map.fwol.in", NSHTTPCookieDomain,
+                                @"\\", NSHTTPCookiePath,  // IMPORTANT!
+                                @"session", NSHTTPCookieName,
+                                session, NSHTTPCookieValue,
+                                nil];
+    NSHTTPCookie *sessionCookie = [NSHTTPCookie cookieWithProperties:properties];
+    
+    NSArray *cookies = [NSArray arrayWithObjects: browserIDCookie, sessionCookie, nil];
+
+    NSDictionary *headers = [NSHTTPCookie requestHeaderFieldsWithCookies:cookies];
+
+    NSURLResponse *response;
+    NSError *error;
+    
+    NSMutableString *requestString = [[NSMutableString alloc] initWithString:@"http://map.fwol.in/api/places"];
+    NSURL *requestURL = [[NSURL alloc] initWithString:requestString];
+    NSMutableURLRequest* request = [[NSMutableURLRequest alloc] initWithURL:requestURL];
+    [request setAllHTTPHeaderFields:headers];
+    
+    // XXX: This needs to be asynchronous
+    NSData *result = [NSURLConnection sendSynchronousRequest:request
+                          returningResponse:&response
+                                      error:&error];    
+    
+    
+    if (!result) {
+        //Display error message here
+        NSLog(@"ERR: %@", error);
+        NSLog(@"Error");
+    } else {
+        NSString* newStr = [[NSString alloc] initWithData:result encoding:NSUTF8StringEncoding];
+        NSLog(@"RESPONSE: %@", newStr);
+    }
+}
+
 -(void)scan {
     NSString *urlWithQueryString = [@"https://themap" addQueryStringToUrlStringWithDictionary:[wifiScanner scan]];
     NSLog(@"%@", urlWithQueryString);
