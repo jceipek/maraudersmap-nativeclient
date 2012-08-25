@@ -82,6 +82,8 @@
     NSString *browserID;
     NSString *session;
     
+
+    
     NSDictionary *properties = [NSDictionary dictionaryWithObjectsAndKeys:
                                 @"map.fwol.in", NSHTTPCookieDomain,
                                 @"\\", NSHTTPCookiePath,  // IMPORTANT!
@@ -102,14 +104,15 @@
 
     NSDictionary *headers = [NSHTTPCookie requestHeaderFieldsWithCookies:cookies];
 
+    
+    
     NSURLResponse *response;
     NSError *error;
     
-    NSMutableString *requestString = [[NSMutableString alloc] initWithString:@"http://map.fwol.in/api/places"];
+    NSMutableString *requestString = [[NSMutableString alloc] initWithString:@"http://map.fwol.in/api/places/"];
     NSURL *requestURL = [[NSURL alloc] initWithString:requestString];
     NSMutableURLRequest* request = [[NSMutableURLRequest alloc] initWithURL:requestURL];
     [request setAllHTTPHeaderFields:headers];
-    
     // XXX: This needs to be asynchronous
     NSData *result = [NSURLConnection sendSynchronousRequest:request
                           returningResponse:&response

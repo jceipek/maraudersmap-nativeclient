@@ -54,8 +54,9 @@
             NSData *encodedData = [[theParams objectForKey:key] dataUsingEncoding:NSUTF8StringEncoding];
             NSString *string = [[NSString alloc] initWithData:[encodedData base64Decoded] encoding:NSUTF8StringEncoding];
             NSLog(@"KEY: %@ ; Value: %@", key, [theParams objectForKey:key]);
-            NSLog(@"KEY: %@ ; Decoded Value: %@", key, string);
         }
+        
+        // TODO: Save to file
 
     }
 	
