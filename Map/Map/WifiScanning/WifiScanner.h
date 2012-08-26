@@ -3,7 +3,7 @@
 //  Map
 //
 //  Created by Julian Ceipek on 5/27/12.
-//  Copyright (c) 2012 Franklin W. Olin College of Engineering. All rights reserved.
+//  Copyright (c) 2012 ohack. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

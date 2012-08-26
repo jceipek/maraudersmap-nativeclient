@@ -3,7 +3,7 @@
 //  Map
 //
 //  Created by Julian Ceipek on 5/19/12.
-//  Copyright (c) 2012 Franklin W. Olin College of Engineering. All rights reserved.
+//  Copyright (c) 2012 ohack. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
@@ -14,7 +14,7 @@
 #import "NetworkManager.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate, NSMenuDelegate> {
-    IBOutlet NSMenu *statusMenu;
+    IBOutlet NSMenu *mapMenu;
     IBOutlet NSMenuItem *locationIndicator;
     IBOutlet NSMenuItem *toggleOnlineItem;
     IBOutlet PreferencesPanel *prefsPanel;

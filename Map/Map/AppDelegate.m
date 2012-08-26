@@ -3,7 +3,7 @@
 //  Map
 //
 //  Created by Julian Ceipek on 5/19/12.
-//  Copyright (c) 2012 Franklin W. Olin College of Engineering. All rights reserved.
+//  Copyright (c) 2012 ohack. All rights reserved.
 //
 
 #import "AppDelegate.h"
@@ -11,7 +11,7 @@
 @implementation AppDelegate
 
 - (void) awakeFromNib {
-    statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
+    statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength: NSVariableStatusItemLength];
     NSBundle *bundle = [NSBundle mainBundle];
     
     // Normal image for the icon in the menu bar
@@ -26,7 +26,7 @@
     [statusItem setImage:statusImage];
     [statusItem setAlternateImage:statusImageHighlighted];
     
-    [statusItem setMenu:statusMenu];
+    [statusItem setMenu:mapMenu];
     [statusItem setHighlightMode:YES];
     
     // Set up the view for the current location menu item (The progress spinner can only be added via a custom view)
@@ -38,7 +38,7 @@
     networkManager = [[NetworkManager alloc] init];
     [networkManager initiateAuthentication];
     
-    [statusMenu setDelegate:self];
+    [mapMenu setDelegate:self];
     
 }
 
