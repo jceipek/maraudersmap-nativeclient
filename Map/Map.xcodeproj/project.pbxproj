@@ -15,10 +15,10 @@
 		2742958A15819AC9004EE5C2 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2742957B15819AC9004EE5C2 /* LocationViewController.m */; };
 		2742958B15819AC9004EE5C2 /* LocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2742957C15819AC9004EE5C2 /* LocationViewController.xib */; };
 		2742958C15819AC9004EE5C2 /* AdvancedPrefsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2742958015819AC9004EE5C2 /* AdvancedPrefsViewController.m */; };
-		2742958D15819AC9004EE5C2 /* AdvancedPrefsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2742958115819AC9004EE5C2 /* AdvancedPrefsViewController.xib */; };
+		2742958D15819AC9004EE5C2 /* AdvancedPrefsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2742958115819AC9004EE5C2 /* AdvancedPrefsView.xib */; };
 		2742958E15819AC9004EE5C2 /* SliderHelper.c in Sources */ = {isa = PBXBuildFile; fileRef = 2742958215819AC9004EE5C2 /* SliderHelper.c */; };
 		2742958F15819AC9004EE5C2 /* GeneralPrefsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2742958615819AC9004EE5C2 /* GeneralPrefsViewController.m */; };
-		2742959015819AC9004EE5C2 /* GeneralPrefsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2742958715819AC9004EE5C2 /* GeneralPrefsViewController.xib */; };
+		2742959015819AC9004EE5C2 /* GeneralPrefsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2742958715819AC9004EE5C2 /* GeneralPrefsView.xib */; };
 		2742959115819AC9004EE5C2 /* PreferencesPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2742958915819AC9004EE5C2 /* PreferencesPanel.m */; };
 		275AB0541578612300EFD9B5 /* demoIconDisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 275AB0531578612300EFD9B5 /* demoIconDisabled.png */; };
 		275AB05C157866A500EFD9B5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 275AB05E157866A500EFD9B5 /* Localizable.strings */; };
@@ -106,12 +106,12 @@
 		2742957C15819AC9004EE5C2 /* LocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationViewController.xib; sourceTree = "<group>"; };
 		2742957F15819AC9004EE5C2 /* AdvancedPrefsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvancedPrefsViewController.h; sourceTree = "<group>"; };
 		2742958015819AC9004EE5C2 /* AdvancedPrefsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvancedPrefsViewController.m; sourceTree = "<group>"; };
-		2742958115819AC9004EE5C2 /* AdvancedPrefsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdvancedPrefsViewController.xib; sourceTree = "<group>"; };
+		2742958115819AC9004EE5C2 /* AdvancedPrefsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdvancedPrefsView.xib; sourceTree = "<group>"; };
 		2742958215819AC9004EE5C2 /* SliderHelper.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SliderHelper.c; sourceTree = "<group>"; };
 		2742958315819AC9004EE5C2 /* SliderHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SliderHelper.h; sourceTree = "<group>"; };
 		2742958515819AC9004EE5C2 /* GeneralPrefsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneralPrefsViewController.h; sourceTree = "<group>"; };
 		2742958615819AC9004EE5C2 /* GeneralPrefsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneralPrefsViewController.m; sourceTree = "<group>"; };
-		2742958715819AC9004EE5C2 /* GeneralPrefsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GeneralPrefsViewController.xib; sourceTree = "<group>"; };
+		2742958715819AC9004EE5C2 /* GeneralPrefsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GeneralPrefsView.xib; sourceTree = "<group>"; };
 		2742958815819AC9004EE5C2 /* PreferencesPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesPanel.h; sourceTree = "<group>"; };
 		2742958915819AC9004EE5C2 /* PreferencesPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesPanel.m; sourceTree = "<group>"; };
 		275AB0531578612300EFD9B5 /* demoIconDisabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = demoIconDisabled.png; sourceTree = "<group>"; };
@@ -280,7 +280,7 @@
 			children = (
 				2742957F15819AC9004EE5C2 /* AdvancedPrefsViewController.h */,
 				2742958015819AC9004EE5C2 /* AdvancedPrefsViewController.m */,
-				2742958115819AC9004EE5C2 /* AdvancedPrefsViewController.xib */,
+				2742958115819AC9004EE5C2 /* AdvancedPrefsView.xib */,
 				2742958315819AC9004EE5C2 /* SliderHelper.h */,
 				2742958215819AC9004EE5C2 /* SliderHelper.c */,
 			);
@@ -292,7 +292,7 @@
 			children = (
 				2742958515819AC9004EE5C2 /* GeneralPrefsViewController.h */,
 				2742958615819AC9004EE5C2 /* GeneralPrefsViewController.m */,
-				2742958715819AC9004EE5C2 /* GeneralPrefsViewController.xib */,
+				2742958715819AC9004EE5C2 /* GeneralPrefsView.xib */,
 			);
 			path = GeneralPrefs;
 			sourceTree = "<group>";
@@ -640,8 +640,8 @@
 				275AB0541578612300EFD9B5 /* demoIconDisabled.png in Resources */,
 				275AB05C157866A500EFD9B5 /* Localizable.strings in Resources */,
 				2742958B15819AC9004EE5C2 /* LocationViewController.xib in Resources */,
-				2742958D15819AC9004EE5C2 /* AdvancedPrefsViewController.xib in Resources */,
-				2742959015819AC9004EE5C2 /* GeneralPrefsViewController.xib in Resources */,
+				2742958D15819AC9004EE5C2 /* AdvancedPrefsView.xib in Resources */,
+				2742959015819AC9004EE5C2 /* GeneralPrefsView.xib in Resources */,
 				278739F215856AAF00DDC24C /* LICENSE.txt in Resources */,
 				278739F315856AAF00DDC24C /* CHANGELOG.md in Resources */,
 				278739F515856AAF00DDC24C /* README.md in Resources */,

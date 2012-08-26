@@ -35,66 +35,60 @@
 }
 
 - (NSObject<HTTPResponse> *)httpResponseForMethod:(NSString *)method URI:(NSString *)path
-{    
-    NSString *postStr = nil;
-    NSData *postData = [request body];
-
-    if (postData)
-    {
-        postStr = [[NSString alloc] initWithData:postData encoding:NSUTF8StringEncoding];
-        NSLog(@"THE POST STRING: %@", postStr);
-        NSLog(@"URL DECODED: %@", [postStr urlDecodeString]);
-        
-        NSDictionary *theParams = [self parseParams:[postStr urlDecodeString]];
-        
-        // TODO: Save the session and browserid properties in a persistent data store
-        // They can then be used in a cookie
-        
-        for(id key in theParams) {
-            NSData *encodedData = [[theParams objectForKey:key] dataUsingEncoding:NSUTF8StringEncoding];
-            NSString *string = [[NSString alloc] initWithData:[encodedData base64Decoded] encoding:NSUTF8StringEncoding];
-            NSLog(@"KEY: %@ ; Value: %@", key, [theParams objectForKey:key]);
-        }
-        
-        // TODO: Save to file
-        NSError *error;
-        NSString *errorDesc;
-        NSURL *rootUrl = [[NSFileManager defaultManager] URLForDirectory:NSApplicationSupportDirectory
-                                                                inDomain:NSUserDomainMask
-                                                       appropriateForURL:nil
-                                                                  create:YES
-                                                                   error: &error];
-        
-        NSLog(@"Error: %@", [error description]);
-        
-        
-        [[NSFileManager defaultManager] createDirectoryAtURL:[rootUrl URLByAppendingPathComponent:@"MaraudersMap" ]
-                                  withIntermediateDirectories:YES
-                                                   attributes:nil
-                                                        error:&error];
-        if (error != nil) {
-            NSLog(@"error creating directory: %@", error);
-        }
-        
-        NSURL *plistPath = [[rootUrl URLByAppendingPathComponent:@"MaraudersMap" ] URLByAppendingPathComponent: @"Secret.plist"];
-        NSDictionary *plistDict = [NSDictionary dictionaryWithObject: theParams
-                                                              forKey: @"BrowserID"];
-        NSData *plistData = [NSPropertyListSerialization dataFromPropertyList: plistDict
-                                                                       format: NSPropertyListXMLFormat_v1_0
-                                                             errorDescription: &errorDesc];
-        NSLog(@"BIGError: %@", [error description]);
-        if(plistData) {
-            [plistData writeToURL:plistPath atomically:YES];
-            NSLog(@"PATH: %@", plistPath);
-        }
-        else {
-            NSLog(@"%@", errorDesc);
-        }
-
-    }
-	
+{
 	if ([method isEqualToString:@"POST"])
 	{
+        NSString *postStr = nil;
+        NSData *postData = [request body];
+
+        if (postData)
+        {
+            postStr = [[NSString alloc] initWithData:postData encoding:NSUTF8StringEncoding];
+            
+            NSLog(@"THE POST STRING: %@", postStr);
+            NSLog(@"URL DECODED POST STRING: %@", [postStr urlDecodeString]);
+            
+            NSDictionary *theParams = [self parseParams: [postStr urlDecodeString]];
+            
+            NSError *error;
+            NSString *errorDesc;
+            NSURL *rootUrl = [[NSFileManager defaultManager] URLForDirectory:NSApplicationSupportDirectory
+                                                                    inDomain:NSUserDomainMask
+                                                           appropriateForURL:nil
+                                                                      create:YES
+                                                                       error: &error];
+            if (error != nil) {
+                NSLog(@"Error getting 'Application Support' directory: %@", [error description]);
+            }
+            
+            NSURL *maraudersMapUrl = [rootUrl URLByAppendingPathComponent:@"MaraudersMap"];
+            
+            [[NSFileManager defaultManager] createDirectoryAtURL:maraudersMapUrl
+                                      withIntermediateDirectories:YES
+                                                       attributes:nil
+                                                            error:&error];
+            if (error != nil) {
+                NSLog(@"Error creating 'MaraudersMap' directory: %@", error);
+            }
+            
+            NSURL *plistPath = [maraudersMapUrl URLByAppendingPathComponent: @"Secret.plist"];
+            NSDictionary *plistDict = [NSDictionary dictionaryWithObject: theParams
+                                                                  forKey: @"BrowserID"];
+            NSData *plistData = [NSPropertyListSerialization dataFromPropertyList: plistDict
+                                                                           format: NSPropertyListXMLFormat_v1_0
+                                                                 errorDescription: &errorDesc];
+            if(plistData) {
+                if ([plistData writeToURL:plistPath atomically:YES]) {
+                    NSLog(@"Wrote secrets to file: %@", plistPath);
+                } else {
+                    NSLog(@"Error writing to secrets file: %@", plistPath);
+                }
+            }
+            else {
+                NSLog(@"Error serializing plistDict: %@", errorDesc);
+            }
+        }
+
         return [[HTTPRedirectResponse alloc] initWithPath:@"http://map.fwol.in/ui/index.html"];
     }
     

@@ -9,6 +9,11 @@
 #import <Cocoa/Cocoa.h>
 #import <CoreWLAN/CoreWLAN.h>
 
+#import "DDLog.h"
+#import "DDASLLogger.h"
+#import "DDTTYLogger.h"
+#import "DDFileLogger.h"
+
 #import "LocationViewController.h"
 #import "PreferencesPanel.h"
 #import "NetworkManager.h"
