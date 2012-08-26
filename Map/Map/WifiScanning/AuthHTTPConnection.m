@@ -57,6 +57,39 @@
         }
         
         // TODO: Save to file
+        NSError *error;
+        NSString *errorDesc;
+        NSURL *rootUrl = [[NSFileManager defaultManager] URLForDirectory:NSApplicationSupportDirectory
+                                                                inDomain:NSUserDomainMask
+                                                       appropriateForURL:nil
+                                                                  create:YES
+                                                                   error: &error];
+        
+        NSLog(@"Error: %@", [error description]);
+        
+        
+        [[NSFileManager defaultManager] createDirectoryAtURL:[rootUrl URLByAppendingPathComponent:@"MaraudersMap" ]
+                                  withIntermediateDirectories:YES
+                                                   attributes:nil
+                                                        error:&error];
+        if (error != nil) {
+            NSLog(@"error creating directory: %@", error);
+        }
+        
+        NSURL *plistPath = [[rootUrl URLByAppendingPathComponent:@"MaraudersMap" ] URLByAppendingPathComponent: @"Secret.plist"];
+        NSDictionary *plistDict = [NSDictionary dictionaryWithObject: theParams
+                                                              forKey: @"BrowserID"];
+        NSData *plistData = [NSPropertyListSerialization dataFromPropertyList: plistDict
+                                                                       format: NSPropertyListXMLFormat_v1_0
+                                                             errorDescription: &errorDesc];
+        NSLog(@"BIGError: %@", [error description]);
+        if(plistData) {
+            [plistData writeToURL:plistPath atomically:YES];
+            NSLog(@"PATH: %@", plistPath);
+        }
+        else {
+            NSLog(@"%@", errorDesc);
+        }
 
     }
 	
