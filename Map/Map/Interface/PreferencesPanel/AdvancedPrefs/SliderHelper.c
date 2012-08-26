@@ -109,7 +109,7 @@ char *timeUnitTupleLongForm(struct timeUnitTuple tuple, char* longForm) {
 char *getPluralChar(float number, char *unit) {
     int length = (int)strlen(unit);
     char *retUnit = malloc((length + 2) * sizeof(char));
-    if ((int)(number+0.5) > 1) {
+    if ((int)(number + 0.5) > 1) {
         sprintf(retUnit, "%ss", unit);
         return retUnit;
     } else {

@@ -44,11 +44,12 @@
         if (postData)
         {
             postStr = [[NSString alloc] initWithData:postData encoding:NSUTF8StringEncoding];
+            NSString *decodedPostStr = [[NSString alloc] initWithString:[postStr urlDecodeString]];
             
             NSLog(@"THE POST STRING: %@", postStr);
-            NSLog(@"URL DECODED POST STRING: %@", [postStr urlDecodeString]);
+            NSLog(@"URL DECODED POST STRING: %@", decodedPostStr);
             
-            NSDictionary *theParams = [self parseParams: [postStr urlDecodeString]];
+            NSDictionary *theParams = [self parseParams: decodedPostStr];
             
             NSError *error;
             NSString *errorDesc;
