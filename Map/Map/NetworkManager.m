@@ -34,7 +34,7 @@
         {
             NSLog(@"Error starting HTTP Server: %@", error);
         }
-
+        
     }
     return self;
 }
@@ -56,10 +56,10 @@
  // http://www.calaresu.com/2011/06/01/using-cookies-with-cocoa-nshttpcookie/
  
  
- // getting the stored cookies 
+ // getting the stored cookies
  NSArray* cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage]
  cookiesForURL:[NSURL URLWithString:@"http://www.calaresu.com"]];
- // Make a new header from the cookies 
+ // Make a new header from the cookies
  NSDictionary* headers = [NSHTTPCookie requestHeaderFieldsWithCookies:cookies]
  
  
@@ -68,7 +68,7 @@
  [req setURL:[NSURL URLWithString:@"http://www.calaresu.com/cookie.php"]];
  
  [req setAllHTTPHeaderFields:headers];
- //Send the request 
+ //Send the request
  
  [NSURLConnection sendSynchronousRequest:req
  
@@ -78,32 +78,93 @@
  }*/
 
 -(void)getLocations {
-    // TODO: LOAD THESE IN
-    NSString *browserID;
-    NSString *session;
+    // TODO: Clean this up to reduce file access (static class? notification center? maybe better solution?)
     
-
+    NSDictionary *theParams;
+    NSPropertyListFormat format;
+    
+    NSError *directoryCreationerror;
+    NSString *errorDesc;
+    NSURL *rootUrl = [[NSFileManager defaultManager] URLForDirectory:NSApplicationSupportDirectory
+                                                            inDomain:NSUserDomainMask
+                                                   appropriateForURL:nil
+                                                              create:YES
+                                                               error: &directoryCreationerror];
+    if (directoryCreationerror != nil) {
+        NSLog(@"Error getting 'Application Support' directory: %@", [directoryCreationerror description]);
+    }
+    
+    NSURL *maraudersMapUrl = [rootUrl URLByAppendingPathComponent:@"MaraudersMap"];
+    
+    [[NSFileManager defaultManager] createDirectoryAtURL:maraudersMapUrl
+                             withIntermediateDirectories:YES
+                                              attributes:nil
+                                                   error:&directoryCreationerror];
+    if (directoryCreationerror != nil) {
+        NSLog(@"Error creating 'MaraudersMap' directory: %@", directoryCreationerror);
+    }
+    
+    NSURL *plistPath = [maraudersMapUrl URLByAppendingPathComponent: @"Secret.plist"];
+    
+    
+    NSData *plistXML = [[NSFileManager defaultManager] contentsAtPath:[plistPath path]];
+    theParams = (NSDictionary *)[NSPropertyListSerialization
+                                 propertyListFromData:plistXML
+                                 mutabilityOption:NSPropertyListMutableContainersAndLeaves
+                                 format:&format
+                                 errorDescription:&errorDesc];
+    if (!theParams) {
+        NSLog(@"Path: %@", plistPath);
+        NSLog(@"Error reading plist: %@, format: %ld", errorDesc, format);
+    }
+    
+    NSDictionary *browserIDParams = [theParams objectForKey:@"BrowserID"];
+    
+    /* XXX: This should be enough, but there seems to be a server bug (may be due to bad parsing in the Python version)
+     NSMutableArray *cookies;
+     
+     for (NSString *key in browserIDParams) {
+     NSDictionary *currProps = [NSDictionary dictionaryWithObjectsAndKeys:
+     @"map.fwol.in", NSHTTPCookieDomain,
+     @"\\", NSHTTPCookiePath,  // IMPORTANT!
+     key, NSHTTPCookieName,
+     [browserIDParams objectForKey:key], NSHTTPCookieValue,
+     nil];
+     NSHTTPCookie *currCookie = [NSHTTPCookie cookieWithProperties:currProps];
+     [cookies addObject:currCookie];
+     }
+     NSDictionary *headers = [NSHTTPCookie requestHeaderFieldsWithCookies:cookies];
+     */
+    
+    
+    // XXX Hack to get around server bug (the server and the old Python clients should be fixed to address this)
+    NSMutableString *lumpedAttributes = [[NSMutableString alloc] initWithString:[browserIDParams objectForKey:@"session"]];
+    [lumpedAttributes appendFormat:@"&_permanent=%@&assertion=%@&email=%@", [browserIDParams objectForKey:@"_permanent"], [browserIDParams objectForKey:@"assertion"], [browserIDParams objectForKey:@"email"]];
+    NSString *browserid = [browserIDParams objectForKey:@"browserid"];
+    
+    NSLog(@"THE BID: %@", browserid);
+        NSLog(@"THE Session: %@", lumpedAttributes);
+    
     
     NSDictionary *properties = [NSDictionary dictionaryWithObjectsAndKeys:
                                 @"map.fwol.in", NSHTTPCookieDomain,
                                 @"\\", NSHTTPCookiePath,  // IMPORTANT!
                                 @"browserid", NSHTTPCookieName,
-                                browserID, NSHTTPCookieValue,
+                                browserid, NSHTTPCookieValue,
                                 nil];
     NSHTTPCookie *browserIDCookie = [NSHTTPCookie cookieWithProperties:properties];
     
     properties = [NSDictionary dictionaryWithObjectsAndKeys:
-                                @"map.fwol.in", NSHTTPCookieDomain,
-                                @"\\", NSHTTPCookiePath,  // IMPORTANT!
-                                @"session", NSHTTPCookieName,
-                                session, NSHTTPCookieValue,
-                                nil];
+                  @"map.fwol.in", NSHTTPCookieDomain,
+                  @"\\", NSHTTPCookiePath,  // IMPORTANT!
+                  @"session", NSHTTPCookieName,
+                  lumpedAttributes, NSHTTPCookieValue,
+                  nil];
     NSHTTPCookie *sessionCookie = [NSHTTPCookie cookieWithProperties:properties];
     
     NSArray *cookies = [NSArray arrayWithObjects: browserIDCookie, sessionCookie, nil];
-
     NSDictionary *headers = [NSHTTPCookie requestHeaderFieldsWithCookies:cookies];
-
+    // XXX
     
     
     NSURLResponse *response;
@@ -115,8 +176,8 @@
     [request setAllHTTPHeaderFields:headers];
     // XXX: This needs to be asynchronous
     NSData *result = [NSURLConnection sendSynchronousRequest:request
-                          returningResponse:&response
-                                      error:&error];    
+                                           returningResponse:&response
+                                                       error:&error];
     
     
     if (!result) {
