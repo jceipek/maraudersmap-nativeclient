@@ -8,6 +8,15 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface GeneralPrefsViewController : NSViewController
+#import "NetworkManager.h"
+
+@interface GeneralPrefsViewController : NSViewController <NSTextDelegate>
+
+@property (assign) IBOutlet NSTextField *usernameField;
+@property (assign) IBOutlet NSTextField *passwordField;
+@property (assign) IBOutlet NSTextField *invalidPasswordLabel;
+@property (assign) IBOutlet NSProgressIndicator *authSpinner;
+
+- (IBAction)authenticateClicked:(id)sender;
 
 @end

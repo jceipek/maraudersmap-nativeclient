@@ -7,14 +7,12 @@
 //
 
 #import "AuthHTTPConnection.h"
-#import "HTTPMessage.h"
-#import "HTTPRedirectResponse.h"
 
 #import "NSString+NSString_URLManipulation.h"
-#import "DDData.h"
 
 @implementation AuthHTTPConnection
 
+/*
 - (BOOL)supportsMethod:(NSString *)method atPath:(NSString *)path
 {
 	// Add support for POST    
@@ -109,5 +107,5 @@
 		NSLog(@"Unable to append data to request!");
 	}
 }
-
+*/
 @end

@@ -8,21 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
+#import "AFHTTPClient.h"
+#import "AFHTTPRequestOperation.h"
 #import "JSONKit.h"
-#import "HTTPServer.h"
 
-#import "AuthHTTPConnection.h"
 #import "WifiScanner.h"
 
 @interface NetworkManager : NSObject {
-
-    HTTPServer *httpServer;
-    WifiScanner *wifiScanner;
     
 }
 
-
--(void)initiateAuthentication;
++ (NetworkManager *)theNetworkManager;
+-(void)authenticateWithUsername: (NSString*)username password: (NSString*)password;
 -(void)getLocations;
 -(void)scan;
 

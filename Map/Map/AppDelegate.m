@@ -33,10 +33,6 @@
     locationViewController = [[LocationViewController alloc] initWithNibName:@"LocationViewController" bundle:nil];
     locationView = [locationViewController view];
     [locationIndicator setView: locationView];
-
-    // Set up the networkManager for tasks like wifi scanning, authentication, and API requests
-    networkManager = [[NetworkManager alloc] init];
-    [networkManager initiateAuthentication];
     
     [mapMenu setDelegate:self];
     
@@ -46,16 +42,6 @@
 {
     // Insert code here to initialize your application
     isOnline = TRUE;
-    
-    [DDLog addLogger:[DDASLLogger sharedInstance]];
-    [DDLog addLogger:[DDTTYLogger sharedInstance]];
-    
-    DDFileLogger *fileLogger = [[DDFileLogger alloc] init];
-    fileLogger.rollingFrequency = 60 * 60 * 24; // 24 hour rolling
-    fileLogger.logFileManager.maximumNumberOfLogFiles = 7;
-    
-    [DDLog addLogger:fileLogger];
-    
     [prefsPanel center];
 }
 

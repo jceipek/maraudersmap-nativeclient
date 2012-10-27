@@ -6,8 +6,6 @@
 //  Copyright (c) 2012 ohack. All rights reserved.
 //
 
-#import "HTTPConnection.h"
-
-@interface AuthHTTPConnection : HTTPConnection
+@interface AuthHTTPConnection
 
 @end
