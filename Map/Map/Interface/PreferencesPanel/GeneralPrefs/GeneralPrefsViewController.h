@@ -12,6 +12,7 @@
 
 @interface GeneralPrefsViewController : NSViewController <NSTextDelegate>
 
+@property (assign) IBOutlet NSTextField *aliasField;
 @property (assign) IBOutlet NSTextField *usernameField;
 @property (assign) IBOutlet NSTextField *passwordField;
 @property (assign) IBOutlet NSTextField *invalidPasswordLabel;

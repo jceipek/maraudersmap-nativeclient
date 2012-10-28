@@ -39,22 +39,75 @@ static WifiScanner *wifiScanner;
                             username, @"username",
                             password, @"password",
                             nil];
-    
+
     NSURLRequest *request = [authClient requestWithMethod:@"POST" path:@"/api/exchangelogin" parameters:params];
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+    
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation
+                                         JSONRequestOperationWithRequest:request
+                                         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         NSDictionary *dataDict = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:TRUE] forKey:@"Success"];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"authFinished" object:self userInfo:dataDict];
-        [[NSUserDefaults standardUserDefaults] setObject:operation.responseString forKey:@"sessionid"];
-        NSLog(@"SessionID: %@", operation.responseString);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                             NSString *sessionid = [JSON valueForKey:@"sessionid"];
+                                             NSLog(@"Storing Sessionid: %@", sessionid);
+        [[NSUserDefaults standardUserDefaults] setObject:sessionid forKey:@"sessionid"];
+        [[NSUserDefaults standardUserDefaults] setObject:username forKey:@"username"];
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        NSLog(@"Auth Fail\n");
         NSDictionary *dataDict = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:FALSE] forKey:@"Success"];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"authFinished" object:self userInfo:dataDict];
-        NSLog(@"Error! Unable to authenticate!%@", operation.error);
+        NSLog(@"Error! Unable to authenticate!%@\n", error);
         //TODO: Handle special cases like unauthorized, not being connected to the internet, etc...
     }];
     
     [[[NSOperationQueue alloc] init] addOperation:operation];
+}
+
+-(void)createUserIfNecessaryWithAlias: (NSString*)alias {
+    NSLog(@"Create user if necessary");
+    NSString *sessionid = [[NSUserDefaults standardUserDefaults] objectForKey:@"sessionid"];
+    NSLog(@"Getting sessionid: %@\n", sessionid);
+    NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
+    NSString *usernamePath = [[NSString alloc] initWithFormat:@"/api/users/%@?sessionid=%@", username, sessionid];
+
+    NSURLRequest *getUserRequest = [mapClient requestWithMethod:@"GET" path:usernamePath parameters:nil];
+    
+    AFJSONRequestOperation *getUserOperation = [AFJSONRequestOperation
+                                         JSONRequestOperationWithRequest:getUserRequest
+                                         success:^(NSURLRequest *getUserRequest, NSHTTPURLResponse *getUserResponse, id JSON) {
+                                            NSLog(@"User: %@", [JSON valueForKeyPath:@"user"]);
+                                         } failure:^(NSURLRequest *getUserRequest, NSHTTPURLResponse *getUserResponse, NSError *error, id JSON) {
+                                             NSLog(@"No such user!\n");
+                                             NSLog(@"URL: %@", usernamePath);
+
+                                             NSLog(@"Error! %@\n", error);
+                                             NSLog(@"Making new request...\n");
+                                             
+                                             NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                                                                     alias, @"alias",
+                                                                     nil];
+
+                                             NSURLRequest *addUserRequest = [mapClient requestWithMethod:@"PUT" path:usernamePath parameters:params];
+                                             
+                                             NSLog(@"Actual request...\n");
+                                             AFJSONRequestOperation *addUserOperation = [AFJSONRequestOperation
+                                                                                         JSONRequestOperationWithRequest:addUserRequest
+                                                                                         success:^(NSURLRequest *addUserRequest, NSHTTPURLResponse *addUserResponse, id JSON) {
+                                                                                             NSLog(@"Succeeded in creation\n");
+                                                                                             NSLog(@"User: %@", [JSON valueForKeyPath:@"user"]);
+                                                                                         } failure:^(NSURLRequest *addUserRequest, NSHTTPURLResponse *addUserResponse, NSError *error, id JSON) {
+                                                                                             NSLog(@"Unable to create user!\n");
+                                                                                             NSLog(@"Error! %@\n", error);
+                                                                                             
+                                                                                             //TODO: Handle special cases like unauthorized, not being connected to the internet, etc...
+                                                                                         }];
+                                             
+                                             [[[NSOperationQueue alloc] init] addOperation:addUserOperation];
+                                             
+                                             
+                                             //TODO: Handle special cases like unauthorized, not being connected to the internet, etc...
+                                         }];
+    
+    [[[NSOperationQueue alloc] init] addOperation:getUserOperation];
 }
 
 -(void)getPlaces {

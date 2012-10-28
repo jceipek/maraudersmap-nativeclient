@@ -10,6 +10,8 @@
 
 #import "AFHTTPClient.h"
 #import "AFHTTPRequestOperation.h"
+#import "AFJSONRequestOperation.h"
+
 #import "JSONKit.h"
 
 #import "WifiScanner.h"
@@ -20,6 +22,7 @@
 
 + (NetworkManager *)theNetworkManager;
 -(void)authenticateWithUsername: (NSString*)username password: (NSString*)password;
+-(void)createUserIfNecessaryWithAlias: (NSString*)alias;
 -(void)getLocations;
 -(void)scan;
 

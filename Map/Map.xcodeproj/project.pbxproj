@@ -35,7 +35,6 @@
 		274A0B29163B924100C672FA /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 274A0B00163B924000C672FA /* LICENSE */; };
 		275AB0541578612300EFD9B5 /* demoIconDisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 275AB0531578612300EFD9B5 /* demoIconDisabled.png */; };
 		275AB05C157866A500EFD9B5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 275AB05E157866A500EFD9B5 /* Localizable.strings */; };
-		278739F415856AAF00DDC24C /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 278739DD15856AAF00DDC24C /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		278739FA15856AD200DDC24C /* OSBPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278739F915856AD200DDC24C /* OSBPreferencesController.m */; };
 		27873A1F15856CFC00DDC24C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27873A1E15856CFC00DDC24C /* Security.framework */; };
 		27A3E5DF156852B2009FB65C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27A3E5DE156852B2009FB65C /* Cocoa.framework */; };
@@ -125,8 +124,6 @@
 		275AB05F157866C700EFD9B5 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2761A2831584221E00E17BC2 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = de; path = de.lproj/Credits.rtf; sourceTree = "<group>"; };
 		2772829015841D9400D130D0 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		278739DC15856AAF00DDC24C /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
-		278739DD15856AAF00DDC24C /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		278739F815856AD200DDC24C /* OSBPreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSBPreferencesController.h; sourceTree = "<group>"; };
 		278739F915856AD200DDC24C /* OSBPreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSBPreferencesController.m; sourceTree = "<group>"; };
 		27873A1E15856CFC00DDC24C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -298,18 +295,8 @@
 			children = (
 				274A0AC1163B924000C672FA /* AFNetworking */,
 				278739F715856AD200DDC24C /* OSXBoilerplate */,
-				278739DA15856AAF00DDC24C /* JSONKit */,
 			);
 			path = 3rdPartyLibs;
-			sourceTree = "<group>";
-		};
-		278739DA15856AAF00DDC24C /* JSONKit */ = {
-			isa = PBXGroup;
-			children = (
-				278739DC15856AAF00DDC24C /* JSONKit.h */,
-				278739DD15856AAF00DDC24C /* JSONKit.m */,
-			);
-			path = JSONKit;
 			sourceTree = "<group>";
 		};
 		278739F715856AD200DDC24C /* OSXBoilerplate */ = {
@@ -550,7 +537,6 @@
 				2742958E15819AC9004EE5C2 /* SliderHelper.c in Sources */,
 				2742958F15819AC9004EE5C2 /* GeneralPrefsViewController.m in Sources */,
 				2742959115819AC9004EE5C2 /* PreferencesPanel.m in Sources */,
-				278739F415856AAF00DDC24C /* JSONKit.m in Sources */,
 				278739FA15856AD200DDC24C /* OSBPreferencesController.m in Sources */,
 				27344AA21586F60600C73FDE /* AuthHTTPConnection.m in Sources */,
 				27F9E14B158AD2F5008AD07A /* NetworkManager.m in Sources */,

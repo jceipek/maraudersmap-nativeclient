@@ -10,6 +10,7 @@
 
 @implementation GeneralPrefsViewController
 
+@synthesize aliasField;
 @synthesize usernameField;
 @synthesize passwordField;
 @synthesize authSpinner;
@@ -42,6 +43,7 @@
         if ([successNum boolValue]) {
             NSLog(@"Succeeded!");
             [invalidPasswordLabel setHidden:TRUE];
+            [[NetworkManager theNetworkManager] createUserIfNecessaryWithAlias:[aliasField stringValue]];
         } else {
             NSLog(@"Failed!");
             [invalidPasswordLabel setHidden:FALSE];
