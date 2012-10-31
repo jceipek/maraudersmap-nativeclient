@@ -8,6 +8,9 @@
 
 #import "AppDelegate.h"
 
+#import <Foundation/Foundation.h>
+#import <CoreWLAN/CoreWLAN.h>
+
 @implementation AppDelegate
 
 - (void) awakeFromNib {
@@ -35,7 +38,6 @@
     [locationIndicator setView: locationView];
     
     [mapMenu setDelegate:self];
-    
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
@@ -54,12 +56,12 @@
 // Initiate a location scan manually
 - (IBAction)manualRefresh:(id)sender {
     NSLog(@"Refresh");  
-    [networkManager scan];
+    [[NetworkManager theNetworkManager] scan];
 }
 
 - (IBAction)correctLocation:(id)sender {
     NSLog(@"Correct Location");
-    [networkManager getLocations];
+    [[NetworkManager theNetworkManager] getLocations];
 }
 
 - (IBAction)toggleOnline:(id)sender {

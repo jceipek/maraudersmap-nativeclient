@@ -15,19 +15,25 @@
 {
     self = [super init];
     if (self) {
-            currentInterface = [CWInterface interface];
+
         }
     return self;
 }
 
 - (NSMutableDictionary*) scan {
+    /* XXX: This method currently won't work with Sandboxing turned on */
+    NSMutableArray *scanResults;
+    CWInterface *currentInterface = [CWInterface interface];
+    NSLog(@"currInterface: %@\n", currentInterface);
     NSMutableDictionary *signalsDict = [[NSMutableDictionary alloc] init];
 	NSError *err = nil;
 	scanResults = [NSMutableSet setWithSet:[currentInterface scanForNetworksWithSSID:nil error:&err]];
+    NSLog(@"Error: %@\n", err);
+    NSLog(@"Getting Scan results\n");
     for (CWNetwork *network in scanResults) {
         NSString *key = [[NSString alloc] initWithFormat: @"nearest[%@]", [network bssid]];
         
-        /* Most platforms (nm-tool doesn't for some reason) return the Received Signal Strength 
+        /* Most platforms (nm-tool doesn't for some reason) return the Received Signal Strength
          Indication (RSSI) in dBm units (http://en.wikipedia.org/wiki/DBm) Adding 100 is a convenient
          way to indicate, for example, that -85 is weaker than -10 */
         

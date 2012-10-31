@@ -27,8 +27,6 @@
     LocationViewController *locationViewController;
     NSView *locationView;
     
-    NetworkManager *networkManager;
-    
     BOOL isOnline;
 }
 

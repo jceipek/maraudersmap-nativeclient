@@ -14,6 +14,8 @@ static AFHTTPClient *authClient;
 static AFHTTPClient *mapClient;
 static WifiScanner *wifiScanner;
 
+typedef void (^deferredMethodWithString)(NSString *);
+
 @implementation NetworkManager
 
 + (NetworkManager *)theNetworkManager
@@ -82,27 +84,7 @@ static WifiScanner *wifiScanner;
                                              NSLog(@"Error! %@\n", error);
                                              NSLog(@"Making new request...\n");
                                              
-                                             NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-                                                                     alias, @"alias",
-                                                                     nil];
-
-                                             NSURLRequest *addUserRequest = [mapClient requestWithMethod:@"PUT" path:usernamePath parameters:params];
-                                             
-                                             NSLog(@"Actual request...\n");
-                                             AFJSONRequestOperation *addUserOperation = [AFJSONRequestOperation
-                                                                                         JSONRequestOperationWithRequest:addUserRequest
-                                                                                         success:^(NSURLRequest *addUserRequest, NSHTTPURLResponse *addUserResponse, id JSON) {
-                                                                                             NSLog(@"Succeeded in creation\n");
-                                                                                             NSLog(@"User: %@", [JSON valueForKeyPath:@"user"]);
-                                                                                         } failure:^(NSURLRequest *addUserRequest, NSHTTPURLResponse *addUserResponse, NSError *error, id JSON) {
-                                                                                             NSLog(@"Unable to create user!\n");
-                                                                                             NSLog(@"Error! %@\n", error);
-                                                                                             
-                                                                                             //TODO: Handle special cases like unauthorized, not being connected to the internet, etc...
-                                                                                         }];
-                                             
-                                             [[[NSOperationQueue alloc] init] addOperation:addUserOperation];
-                                             
+                                             [self createUserWithAlias: alias];
                                              
                                              //TODO: Handle special cases like unauthorized, not being connected to the internet, etc...
                                          }];
@@ -110,8 +92,78 @@ static WifiScanner *wifiScanner;
     [[[NSOperationQueue alloc] init] addOperation:getUserOperation];
 }
 
+-(void)createUserWithAlias: (NSString*)alias {
+    NSString *sessionid = [[NSUserDefaults standardUserDefaults] objectForKey:@"sessionid"];
+    NSLog(@"Getting sessionid: %@\n", sessionid);
+    NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
+    NSString *usernamePath = [[NSString alloc] initWithFormat:@"/api/users/%@?sessionid=%@", username, sessionid];
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            alias, @"alias",
+                            nil];
+    
+    NSURLRequest *addUserRequest = [mapClient requestWithMethod:@"PUT" path:usernamePath parameters:params];
+    
+    NSLog(@"Actual request...\n");
+    AFJSONRequestOperation *addUserOperation = [AFJSONRequestOperation
+                                                JSONRequestOperationWithRequest:addUserRequest
+                                                success:^(NSURLRequest *addUserRequest, NSHTTPURLResponse *addUserResponse, id JSON) {
+                                                    NSLog(@"Succeeded in creation\n");
+                                                    NSLog(@"User: %@", [JSON valueForKeyPath:@"user"]);
+                                                } failure:^(NSURLRequest *addUserRequest, NSHTTPURLResponse *addUserResponse, NSError *error, id JSON) {
+                                                    NSLog(@"Unable to create user!\n");
+                                                    NSLog(@"Error! %@\n", error);
+                                                    
+                                                    //TODO: Handle special cases like unauthorized, not being connected to the internet, etc...
+                                                }];
+    
+    [[[NSOperationQueue alloc] init] addOperation:addUserOperation];
+}
+
 -(void)getPlaces {
-    //http://map.fwol.in/api/places
+    NSString *sessionid = [[NSUserDefaults standardUserDefaults] objectForKey:@"sessionid"];
+    NSLog(@"Getting sessionid: %@\n", sessionid);
+    
+    NSString *pathWithQueryString = [[NSString alloc] initWithFormat: @"/api/places?sessionid=%@", sessionid];
+    NSLog(@"%@", pathWithQueryString);
+    
+    NSURLRequest *request = [mapClient requestWithMethod:@"GET" path:pathWithQueryString parameters:nil];
+    
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation
+                                         JSONRequestOperationWithRequest:request
+                                         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+                                             NSString *places = [JSON valueForKey:@"places"];
+                                             NSLog(@"Places: %@\n", places);
+                                         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+                                             NSLog(@"Get places fail: %@\n", error);
+                                             //TODO: Handle special cases like unauthorized, not being connected to the internet, etc...
+                                         }];
+    
+    [[[NSOperationQueue alloc] init] addOperation:operation];
+}
+
+-(void)getPlaceWithId: (NSString*)theId andDo: (deferredMethodWithString)meth {
+    // TODO: Actually implement
+    NSString *sessionid = [[NSUserDefaults standardUserDefaults] objectForKey:@"sessionid"];
+    NSLog(@"Getting sessionid: %@\n", sessionid);
+    
+    NSString *pathWithQueryString = [[NSString alloc] initWithFormat: @"/api/places/%@?sessionid=%@", theId, sessionid];
+    NSLog(@"%@", pathWithQueryString);
+    
+    NSURLRequest *request = [mapClient requestWithMethod:@"GET" path:pathWithQueryString parameters:nil];
+    
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation
+                                         JSONRequestOperationWithRequest:request
+                                         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+                                             NSString *place = [JSON valueForKey:@"place"];
+                                             NSLog(@"Place: %@\n", place);
+                                             
+                                         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+                                             NSLog(@"Get place fail: %@\n", error);
+                                             //TODO: Handle special cases like unauthorized, not being connected to the internet, etc...
+                                         }];
+    
+    [[[NSOperationQueue alloc] init] addOperation:operation];
 }
 
 -(void)getLocations {    
@@ -119,8 +171,28 @@ static WifiScanner *wifiScanner;
 }
 
 -(void)scan {
-    NSString *urlWithQueryString = [@"https://themap" addQueryStringToUrlStringWithDictionary:[wifiScanner scan]];
-    NSLog(@"%@", urlWithQueryString);
+    [self getPlaces];
+    
+    NSString *sessionid = [[NSUserDefaults standardUserDefaults] objectForKey:@"sessionid"];
+    NSLog(@"Getting sessionid: %@\n", sessionid);
+    
+    NSString *pathWithQueryString = [[NSString alloc] initWithFormat: @"/api/binds?sessionid=%@&%@", sessionid, @"nearest%5B00:26:3e:30:28:c0%5D=13&nearest%5B00:0b:0e:11:8a:c1%5D=47&nearest%5B00:0b:0e:11:8a:c3%5D=47&nearest%5B00:0b:0e:11:8a:c0%5D=44&nearest%5B00:0b:0e:11:8a:c2%5D=44&nearest%5B00:26:3e:30:28:c2%5D=14"];
+    //NSString *pathWithQueryString = [[[NSString alloc] initWithFormat: @"/api/binds?sessionid=%@", sessionid] addQueryStringToUrlStringWithDictionary:[wifiScanner scan]];
+    NSLog(@"%@", pathWithQueryString);
+    
+    NSURLRequest *request = [mapClient requestWithMethod:@"GET" path:pathWithQueryString parameters:nil];
+    
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation
+                                         JSONRequestOperationWithRequest:request
+                                         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+                                             NSString *nearestBinds = [JSON valueForKey:@"binds"];
+                                             NSLog(@"Nearest: %@\n", nearestBinds);
+                                         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+                                             NSLog(@"Get nearest fail: %@\n", error);
+                                             //TODO: Handle special cases like unauthorized, not being connected to the internet, etc...
+                                         }];
+    
+    [[[NSOperationQueue alloc] init] addOperation:operation];
 }
 
 @end

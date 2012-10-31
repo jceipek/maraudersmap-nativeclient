@@ -10,7 +10,6 @@
 		2706C825158854A90012832F /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 2706C824158854A90012832F /* index.html */; };
 		2706C82C1588552B0012832F /* index.html in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2706C824158854A90012832F /* index.html */; };
 		2707CC801572B91D00AEFA93 /* CoreWLAN.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2707CC7F1572B91D00AEFA93 /* CoreWLAN.framework */; };
-		27344AA21586F60600C73FDE /* AuthHTTPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 27344AA11586F60600C73FDE /* AuthHTTPConnection.m */; };
 		27429578158199DD004EE5C2 /* WifiScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 27429577158199DD004EE5C2 /* WifiScanner.m */; };
 		2742958A15819AC9004EE5C2 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2742957B15819AC9004EE5C2 /* LocationViewController.m */; };
 		2742958B15819AC9004EE5C2 /* LocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2742957C15819AC9004EE5C2 /* LocationViewController.xib */; };
@@ -36,7 +35,7 @@
 		275AB0541578612300EFD9B5 /* demoIconDisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 275AB0531578612300EFD9B5 /* demoIconDisabled.png */; };
 		275AB05C157866A500EFD9B5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 275AB05E157866A500EFD9B5 /* Localizable.strings */; };
 		278739FA15856AD200DDC24C /* OSBPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278739F915856AD200DDC24C /* OSBPreferencesController.m */; };
-		27873A1F15856CFC00DDC24C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27873A1E15856CFC00DDC24C /* Security.framework */; };
+		27988759163E746100F84D51 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27A3E5E3156852B2009FB65C /* Foundation.framework */; };
 		27A3E5DF156852B2009FB65C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27A3E5DE156852B2009FB65C /* Cocoa.framework */; };
 		27A3E5E9156852B2009FB65C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27A3E5E7156852B2009FB65C /* InfoPlist.strings */; };
 		27A3E5EB156852B2009FB65C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A3E5EA156852B2009FB65C /* main.m */; };
@@ -79,8 +78,6 @@
 /* Begin PBXFileReference section */
 		2706C824158854A90012832F /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		2707CC7F1572B91D00AEFA93 /* CoreWLAN.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreWLAN.framework; path = System/Library/Frameworks/CoreWLAN.framework; sourceTree = SDKROOT; };
-		27344AA01586F60600C73FDE /* AuthHTTPConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthHTTPConnection.h; sourceTree = "<group>"; };
-		27344AA11586F60600C73FDE /* AuthHTTPConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthHTTPConnection.m; sourceTree = "<group>"; };
 		27429576158199DD004EE5C2 /* WifiScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WifiScanner.h; sourceTree = "<group>"; };
 		27429577158199DD004EE5C2 /* WifiScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WifiScanner.m; sourceTree = "<group>"; };
 		2742957A15819AC9004EE5C2 /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
@@ -162,7 +159,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27873A1F15856CFC00DDC24C /* Security.framework in Frameworks */,
+				27988759163E746100F84D51 /* Foundation.framework in Frameworks */,
 				2707CC801572B91D00AEFA93 /* CoreWLAN.framework in Frameworks */,
 				27A3E5DF156852B2009FB65C /* Cocoa.framework in Frameworks */,
 			);
@@ -193,8 +190,6 @@
 			children = (
 				27429576158199DD004EE5C2 /* WifiScanner.h */,
 				27429577158199DD004EE5C2 /* WifiScanner.m */,
-				27344AA01586F60600C73FDE /* AuthHTTPConnection.h */,
-				27344AA11586F60600C73FDE /* AuthHTTPConnection.m */,
 			);
 			path = WifiScanning;
 			sourceTree = "<group>";
@@ -538,7 +533,6 @@
 				2742958F15819AC9004EE5C2 /* GeneralPrefsViewController.m in Sources */,
 				2742959115819AC9004EE5C2 /* PreferencesPanel.m in Sources */,
 				278739FA15856AD200DDC24C /* OSBPreferencesController.m in Sources */,
-				27344AA21586F60600C73FDE /* AuthHTTPConnection.m in Sources */,
 				27F9E14B158AD2F5008AD07A /* NetworkManager.m in Sources */,
 				27F9E14F158C27E7008AD07A /* NSString+NSString_URLManipulation.m in Sources */,
 				274A0B0A163B924100C672FA /* AFHTTPClient.m in Sources */,
@@ -687,6 +681,7 @@
 				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -705,6 +700,7 @@
 				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

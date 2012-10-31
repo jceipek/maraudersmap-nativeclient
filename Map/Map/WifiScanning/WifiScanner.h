@@ -12,8 +12,6 @@
 @class HTTPServer;
 
 @interface WifiScanner : NSObject {
-    NSMutableArray *scanResults;
-    CWInterface *currentInterface;
 }
 
 - (NSMutableDictionary*) scan;

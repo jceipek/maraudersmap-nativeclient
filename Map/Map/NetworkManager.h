@@ -12,8 +12,6 @@
 #import "AFHTTPRequestOperation.h"
 #import "AFJSONRequestOperation.h"
 
-#import "JSONKit.h"
-
 #import "WifiScanner.h"
 
 @interface NetworkManager : NSObject {
@@ -23,6 +21,7 @@
 + (NetworkManager *)theNetworkManager;
 -(void)authenticateWithUsername: (NSString*)username password: (NSString*)password;
 -(void)createUserIfNecessaryWithAlias: (NSString*)alias;
+-(void)createUserWithAlias: (NSString*)alias;
 -(void)getLocations;
 -(void)scan;
 
