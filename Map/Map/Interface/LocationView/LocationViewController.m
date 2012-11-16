@@ -27,6 +27,10 @@
     return self;
 }
 
+- (void) setLocationText:(NSString *)text {
+    [locationLabel setStringValue:text];
+}
+
 - (void) startSpinner {
     [spinner performSelector:@selector(startAnimation:) withObject:self afterDelay:0.0 inModes:[NSArray arrayWithObject:NSEventTrackingRunLoopMode]];
 }

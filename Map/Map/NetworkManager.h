@@ -12,6 +12,8 @@
 #import "AFHTTPRequestOperation.h"
 #import "AFJSONRequestOperation.h"
 
+
+
 #import "WifiScanner.h"
 
 @interface NetworkManager : NSObject {

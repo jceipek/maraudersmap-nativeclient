@@ -170,14 +170,12 @@ typedef void (^deferredMethodWithString)(NSString *);
 
 }
 
--(void)scan {
-    [self getPlaces];
-    
+-(void)scan {    
     NSString *sessionid = [[NSUserDefaults standardUserDefaults] objectForKey:@"sessionid"];
     NSLog(@"Getting sessionid: %@\n", sessionid);
     
-    NSString *pathWithQueryString = [[NSString alloc] initWithFormat: @"/api/binds?sessionid=%@&%@", sessionid, @"nearest%5B00:26:3e:30:28:c0%5D=13&nearest%5B00:0b:0e:11:8a:c1%5D=47&nearest%5B00:0b:0e:11:8a:c3%5D=47&nearest%5B00:0b:0e:11:8a:c0%5D=44&nearest%5B00:0b:0e:11:8a:c2%5D=44&nearest%5B00:26:3e:30:28:c2%5D=14"];
-    //NSString *pathWithQueryString = [[[NSString alloc] initWithFormat: @"/api/binds?sessionid=%@", sessionid] addQueryStringToUrlStringWithDictionary:[wifiScanner scan]];
+    NSString *pathWithQueryString = [[[NSString alloc] initWithFormat: @"/api/binds?sessionid=%@", sessionid] addQueryStringToUrlStringWithDictionary:[wifiScanner scan]];
+    
     NSLog(@"%@", pathWithQueryString);
     
     NSURLRequest *request = [mapClient requestWithMethod:@"GET" path:pathWithQueryString parameters:nil];
@@ -185,8 +183,13 @@ typedef void (^deferredMethodWithString)(NSString *);
     AFJSONRequestOperation *operation = [AFJSONRequestOperation
                                          JSONRequestOperationWithRequest:request
                                          success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-                                             NSString *nearestBinds = [JSON valueForKey:@"binds"];
+                                             NSArray *nearestBinds = [JSON valueForKey:@"binds"];
+                                            
                                              NSLog(@"Nearest: %@\n", nearestBinds);
+                                             
+                                             NSDictionary *dataDict = [NSDictionary dictionaryWithObject:nearestBinds forKey:@"nearestBinds"];
+                                             [[NSNotificationCenter defaultCenter] postNotificationName:@"scanComplete" object:self userInfo:dataDict];
+
                                          } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
                                              NSLog(@"Get nearest fail: %@\n", error);
                                              //TODO: Handle special cases like unauthorized, not being connected to the internet, etc...

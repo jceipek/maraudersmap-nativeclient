@@ -37,6 +37,11 @@
     locationView = [locationViewController view];
     [locationIndicator setView: locationView];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(scanComplete:)
+                                                 name:@"scanComplete"
+                                               object:nil];
+    
     [mapMenu setDelegate:self];
 }
 
@@ -55,8 +60,33 @@
 
 // Initiate a location scan manually
 - (IBAction)manualRefresh:(id)sender {
-    NSLog(@"Refresh");  
+    NSLog(@"Manual Refresh");
+    [self initiateRefresh];
+}
+
+- (void)initiateRefresh {
+    [locationViewController startSpinner];
+    [self performSelectorInBackground:@selector(performRefresh) withObject:nil];
+}
+
+- (void)performRefresh {
     [[NetworkManager theNetworkManager] scan];
+}
+
+- (void)scanComplete: (NSNotification *)notificationData {
+    NSDictionary *theData = [notificationData userInfo];
+    NSLog(@"Scan completed");
+    if (theData != nil) {
+        NSArray *nearestBinds = [theData objectForKey:@"nearestBinds"];
+        if ([nearestBinds count] > 0) {
+            id firstBind = [nearestBinds objectAtIndex:0];
+            [locationViewController setLocationText:[[firstBind valueForKey:@"place"] valueForKey:@"alias"]];
+            [locationViewController stopSpinner];
+        }
+        for (id bind in nearestBinds) {
+            NSLog(@"Place: %@", (NSString *)[bind valueForKey:@"place"]);
+        }
+    }
 }
 
 - (IBAction)correctLocation:(id)sender {
@@ -85,7 +115,6 @@
 
 - (void)menuWillOpen:(NSMenu *)menu {
     NSLog(@"Great!");
-    [locationViewController startSpinner];
 }
 
 @end

@@ -32,6 +32,9 @@
 
 - (IBAction)openMap:(id)sender;
 - (IBAction)manualRefresh:(id)sender;
+- (void)scanComplete: (NSNotification *)notificationData;
+- (void)initiateRefresh;
+- (void)performRefresh;
 - (IBAction)correctLocation:(id)sender;
 - (IBAction)toggleOnline:(id)sender;
 - (IBAction)quit:(id)sender;
