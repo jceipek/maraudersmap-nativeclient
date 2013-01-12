@@ -22,8 +22,7 @@
 
 + (NetworkManager *)theNetworkManager;
 -(void)authenticateWithUsername: (NSString*)username password: (NSString*)password;
--(void)createUserIfNecessaryWithAlias: (NSString*)alias;
--(void)createUserWithAlias: (NSString*)alias;
+-(void)createUser;
 -(void)getLocations;
 -(void)scan;
 

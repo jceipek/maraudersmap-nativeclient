@@ -41,14 +41,29 @@
                                              selector:@selector(scanComplete:)
                                                  name:@"scanComplete"
                                                object:nil];
+    [self scheduleRefresh];
     
     [mapMenu setDelegate:self];
+}
+
+- (void)scheduleRefresh {
+    NSLog(@"Refresh Scheduled");
+
+    SEL sel = @selector(initiateRefresh);
+    NSInvocation* inv = [NSInvocation invocationWithMethodSignature:
+                         [self methodSignatureForSelector:sel]];
+    [inv setTarget:self];
+    [inv setSelector:sel];
+    
+    NSTimer *timer = [NSTimer timerWithTimeInterval:10.0 invocation:inv repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Insert code here to initialize your application
     isOnline = TRUE;
+    menuIsOpen = FALSE;
     [prefsPanel center];
 }
 
@@ -65,6 +80,7 @@
 }
 
 - (void)initiateRefresh {
+    NSLog(@"init refresh");
     [locationViewController startSpinner];
     [self performSelectorInBackground:@selector(performRefresh) withObject:nil];
 }
@@ -81,8 +97,10 @@
         if ([nearestBinds count] > 0) {
             id firstBind = [nearestBinds objectAtIndex:0];
             [locationViewController setLocationText:[[firstBind valueForKey:@"place"] valueForKey:@"alias"]];
-            [locationViewController stopSpinner];
+        } else {
+            [locationViewController setLocationText:@"Unknown Location"];
         }
+        [locationViewController stopSpinner];
         for (id bind in nearestBinds) {
             NSLog(@"Place: %@", (NSString *)[bind valueForKey:@"place"]);
         }
@@ -114,7 +132,15 @@
 }
 
 - (void)menuWillOpen:(NSMenu *)menu {
-    NSLog(@"Great!");
+    NSLog(@"Menu about to open!");
+    menuIsOpen = TRUE;
+    [locationViewController menuOpened];
+}
+
+- (void)menuDidClose:(NSMenu *)menu {
+    NSLog(@"Menu closed!");
+    menuIsOpen = FALSE;
+    [locationViewController menuClosed];
 }
 
 @end

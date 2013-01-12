@@ -28,6 +28,8 @@
     NSView *locationView;
     
     BOOL isOnline;
+    
+    BOOL menuIsOpen;
 }
 
 - (IBAction)openMap:(id)sender;
@@ -38,5 +40,7 @@
 - (IBAction)correctLocation:(id)sender;
 - (IBAction)toggleOnline:(id)sender;
 - (IBAction)quit:(id)sender;
+
+- (void)scheduleRefresh;
 
 @end

@@ -22,6 +22,8 @@
     if (self) {
         // Initialization code here.
         NSLog(@"Init Location View Controller");
+        menuIsOpen = FALSE;
+        shouldBeSpinning = FALSE;
         [spinner setUsesThreadedAnimation:YES];
     }
     return self;
@@ -32,11 +34,34 @@
 }
 
 - (void) startSpinner {
-    [spinner performSelector:@selector(startAnimation:) withObject:self afterDelay:0.0 inModes:[NSArray arrayWithObject:NSEventTrackingRunLoopMode]];
+    shouldBeSpinning = TRUE;
+    [self makeSpinnerSpinIfItShould];
 }
 
 - (void) stopSpinner {
-    [spinner stopAnimation:self];
+    shouldBeSpinning = FALSE;
+    [self makeSpinnerSpinIfItShould];
+}
+
+- (void) makeSpinnerSpinIfItShould {
+    if (menuIsOpen) {
+        if (shouldBeSpinning) {
+            NSLog(@"Start spinning");
+            [spinner performSelector:@selector(startAnimation:) withObject:self afterDelay:0.1 inModes:[NSArray arrayWithObject:NSEventTrackingRunLoopMode]];
+        } else {
+            NSLog(@"Stop spinning");
+            [spinner stopAnimation:self];
+        }
+    }
+}
+
+- (void)menuOpened {
+    menuIsOpen = TRUE;
+    [self makeSpinnerSpinIfItShould];
+}
+
+- (void)menuClosed {
+    menuIsOpen = FALSE;
 }
 
 @end
