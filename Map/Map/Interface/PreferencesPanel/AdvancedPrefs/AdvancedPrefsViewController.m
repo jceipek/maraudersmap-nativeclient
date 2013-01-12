@@ -37,6 +37,15 @@ float *secondIntervals;
     return self;
 }
 
+- (void)loadView {
+    [super loadView];
+    // Restore slider position if it was saved previously
+    NSNumber *refreshInterval = [[NSUserDefaults standardUserDefaults] objectForKey:@"refreshSlidePos"];
+    if (refreshInterval != NULL) {
+        [updateFrequencySlider setFloatValue:[refreshInterval floatValue]];
+    }
+}
+
 - (IBAction)sliderMoved:(id)sender
 {
     // update the value here
@@ -55,8 +64,8 @@ float *secondIntervals;
 - (void)sliderDoneMoving:(id)sender
 {
     [frequencyIndicator setStringValue:@""];
-    // do your expensive update here
     NSLog(@"Expensive operation");
+    [[NSUserDefaults standardUserDefaults] setObject:[[NSNumber alloc] initWithFloat:[updateFrequencySlider floatValue]] forKey:@"refreshSlidePos"];
 }
 
 - (void)dealloc {

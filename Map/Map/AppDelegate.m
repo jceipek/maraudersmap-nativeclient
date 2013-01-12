@@ -55,8 +55,8 @@
     [inv setTarget:self];
     [inv setSelector:sel];
     
-    NSTimer *timer = [NSTimer timerWithTimeInterval:10.0 invocation:inv repeats:YES];
-    [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+    refreshTimer = [NSTimer timerWithTimeInterval:10.0 invocation:inv repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:refreshTimer forMode:NSRunLoopCommonModes];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification

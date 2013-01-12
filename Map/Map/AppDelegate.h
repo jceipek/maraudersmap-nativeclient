@@ -27,6 +27,8 @@
     LocationViewController *locationViewController;
     NSView *locationView;
     
+    NSTimer *refreshTimer;
+    
     BOOL isOnline;
     
     BOOL menuIsOpen;
