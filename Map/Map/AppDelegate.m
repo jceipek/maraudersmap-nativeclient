@@ -41,6 +41,11 @@
                                              selector:@selector(scanComplete:)
                                                  name:@"scanComplete"
                                                object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(changeRefreshInterval:)
+                                                 name:@"changedRefreshInterval"
+                                               object:nil];
     [self scheduleRefresh];
     
     [mapMenu setDelegate:self];
@@ -55,8 +60,14 @@
     [inv setTarget:self];
     [inv setSelector:sel];
     
-    refreshTimer = [NSTimer timerWithTimeInterval:10.0 invocation:inv repeats:YES];
-    [[NSRunLoop currentRunLoop] addTimer:refreshTimer forMode:NSRunLoopCommonModes];
+    NSNumber *refreshInterval = [[NSUserDefaults standardUserDefaults] objectForKey:@"refreshInterval"];
+    if (refreshInterval != NULL) {
+        refreshTimer = [NSTimer timerWithTimeInterval:[refreshInterval floatValue] invocation:inv repeats:YES];
+        [[NSRunLoop currentRunLoop] addTimer:refreshTimer forMode:NSRunLoopCommonModes];
+    } else {
+        refreshTimer = [NSTimer timerWithTimeInterval:10.0 invocation:inv repeats:YES]; // Default is once every 10 seconds
+        [[NSRunLoop currentRunLoop] addTimer:refreshTimer forMode:NSRunLoopCommonModes];
+    }
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
@@ -107,6 +118,11 @@
     }
 }
 
+- (void)changeRefreshInterval: (NSNotification *)notificationData {
+    [refreshTimer invalidate];
+    [self scheduleRefresh];
+}
+
 - (IBAction)correctLocation:(id)sender {
     NSLog(@"Correct Location");
     [[NetworkManager theNetworkManager] getLocations];
@@ -118,10 +134,12 @@
         [toggleOnlineItem setTitle:NSLocalizedString(@"Go Online", nil)];
         [statusItem setImage:statusImageDisabled];
         // TODO: Actually go offline
+        [refreshTimer invalidate];
     } else {
         [toggleOnlineItem setTitle:NSLocalizedString(@"Go Offline", nil)];
         [statusItem setImage:statusImage];
         // TODO: Actually go online
+        [self scheduleRefresh];
     }
     isOnline = !isOnline;
 }

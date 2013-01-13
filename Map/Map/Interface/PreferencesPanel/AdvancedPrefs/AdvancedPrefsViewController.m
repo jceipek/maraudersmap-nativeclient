@@ -40,9 +40,9 @@ float *secondIntervals;
 - (void)loadView {
     [super loadView];
     // Restore slider position if it was saved previously
-    NSNumber *refreshInterval = [[NSUserDefaults standardUserDefaults] objectForKey:@"refreshSlidePos"];
-    if (refreshInterval != NULL) {
-        [updateFrequencySlider setFloatValue:[refreshInterval floatValue]];
+    NSNumber *refreshSliderPos = [[NSUserDefaults standardUserDefaults] objectForKey:@"refreshSliderPos"];
+    if (refreshSliderPos != NULL) {
+        [updateFrequencySlider setFloatValue:[refreshSliderPos floatValue]];
     }
 }
 
@@ -65,7 +65,10 @@ float *secondIntervals;
 {
     [frequencyIndicator setStringValue:@""];
     NSLog(@"Expensive operation");
-    [[NSUserDefaults standardUserDefaults] setObject:[[NSNumber alloc] initWithFloat:[updateFrequencySlider floatValue]] forKey:@"refreshSlidePos"];
+    [[NSUserDefaults standardUserDefaults] setObject:[[NSNumber alloc] initWithFloat:[updateFrequencySlider floatValue]] forKey:@"refreshSliderPos"];
+    [[NSUserDefaults standardUserDefaults] setObject:[[NSNumber alloc] initWithFloat:unevenArrayInterp([updateFrequencySlider floatValue], secondIntervals, 6)] forKey:@"refreshInterval"];
+    //NSDictionary *dataDict = [NSDictionary dictionaryWithObject:nearestBinds forKey:@"nearestBinds"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"changedRefreshInterval" object:self userInfo:nil];
 }
 
 - (void)dealloc {

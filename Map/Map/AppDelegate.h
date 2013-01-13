@@ -37,6 +37,7 @@
 - (IBAction)openMap:(id)sender;
 - (IBAction)manualRefresh:(id)sender;
 - (void)scanComplete: (NSNotification *)notificationData;
+- (void)changeRefreshInterval: (NSNotification *)notificationData;
 - (void)initiateRefresh;
 - (void)performRefresh;
 - (IBAction)correctLocation:(id)sender;
