@@ -12,6 +12,7 @@
 
 static AFHTTPClient *authClient;
 static AFHTTPClient *mapClient;
+static AFHTTPClient *directoryClient;
 static WifiScanner *wifiScanner;
 
 typedef void (^deferredMethodWithString)(NSString *);
@@ -28,8 +29,10 @@ typedef void (^deferredMethodWithString)(NSString *);
             wifiScanner = [[WifiScanner alloc] init];
             NSURL *authUrl = [NSURL URLWithString:@"https://olinapps.herokuapp.com"];
             NSURL *mapUrl = [NSURL URLWithString:@"http://map.olinapps.com/"];
+            NSURL *directoryUrl = [NSURL URLWithString:@"http://directory.olinapps.com/"];
             authClient = [[AFHTTPClient alloc] initWithBaseURL:authUrl];
             mapClient = [[AFHTTPClient alloc] initWithBaseURL:mapUrl];
+            directoryClient = [[AFHTTPClient alloc] initWithBaseURL:directoryUrl];
         }
     }
     return networkManager;
@@ -75,28 +78,46 @@ typedef void (^deferredMethodWithString)(NSString *);
         NSLog(@"Getting userid: %@\n", userid);
         NSString *usernamePath = [[NSString alloc] initWithFormat:@"/api/users/%@?sessionid=%@", userid, sessionid];
         
-        NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-                                @"Harry Potter", @"alias",
-                                @"harry.potter@students.olin.edu", @"email",
-                                nil];
         
-        NSLog(@"%@",usernamePath);
-        NSURLRequest *addUserRequest = [mapClient requestWithMethod:@"PUT" path:usernamePath parameters:params];
+        NSString *mePath = [[NSString alloc] initWithFormat:@"/api/me?sessionid=%@", sessionid];
+        NSURLRequest *getMeRequest = [directoryClient requestWithMethod:@"GET" path:mePath parameters:nil];
         
-        NSLog(@"Actual request...\n");
-        AFJSONRequestOperation *addUserOperation = [AFJSONRequestOperation
-                                                    JSONRequestOperationWithRequest:addUserRequest
-                                                    success:^(NSURLRequest *addUserRequest, NSHTTPURLResponse *addUserResponse, id JSON) {
-                                                        NSLog(@"Succeeded in creation\n");
-                                                        NSLog(@"User: %@", [JSON valueForKeyPath:@"user"]);
+
+        AFJSONRequestOperation *getMeOperation = [AFJSONRequestOperation
+                                                    JSONRequestOperationWithRequest:getMeRequest
+                                                    success:^(NSURLRequest *getMeRequest, NSHTTPURLResponse *getMeResponse, id JSON) {
+                                                        
+                                                        NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                                                                                [JSON valueForKey:@"name"], @"alias",
+                                                                                [JSON valueForKey:@"email"], @"email",
+                                                                                nil];
+                                                        
+                                                        NSLog(@"%@",usernamePath);
+                                                        NSURLRequest *addUserRequest = [mapClient requestWithMethod:@"PUT" path:usernamePath parameters:params];
+                                                        
+                                                        NSLog(@"Actual request...\n");
+                                                        AFJSONRequestOperation *addUserOperation = [AFJSONRequestOperation
+                                                                                                    JSONRequestOperationWithRequest:addUserRequest
+                                                                                                    success:^(NSURLRequest *addUserRequest, NSHTTPURLResponse *addUserResponse, id JSON) {
+                                                                                                        NSLog(@"Succeeded in creation\n");
+                                                                                                        NSLog(@"User: %@", [JSON valueForKeyPath:@"user"]);
+                                                                                                    } failure:^(NSURLRequest *addUserRequest, NSHTTPURLResponse *addUserResponse, NSError *error, id JSON) {
+                                                                                                        NSLog(@"Unable to create user!\n");
+                                                                                                        NSLog(@"Error! %@\n", error);
+                                                                                                        
+                                                                                                        //TODO: Handle special cases like unauthorized, not being connected to the internet, etc...
+                                                                                                    }];
+                                                        
+                                                        [[[NSOperationQueue alloc] init] addOperation:addUserOperation];
+                                                        
                                                     } failure:^(NSURLRequest *addUserRequest, NSHTTPURLResponse *addUserResponse, NSError *error, id JSON) {
-                                                        NSLog(@"Unable to create user!\n");
+                                                        NSLog(@"Unable to fetch info about me!\n");
                                                         NSLog(@"Error! %@\n", error);
                                                         
                                                         //TODO: Handle special cases like unauthorized, not being connected to the internet, etc...
                                                     }];
         
-        [[[NSOperationQueue alloc] init] addOperation:addUserOperation];
+        [[[NSOperationQueue alloc] init] addOperation:getMeOperation];
     }
 }
 
