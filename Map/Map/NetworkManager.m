@@ -195,6 +195,8 @@ typedef void (^deferredMethodWithString)(NSString *);
     id x = [bind objectForKey:@"x"];
     id y = [bind objectForKey:@"y"];
 
+    NSLog(@"Signals Dict: %@", signals);
+    
     NSString *sessionid = [[NSUserDefaults standardUserDefaults] objectForKey:@"sessionid"];
     NSLog(@"Getting sessionid: %@\n", sessionid);
     if (sessionid != NULL) {
@@ -226,7 +228,6 @@ typedef void (^deferredMethodWithString)(NSString *);
         
         [[[NSOperationQueue alloc] init] addOperation:postBindOperation];
     }
-    
 }
 
 -(void)scan {
@@ -234,8 +235,24 @@ typedef void (^deferredMethodWithString)(NSString *);
     NSLog(@"Getting sessionid: %@\n", sessionid);
     
     if (sessionid != NULL) {
-        NSDictionary *scanResults = [wifiScanner scan];
-        NSString *pathWithQueryString = [[[NSString alloc] initWithFormat: @"/api/binds?sessionid=%@", sessionid] addQueryStringToUrlStringWithDictionary:scanResults];
+        NSMutableSet *scanResultsSet = [wifiScanner scan];
+        NSMutableDictionary *scanResultsNearestFormat = [[NSMutableDictionary alloc] init];
+        NSMutableDictionary *scanResultsBareFormat = [[NSMutableDictionary alloc] init];
+        
+        for (CWNetwork *network in scanResultsSet) {
+            NSString *nearestKey = [[NSString alloc] initWithFormat: @"nearest[%@]", [network bssid]];
+            
+            /* Most platforms (nm-tool doesn't for some reason) return the Received Signal Strength
+             Indication (RSSI) in dBm units (http://en.wikipedia.org/wiki/DBm) Adding 100 is a convenient
+             way to indicate, for example, that -85 is weaker than -10 */
+            
+            NSNumber *value = [[NSNumber alloc] initWithFloat: (float)(100.0f+[network rssiValue])];
+            
+            [scanResultsNearestFormat setObject: value forKey: nearestKey];
+            [scanResultsBareFormat setObject: value forKey: [network bssid]];
+        }
+        
+        NSString *pathWithQueryString = [[[NSString alloc] initWithFormat: @"/api/binds?sessionid=%@", sessionid] addQueryStringToUrlStringWithDictionary:scanResultsNearestFormat];
         
         NSLog(@"%@", pathWithQueryString);
         
@@ -250,7 +267,7 @@ typedef void (^deferredMethodWithString)(NSString *);
                                                  
                                                  NSDictionary *dataDict = [NSDictionary dictionaryWithObjectsAndKeys:
                                                                            nearestBinds, @"nearestBinds",
-                                                                           scanResults, @"scanResults",
+                                                                           scanResultsBareFormat, @"scanResultsBareFormat",
                                                                            nil];
                                                  [[NSNotificationCenter defaultCenter] postNotificationName:@"scanComplete" object:self userInfo:dataDict];
                                                  

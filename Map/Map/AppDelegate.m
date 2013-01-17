@@ -105,7 +105,7 @@
     NSLog(@"Scan completed");
     if (theData != nil) {
         NSArray *nearestBinds = [theData objectForKey:@"nearestBinds"];
-        NSDictionary *scanResults = [theData objectForKey:@"scanResults"];
+        NSDictionary *scanResultsBareFormat = [theData objectForKey:@"scanResultsBareFormat"];
         if ([nearestBinds count] > 0) {
             id firstBind = [nearestBinds objectAtIndex:0];
             [locationViewController setLocationText:[[firstBind valueForKey:@"place"] valueForKey:@"alias"]];
@@ -119,7 +119,7 @@
             NSLog(@"Place: %@", (NSString *)[bind valueForKey:@"place"]);
             NSMenuItem *correctPositionMenuItem = [[NSMenuItem alloc] initWithTitle:[[bind valueForKey:@"place"] valueForKey:@"alias"] action:@selector(correctPositionWithMenuItem:) keyEquivalent:@""];
             NSDictionary *bindAndScanResults = [NSDictionary dictionaryWithObjectsAndKeys:
-                                             scanResults, @"scanResults",
+                                             scanResultsBareFormat, @"scanResultsBareFormat",
                                              bind, @"bind",
                                              nil];
             [correctPositionMenuItem setRepresentedObject:bindAndScanResults];
@@ -132,8 +132,9 @@
 - (void)correctPositionWithMenuItem: (NSMenuItem *)item {
     NSDictionary *bindAndScanResults = [item representedObject];
     id bind = [bindAndScanResults objectForKey:@"bind"];
-    NSDictionary *scanResults = [bindAndScanResults objectForKey:@"scanResults"];
-    [[NetworkManager theNetworkManager] postNewBindFromSignals: scanResults andBind: bind];
+    [locationViewController setLocationText:[[bind valueForKey:@"place"] valueForKey:@"alias"]];
+    NSDictionary *scanResultsBareFormat = [bindAndScanResults objectForKey:@"scanResultsBareFormat"];
+    [[NetworkManager theNetworkManager] postNewBindFromSignals: scanResultsBareFormat andBind: bind];
     NSLog(@"Place from menu item: %@", [[bind valueForKey:@"place"] valueForKey:@"alias"]);
 }
 

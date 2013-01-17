@@ -9,11 +9,13 @@
 #import <Foundation/Foundation.h>
 #import <CoreWLAN/CoreWLAN.h>
 
+#import "FakeScanResult.h"
+
 @class HTTPServer;
 
 @interface WifiScanner : NSObject {
 }
 
-- (NSMutableDictionary*) scan;
+- (NSMutableSet*) scan;
 
 @end

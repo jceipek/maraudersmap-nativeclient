@@ -34,6 +34,7 @@
 		274A0B29163B924100C672FA /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 274A0B00163B924000C672FA /* LICENSE */; };
 		275AB0541578612300EFD9B5 /* demoIconDisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 275AB0531578612300EFD9B5 /* demoIconDisabled.png */; };
 		275AB05C157866A500EFD9B5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 275AB05E157866A500EFD9B5 /* Localizable.strings */; };
+		276CFA3216A7B27100A51AEE /* FakeScanResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 276CFA3116A7B27100A51AEE /* FakeScanResult.m */; };
 		276DBC5E1654169C00AF5659 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 276DBC5D1654169C00AF5659 /* SystemConfiguration.framework */; };
 		278739FA15856AD200DDC24C /* OSBPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278739F915856AD200DDC24C /* OSBPreferencesController.m */; };
 		27988759163E746100F84D51 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27A3E5E3156852B2009FB65C /* Foundation.framework */; };
@@ -121,6 +122,8 @@
 		275AB05D157866A500EFD9B5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		275AB05F157866C700EFD9B5 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2761A2831584221E00E17BC2 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = de; path = de.lproj/Credits.rtf; sourceTree = "<group>"; };
+		276CFA3016A7B27100A51AEE /* FakeScanResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FakeScanResult.h; sourceTree = "<group>"; };
+		276CFA3116A7B27100A51AEE /* FakeScanResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FakeScanResult.m; sourceTree = "<group>"; };
 		276DBC5D1654169C00AF5659 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		2772829015841D9400D130D0 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		278739F815856AD200DDC24C /* OSBPreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSBPreferencesController.h; sourceTree = "<group>"; };
@@ -336,6 +339,8 @@
 				27A3E5F1156852B2009FB65C /* AppDelegate.m */,
 				27F9E149158AD2F5008AD07A /* NetworkManager.h */,
 				27F9E14A158AD2F5008AD07A /* NetworkManager.m */,
+				276CFA3016A7B27100A51AEE /* FakeScanResult.h */,
+				276CFA3116A7B27100A51AEE /* FakeScanResult.m */,
 				27F9E14D158C27E7008AD07A /* NSString+NSString_URLManipulation.h */,
 				27F9E14E158C27E7008AD07A /* NSString+NSString_URLManipulation.m */,
 				27429575158199DD004EE5C2 /* WifiScanning */,
@@ -548,6 +553,7 @@
 				274A0B10163B924100C672FA /* AFURLConnectionOperation.m in Sources */,
 				274A0B11163B924100C672FA /* AFXMLRequestOperation.m in Sources */,
 				274A0B12163B924100C672FA /* UIImageView+AFNetworking.m in Sources */,
+				276CFA3216A7B27100A51AEE /* FakeScanResult.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
