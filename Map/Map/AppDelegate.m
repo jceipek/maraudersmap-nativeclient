@@ -111,43 +111,51 @@
     NSLog(@"Scan completed");
     if (theData != nil) {
         NSArray *nearestBinds = [theData objectForKey:@"nearestBinds"];
-        NSDictionary *scanResultsBareFormat = [theData objectForKey:@"scanResultsBareFormat"];
-        if ([nearestBinds count] > 0) {
-            id firstBind = [nearestBinds objectAtIndex:0];
-            [locationViewController setLocationText:[[firstBind valueForKey:@"place"] valueForKey:@"alias"]];
-            [[NetworkManager theNetworkManager] postToPositionTheBindWithId:[firstBind valueForKey:@"id"]];
-        } else {
-            [locationViewController setLocationText:@"Unknown Location"];
-        }
-        [locationViewController stopSpinner];
-        NSMenu *submenu = [[NSMenu alloc] init];
-        for (id bind in nearestBinds) {
-            NSLog(@"Place: %@", (NSString *)[bind valueForKey:@"place"]);
-            NSMenuItem *correctPositionMenuItem = [[NSMenuItem alloc] initWithTitle:[[bind valueForKey:@"place"] valueForKey:@"alias"] action:@selector(correctPositionWithMenuItem:) keyEquivalent:@""];
-            NSDictionary *bindAndScanResults = [NSDictionary dictionaryWithObjectsAndKeys:
-                                             scanResultsBareFormat, @"scanResultsBareFormat",
-                                             bind, @"bind",
-                                             nil];
-            [correctPositionMenuItem setRepresentedObject:bindAndScanResults];
-            [submenu addItem:correctPositionMenuItem];
+        NSDictionary *scanResultsBareFormat = [theData objectForKey:@"scanResultsBareFormat"];        
+        if ([scanResultsBareFormat count] > 0) {
+
+            if ([nearestBinds count] > 0) {
+                id firstBind = [nearestBinds objectAtIndex:0];
+                [locationViewController setLocationText:[[firstBind valueForKey:@"place"] valueForKey:@"alias"]];
+                [[NetworkManager theNetworkManager] postToPositionTheBindWithId:[firstBind valueForKey:@"id"]];
+            } else {
+                [locationViewController setLocationText:@"Unknown Location"];
+            }
+            [locationViewController stopSpinner];
+            NSMenu *submenu = [[NSMenu alloc] init];
+            for (id bind in nearestBinds) {
+                NSLog(@"Place: %@", (NSString *)[bind valueForKey:@"place"]);
+                NSMenuItem *correctPositionMenuItem = [[NSMenuItem alloc] initWithTitle:[[bind valueForKey:@"place"] valueForKey:@"alias"] action:@selector(correctPositionWithMenuItem:) keyEquivalent:@""];
+                NSDictionary *bindAndScanResults = [NSDictionary dictionaryWithObjectsAndKeys:
+                                                    scanResultsBareFormat, @"scanResultsBareFormat",
+                                                    bind, @"bind",
+                                                    nil];
+                [correctPositionMenuItem setRepresentedObject:bindAndScanResults];
+                [submenu addItem:correctPositionMenuItem];
+                
+            }
+            if ([nearestBinds count] > 0) {
+                NSMenuItem *divider = [NSMenuItem separatorItem];
+                [submenu addItem:divider];
+                NSMenuItem *manualCorrectionItem = [[NSMenuItem alloc] initWithTitle:@"I'm Somewhere Else!" action:@selector(manuallyCorrectPositionWithMenuItem:) keyEquivalent:@""];
+                [manualCorrectionItem setRepresentedObject:scanResultsBareFormat];
+                [submenu addItem:manualCorrectionItem];
+                [mapMenu setSubmenu:submenu forItem:correctLocationItem];
+                [correctLocationItem setTitle:@"Correct My Location"];
+            } else {
+                [correctLocationItem setTitle:@"I'm Somewhere Else!"];
+                [correctLocationItem setAction:@selector(manuallyCorrectPositionWithMenuItem:)];
+                [correctLocationItem setRepresentedObject:scanResultsBareFormat];
+                [mapMenu setSubmenu:NULL forItem:correctLocationItem];
+            }
             
-        }
-        if ([nearestBinds count] > 0) {
-            NSMenuItem *divider = [NSMenuItem separatorItem];
-            [submenu addItem:divider];
-            NSMenuItem *manualCorrectionItem = [[NSMenuItem alloc] initWithTitle:@"I'm Somewhere Else!" action:@selector(manuallyCorrectPositionWithMenuItem:) keyEquivalent:@""];
-            [manualCorrectionItem setRepresentedObject:scanResultsBareFormat];
-            [submenu addItem:manualCorrectionItem];
-            [mapMenu setSubmenu:submenu forItem:correctLocationItem];
-            [correctLocationItem setTitle:@"Correct My Location"];
+            [correctLocationItem setEnabled:TRUE];
         } else {
-            [correctLocationItem setTitle:@"I'm Somewhere Else!"];
-            [correctLocationItem setAction:@selector(manuallyCorrectPositionWithMenuItem:)];
-            [correctLocationItem setRepresentedObject:scanResultsBareFormat];
             [mapMenu setSubmenu:NULL forItem:correctLocationItem];
+            [correctLocationItem setTitle:@"Correct My Location"];
+            [correctLocationItem setEnabled:FALSE];
         }
 
-        [correctLocationItem setEnabled:TRUE];
     }
 }
 
