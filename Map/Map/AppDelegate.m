@@ -3,7 +3,7 @@
 //  Map
 //
 //  Created by Julian Ceipek on 5/19/12.
-//  Copyright (c) 2012 ohack. All rights reserved.
+//  Copyright (c) 2012-2013 ohack. All rights reserved.
 //
 
 #import "AppDelegate.h"
@@ -51,15 +51,90 @@
     [self scheduleRefresh];
     
     [mapMenu setDelegate:self];
+}
 
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+{
+    // Initialize Application
     [mapMenu setAutoenablesItems: FALSE];
     [correctLocationItem setEnabled:FALSE];
-
+    isOnline = TRUE;
+    menuIsOpen = FALSE;
+    [prefsPanel center];
 }
+
+#pragma mark -- Direct Menu Options --
+
+- (IBAction)openMap:(id)sender {
+    NSLog(@"Open Map");
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://map.olinapps.com/"]];
+}
+
+- (IBAction)manualRefresh:(id)sender {
+    NSLog(@"Manual Refresh");
+    [self initiateRefresh];
+}
+
+- (IBAction)toggleOnline:(id)sender {
+    NSLog(@"Toggle Online");
+    if (isOnline) {
+        [toggleOnlineItem setTitle:NSLocalizedString(@"Go Online", nil)];
+        [statusItem setImage:statusImageDisabled];
+        // TODO: Actually go offline
+        [refreshTimer invalidate];
+        [correctLocationItem setEnabled:FALSE];
+        [refreshLocationItem setEnabled:FALSE];
+    } else {
+        [toggleOnlineItem setTitle:NSLocalizedString(@"Go Offline", nil)];
+        [statusItem setImage:statusImage];
+        // TODO: Actually go online
+        [self scheduleRefresh];
+        [correctLocationItem setEnabled:TRUE];
+        [refreshLocationItem setEnabled:TRUE];
+    }
+    isOnline = !isOnline;
+}
+
+- (IBAction)quit:(id)sender {
+    // TODO: Cleanup
+    [NSApp terminate:self];
+}
+
+# pragma mark -- Correcting Positions --
+
+- (void)correctPositionWithMenuItem: (NSMenuItem *)item {
+    NSDictionary *bindAndScanResults = [item representedObject];
+    id bind = [bindAndScanResults objectForKey:@"bind"];
+    [locationViewController setLocationText:[[bind valueForKey:@"place"] valueForKey:@"alias"]];
+    NSDictionary *scanResultsBareFormat = [bindAndScanResults objectForKey:@"scanResultsBareFormat"];
+    [[NetworkManager theNetworkManager] postNewBindFromSignals: scanResultsBareFormat andBind: bind];
+    NSLog(@"Place from menu item: %@", [[bind valueForKey:@"place"] valueForKey:@"alias"]);
+}
+
+- (void)manuallyCorrectPositionWithMenuItem: (NSMenuItem *)item {
+    NSDictionary *scanResultsBareFormat = [item representedObject];
+    
+    NSString *sessionid = [[NSUserDefaults standardUserDefaults] objectForKey:@"sessionid"];
+    NSLog(@"Getting sessionid: %@\n", sessionid);
+    if (sessionid != NULL) {
+        NSMutableString *encodedSignals = [[NSMutableString alloc] init];
+        for (NSString *key in scanResultsBareFormat) {
+            NSString *signalStringToAppend = [NSString stringWithFormat:@"signals[%@]=%@&", key, [scanResultsBareFormat valueForKey:key]];
+            [encodedSignals appendString: [signalStringToAppend urlEncodeString]];
+        }
+        if ([encodedSignals length] > 0) {
+            [encodedSignals deleteCharactersInRange:NSMakeRange([encodedSignals length]-1, 1)];
+            NSString *path = [NSString stringWithFormat:@"http://map.olinapps.com/?action=place&sessionid=%@&%@", sessionid, encodedSignals];
+            [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:path]];
+        }
+    }
+}
+
+# pragma mark -- Performing Location Refreshes --
 
 - (void)scheduleRefresh {
     NSLog(@"Refresh Scheduled");
-
+    
     SEL sel = @selector(initiateRefresh);
     NSInvocation* inv = [NSInvocation invocationWithMethodSignature:
                          [self methodSignatureForSelector:sel]];
@@ -76,26 +151,6 @@
     }
 }
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{
-    // Insert code here to initialize your application
-    isOnline = TRUE;
-    menuIsOpen = FALSE;
-    [prefsPanel center];
-}
-
-// Open a web browser with the map's main address
-- (IBAction)openMap:(id)sender {
-    NSLog(@"Open Map");
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://map.olinapps.com/"]];
-}
-
-// Initiate a location scan manually
-- (IBAction)manualRefresh:(id)sender {
-    NSLog(@"Manual Refresh");
-    [self initiateRefresh];
-}
-
 - (void)initiateRefresh {
     NSLog(@"init refresh");
     [locationViewController startSpinner];
@@ -104,6 +159,11 @@
 
 - (void)performRefresh {
     [[NetworkManager theNetworkManager] scan];
+}
+
+- (void)changeRefreshInterval: (NSNotification *)notificationData {
+    [refreshTimer invalidate];
+    [self scheduleRefresh];
 }
 
 - (void)scanComplete: (NSNotification *)notificationData {
@@ -159,63 +219,7 @@
     }
 }
 
-- (void)correctPositionWithMenuItem: (NSMenuItem *)item {
-    NSDictionary *bindAndScanResults = [item representedObject];
-    id bind = [bindAndScanResults objectForKey:@"bind"];
-    [locationViewController setLocationText:[[bind valueForKey:@"place"] valueForKey:@"alias"]];
-    NSDictionary *scanResultsBareFormat = [bindAndScanResults objectForKey:@"scanResultsBareFormat"];
-    [[NetworkManager theNetworkManager] postNewBindFromSignals: scanResultsBareFormat andBind: bind];
-    NSLog(@"Place from menu item: %@", [[bind valueForKey:@"place"] valueForKey:@"alias"]);
-}
-
-- (void)manuallyCorrectPositionWithMenuItem: (NSMenuItem *)item {
-    NSDictionary *scanResultsBareFormat = [item representedObject];
-    
-    NSString *sessionid = [[NSUserDefaults standardUserDefaults] objectForKey:@"sessionid"];
-    NSLog(@"Getting sessionid: %@\n", sessionid);
-    if (sessionid != NULL) {
-        NSMutableString *encodedSignals = [[NSMutableString alloc] init];
-        for (NSString *key in scanResultsBareFormat) {
-            NSString *signalStringToAppend = [NSString stringWithFormat:@"signals[%@]=%@&", key, [scanResultsBareFormat valueForKey:key]];
-            [encodedSignals appendString: [signalStringToAppend urlEncodeString]];
-        }
-        if ([encodedSignals length] > 0) {
-            [encodedSignals deleteCharactersInRange:NSMakeRange([encodedSignals length]-1, 1)];
-            NSString *path = [NSString stringWithFormat:@"http://map.olinapps.com/?action=place&sessionid=%@&%@", sessionid, encodedSignals];
-            [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:path]];
-        }
-    }
-}
-
-- (void)changeRefreshInterval: (NSNotification *)notificationData {
-    [refreshTimer invalidate];
-    [self scheduleRefresh];
-}
-
-- (IBAction)toggleOnline:(id)sender {
-    NSLog(@"Toggle Online");
-    if (isOnline) {
-        [toggleOnlineItem setTitle:NSLocalizedString(@"Go Online", nil)];
-        [statusItem setImage:statusImageDisabled];
-        // TODO: Actually go offline
-        [refreshTimer invalidate];
-        [correctLocationItem setEnabled:FALSE];
-        [refreshLocationItem setEnabled:FALSE];
-    } else {
-        [toggleOnlineItem setTitle:NSLocalizedString(@"Go Offline", nil)];
-        [statusItem setImage:statusImage];
-        // TODO: Actually go online
-        [self scheduleRefresh];
-        [correctLocationItem setEnabled:TRUE];
-        [refreshLocationItem setEnabled:TRUE];
-    }
-    isOnline = !isOnline;
-}
-
-- (IBAction)quit:(id)sender {
-    // TODO: Cleanup
-    [NSApp terminate:self];
-}
+# pragma mark -- NSMenuDelegate methods --
 
 - (void)menuWillOpen:(NSMenu *)menu {
     NSLog(@"Menu about to open!");

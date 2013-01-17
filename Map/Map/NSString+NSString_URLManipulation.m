@@ -3,7 +3,7 @@
 //  Map
 //
 //  Created by Julian Ceipek on 6/15/12.
-//  Copyright (c) 2012 ohack. All rights reserved.
+//  Copyright (c) 2012-2013 ohack. All rights reserved.
 //
 
 #import "NSString+NSString_URLManipulation.h"

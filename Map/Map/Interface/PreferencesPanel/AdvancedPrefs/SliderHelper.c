@@ -3,7 +3,7 @@
 //  Map
 //
 //  Created by Julian Ceipek on 5/26/12.
-//  Copyright (c) 2012 ohack. All rights reserved.
+//  Copyright (c) 2012-2013 ohack. All rights reserved.
 //
 
 #include <stdlib.h>
