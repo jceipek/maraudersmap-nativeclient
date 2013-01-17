@@ -17,6 +17,7 @@
     IBOutlet NSMenu *mapMenu;
     IBOutlet NSMenuItem *locationIndicator;
     IBOutlet NSMenuItem *toggleOnlineItem;
+    IBOutlet NSMenuItem *correctLocationItem;
     IBOutlet PreferencesPanel *prefsPanel;
     
     NSStatusItem *statusItem;
@@ -43,6 +44,7 @@
 - (IBAction)correctLocation:(id)sender;
 - (IBAction)toggleOnline:(id)sender;
 - (IBAction)quit:(id)sender;
+- (void)correctPositionWithMenuItem: (NSMenuItem *)item;
 
 - (void)scheduleRefresh;
 

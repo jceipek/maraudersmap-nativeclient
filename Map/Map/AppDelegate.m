@@ -81,7 +81,7 @@
 // Open a web browser with the map's main address
 - (IBAction)openMap:(id)sender {
     NSLog(@"Open Map");
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://map.fwol.in"]];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://map.olinapps.com/"]];
 }
 
 // Initiate a location scan manually
@@ -105,17 +105,36 @@
     NSLog(@"Scan completed");
     if (theData != nil) {
         NSArray *nearestBinds = [theData objectForKey:@"nearestBinds"];
+        NSDictionary *scanResults = [theData objectForKey:@"scanResults"];
         if ([nearestBinds count] > 0) {
             id firstBind = [nearestBinds objectAtIndex:0];
             [locationViewController setLocationText:[[firstBind valueForKey:@"place"] valueForKey:@"alias"]];
+            [[NetworkManager theNetworkManager] postToPositionTheBindWithId:[firstBind valueForKey:@"id"]];
         } else {
             [locationViewController setLocationText:@"Unknown Location"];
         }
         [locationViewController stopSpinner];
+        NSMenu *submenu = [[NSMenu alloc] init];
         for (id bind in nearestBinds) {
             NSLog(@"Place: %@", (NSString *)[bind valueForKey:@"place"]);
+            NSMenuItem *correctPositionMenuItem = [[NSMenuItem alloc] initWithTitle:[[bind valueForKey:@"place"] valueForKey:@"alias"] action:@selector(correctPositionWithMenuItem:) keyEquivalent:@""];
+            NSDictionary *bindAndScanResults = [NSDictionary dictionaryWithObjectsAndKeys:
+                                             scanResults, @"scanResults",
+                                             bind, @"bind",
+                                             nil];
+            [correctPositionMenuItem setRepresentedObject:bindAndScanResults];
+            [submenu addItem:correctPositionMenuItem];
         }
+        [mapMenu setSubmenu:submenu forItem:correctLocationItem];
     }
+}
+
+- (void)correctPositionWithMenuItem: (NSMenuItem *)item {
+    NSDictionary *bindAndScanResults = [item representedObject];
+    id bind = [bindAndScanResults objectForKey:@"bind"];
+    NSDictionary *scanResults = [bindAndScanResults objectForKey:@"scanResults"];
+    [[NetworkManager theNetworkManager] postNewBindFromSignals: scanResults andBind: bind];
+    NSLog(@"Place from menu item: %@", [[bind valueForKey:@"place"] valueForKey:@"alias"]);
 }
 
 - (void)changeRefreshInterval: (NSNotification *)notificationData {
@@ -125,7 +144,8 @@
 
 - (IBAction)correctLocation:(id)sender {
     NSLog(@"Correct Location");
-    [[NetworkManager theNetworkManager] getLocations];
+    //[[NetworkManager theNetworkManager] getLocations];
+    // TODO: Implement
 }
 
 - (IBAction)toggleOnline:(id)sender {

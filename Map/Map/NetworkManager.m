@@ -119,8 +119,42 @@ typedef void (^deferredMethodWithString)(NSString *);
                                                  NSLog(@"Get places fail: %@\n", error);
                                                  //TODO: Handle special cases like unauthorized, not being connected to the internet, etc...
                                              }];
-    
+        
         [[[NSOperationQueue alloc] init] addOperation:operation];
+    }
+}
+
+-(void)postToPositionTheBindWithId: (NSString*)theId {
+    NSLog(@"POSTING ID: %@", theId);
+    NSString *sessionid = [[NSUserDefaults standardUserDefaults] objectForKey:@"sessionid"];
+    NSLog(@"Getting sessionid: %@\n", sessionid);
+    if (sessionid != NULL) {
+        NSString *userid = [[NSUserDefaults standardUserDefaults] objectForKey:@"userid"];
+        NSLog(@"Getting userid: %@\n", userid);
+        
+        NSString *positionPath = [[NSString alloc] initWithFormat:@"/api/positions/?sessionid=%@", sessionid];
+        
+        NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                                theId, @"bind",
+                                nil];
+        
+        NSLog(@"%@",positionPath);
+        NSURLRequest *addUserRequest = [mapClient requestWithMethod:@"POST" path:positionPath parameters:params];
+        
+        NSLog(@"Actual request...\n");
+        AFJSONRequestOperation *postPositionOperation = [AFJSONRequestOperation
+                                                         JSONRequestOperationWithRequest:addUserRequest
+                                                         success:^(NSURLRequest *addUserRequest, NSHTTPURLResponse *addUserResponse, id JSON) {
+                                                             NSLog(@"Succeeded in posting position\n");
+                                                             NSLog(@"Position: %@", JSON);
+                                                         } failure:^(NSURLRequest *addUserRequest, NSHTTPURLResponse *addUserResponse, NSError *error, id JSON) {
+                                                             NSLog(@"Unable to post position!\n");
+                                                             NSLog(@"Error! %@\n", error);
+                                                             
+                                                             //TODO: Handle special cases like unauthorized, not being connected to the internet, etc...
+                                                         }];
+        
+        [[[NSOperationQueue alloc] init] addOperation:postPositionOperation];
     }
 }
 
@@ -145,12 +179,53 @@ typedef void (^deferredMethodWithString)(NSString *);
                                                  NSLog(@"Get place fail: %@\n", error);
                                                  //TODO: Handle special cases like unauthorized, not being connected to the internet, etc...
                                              }];
-    
+        
         [[[NSOperationQueue alloc] init] addOperation:operation];
     }
 }
 
--(void)getLocations {
+-(void)postNewBindFromSignals: (NSDictionary *)signals andBind: (id) bind {
+    id place = [bind objectForKey:@"place"];
+    NSString *placeid;
+    if ([place objectForKey:@"id"] != nil) {
+        placeid = [place objectForKey:@"id"];
+    } else {
+        placeid = place;
+    }
+    id x = [bind objectForKey:@"x"];
+    id y = [bind objectForKey:@"y"];
+
+    NSString *sessionid = [[NSUserDefaults standardUserDefaults] objectForKey:@"sessionid"];
+    NSLog(@"Getting sessionid: %@\n", sessionid);
+    if (sessionid != NULL) {
+        
+        NSString *bindPath = [[NSString alloc] initWithFormat:@"/api/binds/?sessionid=%@", sessionid];
+        
+        NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                                x, @"x",
+                                y, @"y",
+                                placeid, @"place",
+                                signals, @"signals",
+                                nil];
+        
+        NSLog(@"%@",bindPath);
+        NSURLRequest *addUserRequest = [mapClient requestWithMethod:@"POST" path:bindPath parameters:params];
+        
+        NSLog(@"Actual request...\n");
+        AFJSONRequestOperation *postBindOperation = [AFJSONRequestOperation
+                                                         JSONRequestOperationWithRequest:addUserRequest
+                                                         success:^(NSURLRequest *addUserRequest, NSHTTPURLResponse *addUserResponse, id JSON) {
+                                                             NSLog(@"Succeeded in posting bind\n");
+                                                             NSLog(@"Position: %@", JSON);
+                                                         } failure:^(NSURLRequest *addUserRequest, NSHTTPURLResponse *addUserResponse, NSError *error, id JSON) {
+                                                             NSLog(@"Unable to post bind!\n");
+                                                             NSLog(@"Error! %@\n", error);
+                                                             
+                                                             //TODO: Handle special cases like unauthorized, not being connected to the internet, etc...
+                                                         }];
+        
+        [[[NSOperationQueue alloc] init] addOperation:postBindOperation];
+    }
     
 }
 
@@ -159,7 +234,8 @@ typedef void (^deferredMethodWithString)(NSString *);
     NSLog(@"Getting sessionid: %@\n", sessionid);
     
     if (sessionid != NULL) {
-        NSString *pathWithQueryString = [[[NSString alloc] initWithFormat: @"/api/binds?sessionid=%@", sessionid] addQueryStringToUrlStringWithDictionary:[wifiScanner scan]];
+        NSDictionary *scanResults = [wifiScanner scan];
+        NSString *pathWithQueryString = [[[NSString alloc] initWithFormat: @"/api/binds?sessionid=%@", sessionid] addQueryStringToUrlStringWithDictionary:scanResults];
         
         NSLog(@"%@", pathWithQueryString);
         
@@ -172,7 +248,10 @@ typedef void (^deferredMethodWithString)(NSString *);
                                                  
                                                  NSLog(@"Nearest: %@\n", nearestBinds);
                                                  
-                                                 NSDictionary *dataDict = [NSDictionary dictionaryWithObject:nearestBinds forKey:@"nearestBinds"];
+                                                 NSDictionary *dataDict = [NSDictionary dictionaryWithObjectsAndKeys:
+                                                                           nearestBinds, @"nearestBinds",
+                                                                           scanResults, @"scanResults",
+                                                                           nil];
                                                  [[NSNotificationCenter defaultCenter] postNotificationName:@"scanComplete" object:self userInfo:dataDict];
                                                  
                                              } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {

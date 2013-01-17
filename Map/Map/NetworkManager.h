@@ -23,7 +23,8 @@
 + (NetworkManager *)theNetworkManager;
 -(void)authenticateWithUsername: (NSString*)username password: (NSString*)password;
 -(void)createUser;
--(void)getLocations;
 -(void)scan;
+-(void)postToPositionTheBindWithId: (NSString*)theId;
+-(void)postNewBindFromSignals: (NSDictionary *)signals andBind: (id) bind;
 
 @end
