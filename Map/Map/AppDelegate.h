@@ -18,6 +18,7 @@
     IBOutlet NSMenuItem *locationIndicator;
     IBOutlet NSMenuItem *toggleOnlineItem;
     IBOutlet NSMenuItem *correctLocationItem;
+    IBOutlet NSMenuItem *refreshLocationItem;
     IBOutlet PreferencesPanel *prefsPanel;
     
     NSStatusItem *statusItem;
@@ -41,10 +42,10 @@
 - (void)changeRefreshInterval: (NSNotification *)notificationData;
 - (void)initiateRefresh;
 - (void)performRefresh;
-- (IBAction)correctLocation:(id)sender;
 - (IBAction)toggleOnline:(id)sender;
 - (IBAction)quit:(id)sender;
 - (void)correctPositionWithMenuItem: (NSMenuItem *)item;
+- (void)manuallyCorrectPositionWithMenuItem: (NSMenuItem *)item;
 
 - (void)scheduleRefresh;
 

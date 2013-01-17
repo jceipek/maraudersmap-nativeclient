@@ -11,6 +11,8 @@
 #import <Foundation/Foundation.h>
 #import <CoreWLAN/CoreWLAN.h>
 
+#import "NSString+NSString_URLManipulation.h"
+
 @implementation AppDelegate
 
 - (void) awakeFromNib {
@@ -49,6 +51,10 @@
     [self scheduleRefresh];
     
     [mapMenu setDelegate:self];
+
+    [mapMenu setAutoenablesItems: FALSE];
+    [correctLocationItem setEnabled:FALSE];
+
 }
 
 - (void)scheduleRefresh {
@@ -124,8 +130,24 @@
                                              nil];
             [correctPositionMenuItem setRepresentedObject:bindAndScanResults];
             [submenu addItem:correctPositionMenuItem];
+            
         }
-        [mapMenu setSubmenu:submenu forItem:correctLocationItem];
+        if ([nearestBinds count] > 0) {
+            NSMenuItem *divider = [NSMenuItem separatorItem];
+            [submenu addItem:divider];
+            NSMenuItem *manualCorrectionItem = [[NSMenuItem alloc] initWithTitle:@"I'm Somewhere Else!" action:@selector(manuallyCorrectPositionWithMenuItem:) keyEquivalent:@""];
+            [manualCorrectionItem setRepresentedObject:scanResultsBareFormat];
+            [submenu addItem:manualCorrectionItem];
+            [mapMenu setSubmenu:submenu forItem:correctLocationItem];
+            [correctLocationItem setTitle:@"Correct My Location"];
+        } else {
+            [correctLocationItem setTitle:@"I'm Somewhere Else!"];
+            [correctLocationItem setAction:@selector(manuallyCorrectPositionWithMenuItem:)];
+            [correctLocationItem setRepresentedObject:scanResultsBareFormat];
+            [mapMenu setSubmenu:NULL forItem:correctLocationItem];
+        }
+
+        [correctLocationItem setEnabled:TRUE];
     }
 }
 
@@ -138,15 +160,28 @@
     NSLog(@"Place from menu item: %@", [[bind valueForKey:@"place"] valueForKey:@"alias"]);
 }
 
+- (void)manuallyCorrectPositionWithMenuItem: (NSMenuItem *)item {
+    NSDictionary *scanResultsBareFormat = [item representedObject];
+    
+    NSString *sessionid = [[NSUserDefaults standardUserDefaults] objectForKey:@"sessionid"];
+    NSLog(@"Getting sessionid: %@\n", sessionid);
+    if (sessionid != NULL) {
+        NSMutableString *encodedSignals = [[NSMutableString alloc] init];
+        for (NSString *key in scanResultsBareFormat) {
+            NSString *signalStringToAppend = [NSString stringWithFormat:@"signals[%@]=%@&", key, [scanResultsBareFormat valueForKey:key]];
+            [encodedSignals appendString: [signalStringToAppend urlEncodeString]];
+        }
+        if ([encodedSignals length] > 0) {
+            [encodedSignals deleteCharactersInRange:NSMakeRange([encodedSignals length]-1, 1)];
+            NSString *path = [NSString stringWithFormat:@"http://map.olinapps.com/?action=place&sessionid=%@&%@", sessionid, encodedSignals];
+            [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:path]];
+        }
+    }
+}
+
 - (void)changeRefreshInterval: (NSNotification *)notificationData {
     [refreshTimer invalidate];
     [self scheduleRefresh];
-}
-
-- (IBAction)correctLocation:(id)sender {
-    NSLog(@"Correct Location");
-    //[[NetworkManager theNetworkManager] getLocations];
-    // TODO: Implement
 }
 
 - (IBAction)toggleOnline:(id)sender {
@@ -156,11 +191,15 @@
         [statusItem setImage:statusImageDisabled];
         // TODO: Actually go offline
         [refreshTimer invalidate];
+        [correctLocationItem setEnabled:FALSE];
+        [refreshLocationItem setEnabled:FALSE];
     } else {
         [toggleOnlineItem setTitle:NSLocalizedString(@"Go Offline", nil)];
         [statusItem setImage:statusImage];
         // TODO: Actually go online
         [self scheduleRefresh];
+        [correctLocationItem setEnabled:TRUE];
+        [refreshLocationItem setEnabled:TRUE];
     }
     isOnline = !isOnline;
 }
