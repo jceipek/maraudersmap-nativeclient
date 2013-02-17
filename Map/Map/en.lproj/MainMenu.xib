@@ -3,12 +3,12 @@
 	<data>
 		<int key="IBDocument.SystemTarget">1080</int>
 		<string key="IBDocument.SystemVersion">12C60</string>
-		<string key="IBDocument.InterfaceBuilderVersion">2844</string>
+		<string key="IBDocument.InterfaceBuilderVersion">3084</string>
 		<string key="IBDocument.AppKitVersion">1187.34</string>
 		<string key="IBDocument.HIToolboxVersion">625.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">2844</string>
+			<string key="NS.object.0">3084</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>NSCustomObject</string>
@@ -175,13 +175,13 @@
 							<object class="NSMutableString" key="NSToolbarItemIdentifier">
 								<characters key="NS.bytes">692A8DB3-CBCB-4AD6-9612-9FF564D9996E</characters>
 							</object>
-							<string key="NSToolbarItemLabel">General</string>
-							<string key="NSToolbarItemPaletteLabel">General</string>
+							<string key="NSToolbarItemLabel">Account</string>
+							<string key="NSToolbarItemPaletteLabel">Account</string>
 							<string key="NSToolbarItemToolTip">General Map Settings</string>
 							<nil key="NSToolbarItemView"/>
 							<object class="NSCustomResource" key="NSToolbarItemImage">
 								<string key="NSClassName">NSImage</string>
-								<string key="NSResourceName">NSPreferencesGeneral</string>
+								<string key="NSResourceName">NSUser</string>
 							</object>
 							<nil key="NSToolbarItemTarget"/>
 							<nil key="NSToolbarItemAction"/>
@@ -197,8 +197,8 @@
 							<object class="NSMutableString" key="NSToolbarItemIdentifier">
 								<characters key="NS.bytes">C0803BCB-6775-4541-965B-4659136020B1</characters>
 							</object>
-							<string key="NSToolbarItemLabel">Advanced</string>
-							<string key="NSToolbarItemPaletteLabel">Advanced</string>
+							<string key="NSToolbarItemLabel">Settings</string>
+							<string key="NSToolbarItemPaletteLabel">Settings</string>
 							<string key="NSToolbarItemToolTip">Advanced Map Settings</string>
 							<nil key="NSToolbarItemView"/>
 							<object class="NSCustomResource" key="NSToolbarItemImage">
@@ -220,7 +220,7 @@
 						<reference ref="889522501"/>
 						<reference ref="365637350"/>
 					</array>
-					<array key="NSToolbarIBDefaultItems">
+					<array class="NSMutableArray" key="NSToolbarIBDefaultItems">
 						<reference ref="889522501"/>
 						<reference ref="365637350"/>
 					</array>
@@ -228,9 +228,12 @@
 				</object>
 				<nil key="NSUserInterfaceItemIdentifier"/>
 				<object class="NSView" key="NSWindowView" id="24687046">
-					<nil key="NSNextResponder"/>
+					<reference key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<string key="NSFrameSize">{469, 289}</string>
+					<reference key="NSSuperview"/>
+					<reference key="NSWindow"/>
+					<reference key="NSNextKeyView"/>
 					<string key="NSReuseIdentifierKey">_NS:207</string>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1680, 1028}}</string>
@@ -545,7 +548,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">610</int>
+			<int key="maxID">611</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -666,7 +669,7 @@
 			<string key="NSAdvanced">{32, 32}</string>
 			<string key="NSMenuCheckmark">{11, 11}</string>
 			<string key="NSMenuMixedState">{10, 3}</string>
-			<string key="NSPreferencesGeneral">{32, 32}</string>
+			<string key="NSUser">{32, 32}</string>
 		</dictionary>
 	</data>
 </archive>

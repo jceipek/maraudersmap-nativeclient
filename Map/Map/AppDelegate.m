@@ -67,7 +67,15 @@
 
 - (IBAction)openMap:(id)sender {
     NSLog(@"Open Map");
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://map.olinapps.com/"]];
+    NSString *sessionid = [[NSUserDefaults standardUserDefaults] objectForKey:@"sessionid"];
+    NSString *mapURLString;
+    NSLog(@"Getting sessionid: %@\n", sessionid);
+    if (sessionid != NULL) {
+        mapURLString = [NSString stringWithFormat: @"http://map.olinapps.com/?sessionid=%@", sessionid];
+    } else {
+        mapURLString = @"http://map.olinapps.com";
+    }
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:mapURLString]];
 }
 
 - (IBAction)manualRefresh:(id)sender {
@@ -124,7 +132,7 @@
         }
         if ([encodedSignals length] > 0) {
             [encodedSignals deleteCharactersInRange:NSMakeRange([encodedSignals length]-1, 1)];
-            NSString *path = [NSString stringWithFormat:@"http://map.olinapps.com/?action=place&sessionid=%@&%@", sessionid, encodedSignals];
+            NSString *path = [NSString stringWithFormat:@"http://map.olinapps.com/ui/index.html?action=place&sessionid=%@&%@", sessionid, encodedSignals];
             [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:path]];
         }
     }
@@ -146,7 +154,7 @@
         refreshTimer = [NSTimer timerWithTimeInterval:[refreshInterval floatValue] invocation:inv repeats:YES];
         [[NSRunLoop currentRunLoop] addTimer:refreshTimer forMode:NSRunLoopCommonModes];
     } else {
-        refreshTimer = [NSTimer timerWithTimeInterval:10.0 invocation:inv repeats:YES]; // Default is once every 10 seconds
+        refreshTimer = [NSTimer timerWithTimeInterval:120.0 invocation:inv repeats:YES]; // Default is once every 2 minutes
         [[NSRunLoop currentRunLoop] addTimer:refreshTimer forMode:NSRunLoopCommonModes];
     }
 }

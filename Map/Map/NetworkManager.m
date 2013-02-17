@@ -50,14 +50,15 @@ typedef void (^deferredMethodWithString)(NSString *);
     AFJSONRequestOperation *operation = [AFJSONRequestOperation
                                          JSONRequestOperationWithRequest:request
                                          success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-                                             NSDictionary *dataDict = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:TRUE] forKey:@"Success"];
-                                             [[NSNotificationCenter defaultCenter] postNotificationName:@"authFinished" object:self userInfo:dataDict];
                                              NSString *sessionid = [JSON valueForKey:@"sessionid"];
                                              NSString *userid = [[JSON valueForKey:@"user"] valueForKey:@"id"];
                                              NSLog(@"Storing Sessionid: %@", sessionid);
                                              [[NSUserDefaults standardUserDefaults] setObject:sessionid forKey:@"sessionid"];
                                              [[NSUserDefaults standardUserDefaults] setObject:username forKey:@"username"];
                                              [[NSUserDefaults standardUserDefaults] setObject:userid forKey:@"userid"];
+                                             
+                                             NSDictionary *dataDict = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:TRUE] forKey:@"Success"];
+                                             [[NSNotificationCenter defaultCenter] postNotificationName:@"authFinished" object:self userInfo:dataDict];
                                              
                                          } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
                                              NSLog(@"Auth Fail\n");
@@ -76,7 +77,7 @@ typedef void (^deferredMethodWithString)(NSString *);
     if (sessionid != NULL) {
         NSString *userid = [[NSUserDefaults standardUserDefaults] objectForKey:@"userid"];
         NSLog(@"Getting userid: %@\n", userid);
-        NSString *usernamePath = [[NSString alloc] initWithFormat:@"/api/users/%@?sessionid=%@", userid, sessionid];
+        NSString *usernamePath = [[NSString alloc] initWithFormat:@"/api/users/%@/?sessionid=%@", userid, sessionid];
         
         
         NSString *mePath = [[NSString alloc] initWithFormat:@"/api/me?sessionid=%@", sessionid];
@@ -185,7 +186,7 @@ typedef void (^deferredMethodWithString)(NSString *);
     NSLog(@"Getting sessionid: %@\n", sessionid);
     
     if (sessionid != NULL) {
-        NSString *pathWithQueryString = [[NSString alloc] initWithFormat: @"/api/places/%@?sessionid=%@", theId, sessionid];
+        NSString *pathWithQueryString = [[NSString alloc] initWithFormat: @"/api/places/%@/?sessionid=%@", theId, sessionid];
         NSLog(@"%@", pathWithQueryString);
         
         NSURLRequest *request = [mapClient requestWithMethod:@"GET" path:pathWithQueryString parameters:nil];

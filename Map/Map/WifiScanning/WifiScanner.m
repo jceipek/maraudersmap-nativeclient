@@ -32,8 +32,8 @@
 
     return scanResults;
     
-    /* // FOR TESTING //
-     NSMutableSet *fakeSignals = [[NSMutableSet alloc] initWithObjects:
+     // FOR TESTING //
+     /*NSMutableSet *fakeSignals = [[NSMutableSet alloc] initWithObjects:
      [FakeScanResult fakeScanResultWithRSSI:(44.0-100.0) andBSSID:@"00:20:d8:2d:85:41"],
      [FakeScanResult fakeScanResultWithRSSI:(8.6-100.0) andBSSID:@"00:0b:0e:38:34:01"],
      [FakeScanResult fakeScanResultWithRSSI:(8.66666666667-100.0) andBSSID:@"00:0b:0e:38:34:01"],
@@ -49,8 +49,8 @@
      [FakeScanResult fakeScanResultWithRSSI:(18-100.0) andBSSID:@"00:20:d8:2d:b3:c0"],
      [FakeScanResult fakeScanResultWithRSSI:(21-100.0) andBSSID:@"00:20:d8:2d:b6:80"],
      [FakeScanResult fakeScanResultWithRSSI:(8.66666666667-100.0) andBSSID:@"00:20:d8:2d:b6:81"], nil];
-     return fakeSignals;
-     */
+     return fakeSignals;*/
+     
 }
 
 @end

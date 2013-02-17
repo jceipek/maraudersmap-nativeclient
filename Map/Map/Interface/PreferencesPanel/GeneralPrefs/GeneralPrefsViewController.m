@@ -15,6 +15,10 @@
 @synthesize passwordField;
 @synthesize authSpinner;
 @synthesize invalidPasswordLabel;
+@synthesize authedView;
+@synthesize notAuthedView;
+@synthesize sessionIDLabel;
+@synthesize userIDLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,6 +31,31 @@
                                                    object:nil];
     }
     return self;
+}
+
+- (void)loadView {
+    [super loadView];
+    [self displayAccountData];
+}
+
+- (void)displayAccountData {
+    NSString *sessionid = [[NSUserDefaults standardUserDefaults] objectForKey:@"sessionid"];
+    NSLog(@"SILLY SESSIONID: %@", sessionid);
+    if (sessionid != NULL) {
+        [notAuthedView setHidden:TRUE];
+        [authedView setHidden:FALSE];
+        NSString *userid = [[NSUserDefaults standardUserDefaults] objectForKey:@"userid"];
+        [userIDLabel setStringValue:userid];
+        [sessionIDLabel setStringValue:sessionid];
+    } else {
+        [notAuthedView setHidden:FALSE];
+        [authedView setHidden:TRUE];
+    }
+    
+    NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
+    if (username != NULL) {
+        [usernameField setStringValue:username];
+    }
 }
 
 - (IBAction)authenticateClicked: (id)sender {
@@ -44,6 +73,7 @@
             NSLog(@"Succeeded!");
             [invalidPasswordLabel setHidden:TRUE];
             [[NetworkManager theNetworkManager] createUser];
+            [self displayAccountData];
         } else {
             NSLog(@"Failed!");
             [invalidPasswordLabel setHidden:FALSE];
