@@ -8,7 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 #import <CoreWLAN/CoreWLAN.h>
+#import <ServiceManagement/ServiceManagement.h>
 
+#import "StartAtLoginController.h"
 #import "LocationViewController.h"
 #import "PreferencesPanel.h"
 #import "NetworkManager.h"

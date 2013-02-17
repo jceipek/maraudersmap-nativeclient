@@ -8,14 +8,17 @@
 
 #import <Cocoa/Cocoa.h>
 #import "SliderHelper.h"
+#import "StartAtLoginController.h"
 
 @interface AdvancedPrefsViewController : NSViewController {
 
 }
 
+- (IBAction)checkboxChanged:(id)sender;
 - (IBAction)sliderMoved:(id)sender;
 - (void)sliderDoneMoving:(id)sender;
 
+@property (nonatomic, strong) IBOutlet NSButton *launchOnStartupCheckbox;
 @property (nonatomic, strong) IBOutlet NSTextField *frequencyIndicator;
 @property (nonatomic, strong) IBOutlet NSSlider *updateFrequencySlider;
 

@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'MapHelper' target in the 'MapHelper' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif

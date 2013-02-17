@@ -7,11 +7,10 @@
 //
 
 #import "AppDelegate.h"
-
 #import <Foundation/Foundation.h>
-#import <CoreWLAN/CoreWLAN.h>
 
 #import "NSString+NSString_URLManipulation.h"
+
 
 @implementation AppDelegate
 
@@ -51,6 +50,17 @@
     [self scheduleRefresh];
     
     [mapMenu setDelegate:self];
+    
+    
+
+    StartAtLoginController *loginController = [[StartAtLoginController alloc] initWithIdentifier:@"com.olinapps.MapHelper"];
+    NSNumber *launchOnStartup = [[NSUserDefaults standardUserDefaults] objectForKey:@"launchOnStartup"];
+    if (launchOnStartup == NULL) {
+        if (![loginController startAtLogin]) {
+            loginController.startAtLogin = YES;
+        }
+    }
+
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification

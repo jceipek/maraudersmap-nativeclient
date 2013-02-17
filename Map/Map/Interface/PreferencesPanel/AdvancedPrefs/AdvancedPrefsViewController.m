@@ -14,6 +14,7 @@ float *secondIntervals;
 
 @synthesize frequencyIndicator;
 @synthesize updateFrequencySlider;
+@synthesize launchOnStartupCheckbox;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -43,6 +44,28 @@ float *secondIntervals;
     NSNumber *refreshSliderPos = [[NSUserDefaults standardUserDefaults] objectForKey:@"refreshSliderPos"];
     if (refreshSliderPos != NULL) {
         [updateFrequencySlider setFloatValue:[refreshSliderPos floatValue]];
+    }
+
+    NSNumber *launchOnStartup = [[NSUserDefaults standardUserDefaults] objectForKey:@"launchOnStartup"];
+    if (launchOnStartup != NULL) {
+        [launchOnStartupCheckbox setState:[launchOnStartup integerValue]];
+    } else {
+        [launchOnStartupCheckbox setState:TRUE];
+    }
+}
+
+- (IBAction)checkboxChanged:(id)sender {
+    NSNumber *launchOnStartup = [NSNumber numberWithInteger:[launchOnStartupCheckbox state]];
+    [[NSUserDefaults standardUserDefaults] setObject:launchOnStartup forKey:@"launchOnStartup"];
+    StartAtLoginController *loginController = [[StartAtLoginController alloc] initWithIdentifier:@"com.olinapps.MapHelper"];
+    if ([launchOnStartup boolValue]) {
+        if (![loginController startAtLogin]) {
+            loginController.startAtLogin = YES;
+        }
+    } else {
+        if ([loginController startAtLogin]) {
+            loginController.startAtLogin = NO;
+        }
     }
 }
 

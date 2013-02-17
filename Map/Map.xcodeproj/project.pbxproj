@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		2707CC801572B91D00AEFA93 /* CoreWLAN.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2707CC7F1572B91D00AEFA93 /* CoreWLAN.framework */; };
+		2738615116D0791500E794F3 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2738615016D0791400E794F3 /* ServiceManagement.framework */; };
+		2738615616D07D6600E794F3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 2738615316D07D6600E794F3 /* README.md */; };
+		2738615716D07D6600E794F3 /* StartAtLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2738615516D07D6600E794F3 /* StartAtLoginController.m */; };
+		273861A516D0852500E794F3 /* MapHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 273861A416D084E900E794F3 /* MapHelper.app */; };
 		27429578158199DD004EE5C2 /* WifiScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 27429577158199DD004EE5C2 /* WifiScanner.m */; };
 		2742958A15819AC9004EE5C2 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2742957B15819AC9004EE5C2 /* LocationViewController.m */; };
 		2742958B15819AC9004EE5C2 /* LocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2742957C15819AC9004EE5C2 /* LocationViewController.xib */; };
@@ -49,6 +53,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		273861A316D084E900E794F3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2738619F16D084E800E794F3 /* MapHelper.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2738617F16D084E800E794F3;
+			remoteInfo = MapHelper;
+		};
 		27A3E5FF156852B3009FB65C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 27A3E5D1156852B1009FB65C /* Project object */;
@@ -62,9 +73,10 @@
 		2706C829158854FC0012832F /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = Web;
-			dstSubfolderSpec = 7;
+			dstPath = Contents/Library/LoginItems;
+			dstSubfolderSpec = 1;
 			files = (
+				273861A516D0852500E794F3 /* MapHelper.app in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +84,11 @@
 
 /* Begin PBXFileReference section */
 		2707CC7F1572B91D00AEFA93 /* CoreWLAN.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreWLAN.framework; path = System/Library/Frameworks/CoreWLAN.framework; sourceTree = SDKROOT; };
+		2738615016D0791400E794F3 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
+		2738615316D07D6600E794F3 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		2738615416D07D6600E794F3 /* StartAtLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartAtLoginController.h; sourceTree = "<group>"; };
+		2738615516D07D6600E794F3 /* StartAtLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartAtLoginController.m; sourceTree = "<group>"; };
+		2738619F16D084E800E794F3 /* MapHelper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MapHelper.xcodeproj; path = MapHelper/MapHelper.xcodeproj; sourceTree = "<group>"; };
 		27429576158199DD004EE5C2 /* WifiScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WifiScanner.h; sourceTree = "<group>"; };
 		27429577158199DD004EE5C2 /* WifiScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WifiScanner.m; sourceTree = "<group>"; };
 		2742957A15819AC9004EE5C2 /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
@@ -152,6 +169,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2738615116D0791500E794F3 /* ServiceManagement.framework in Frameworks */,
 				276DBC5E1654169C00AF5659 /* SystemConfiguration.framework in Frameworks */,
 				27988759163E746100F84D51 /* Foundation.framework in Frameworks */,
 				2707CC801572B91D00AEFA93 /* CoreWLAN.framework in Frameworks */,
@@ -171,6 +189,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2738615216D07D6600E794F3 /* StartAtLoginController */ = {
+			isa = PBXGroup;
+			children = (
+				2738615316D07D6600E794F3 /* README.md */,
+				2738615416D07D6600E794F3 /* StartAtLoginController.h */,
+				2738615516D07D6600E794F3 /* StartAtLoginController.m */,
+			);
+			path = StartAtLoginController;
+			sourceTree = "<group>";
+		};
+		273861A016D084E800E794F3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				273861A416D084E900E794F3 /* MapHelper.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		27429575158199DD004EE5C2 /* WifiScanning */ = {
 			isa = PBXGroup;
 			children = (
@@ -236,6 +272,7 @@
 		278739B115856AAF00DDC24C /* 3rdPartyLibs */ = {
 			isa = PBXGroup;
 			children = (
+				2738615216D07D6600E794F3 /* StartAtLoginController */,
 				27B47CDA16D05055000853E5 /* AFNetworking */,
 				278739F715856AD200DDC24C /* OSXBoilerplate */,
 			);
@@ -254,6 +291,8 @@
 		27A3E5CF156852B1009FB65C = {
 			isa = PBXGroup;
 			children = (
+				2738619F16D084E800E794F3 /* MapHelper.xcodeproj */,
+				2738615016D0791400E794F3 /* ServiceManagement.framework */,
 				27A3E5E4156852B2009FB65C /* Map */,
 				27A3E601156852B3009FB65C /* MapTests */,
 				27DDE19515819C0C00FB2626 /* Frameworks */,
@@ -438,6 +477,12 @@
 			mainGroup = 27A3E5CF156852B1009FB65C;
 			productRefGroup = 27A3E5DB156852B2009FB65C /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 273861A016D084E800E794F3 /* Products */;
+					ProjectRef = 2738619F16D084E800E794F3 /* MapHelper.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				27A3E5D9156852B2009FB65C /* Map */,
@@ -445,6 +490,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		273861A416D084E900E794F3 /* MapHelper.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = MapHelper.app;
+			remoteRef = 273861A316D084E900E794F3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		27A3E5D8156852B2009FB65C /* Resources */ = {
@@ -461,6 +516,7 @@
 				2742958B15819AC9004EE5C2 /* LocationViewController.xib in Resources */,
 				2742958D15819AC9004EE5C2 /* AdvancedPrefsView.xib in Resources */,
 				2742959015819AC9004EE5C2 /* GeneralPrefsView.xib in Resources */,
+				2738615616D07D6600E794F3 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,6 +572,7 @@
 				27B47CF416D05055000853E5 /* AFURLConnectionOperation.m in Sources */,
 				27B47CF516D05055000853E5 /* AFXMLRequestOperation.m in Sources */,
 				27B47CF616D05055000853E5 /* UIImageView+AFNetworking.m in Sources */,
+				2738615716D07D6600E794F3 /* StartAtLoginController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -674,6 +731,7 @@
 				CODE_SIGN_ENTITLEMENTS = Map/Map.entitlements;
 				CODE_SIGN_IDENTITY = "Julian Ceipek TestSandbox";
 				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Map/Map-Prefix.pch";
