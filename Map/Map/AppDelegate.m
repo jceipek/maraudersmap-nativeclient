@@ -61,6 +61,11 @@
     isOnline = TRUE;
     menuIsOpen = FALSE;
     [prefsPanel center];
+    
+    NSString *sessionid = [[NSUserDefaults standardUserDefaults] objectForKey:@"sessionid"];
+    if (sessionid != NULL) {
+        [prefsPanel close];
+    }
 }
 
 #pragma mark -- Direct Menu Options --
