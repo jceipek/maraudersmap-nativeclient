@@ -2,11 +2,13 @@
 > Never Lose your Friends Again
 
 ----
+
 Olin is a small community of engineers that work on projects together. 
 But how can people find each other to work on those projects? 
 
-Enter the Marauder's Map @ Olin, a voluntary automated tracking system that uses 
+Enter the Marauder's Map @ Olin, a voluntary automated tracking system that uses
 Wifi access points to locate student laptops.
+
 -----
 
 ![Icon](https://raw.github.com/jceipek/maraudersmap-nativeclient/master/MapIcon.png "Marauder's Map Icon")
