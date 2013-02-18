@@ -48,6 +48,7 @@
 		27B47CF416D05055000853E5 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B47CE916D05055000853E5 /* AFURLConnectionOperation.m */; };
 		27B47CF516D05055000853E5 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B47CEB16D05055000853E5 /* AFXMLRequestOperation.m */; };
 		27B47CF616D05055000853E5 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B47CED16D05055000853E5 /* UIImageView+AFNetworking.m */; };
+		27EEC8E816D1CA70000F00A0 /* MapIcons.icns in Resources */ = {isa = PBXBuildFile; fileRef = 27EEC8E716D1CA70000F00A0 /* MapIcons.icns */; };
 		27F9E14B158AD2F5008AD07A /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F9E14A158AD2F5008AD07A /* NetworkManager.m */; };
 		27F9E14F158C27E7008AD07A /* NSString+NSString_URLManipulation.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F9E14E158C27E7008AD07A /* NSString+NSString_URLManipulation.m */; };
 /* End PBXBuildFile section */
@@ -158,6 +159,7 @@
 		27CAEB44158422AD0036D787 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		27CAEB45158422C10036D787 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		27E9B3CC15E9B142002DA996 /* Map.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Map.entitlements; sourceTree = "<group>"; };
+		27EEC8E716D1CA70000F00A0 /* MapIcons.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = MapIcons.icns; sourceTree = "<group>"; };
 		27F9E149158AD2F5008AD07A /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
 		27F9E14A158AD2F5008AD07A /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
 		27F9E14D158C27E7008AD07A /* NSString+NSString_URLManipulation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+NSString_URLManipulation.h"; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 		27A3E5CF156852B1009FB65C = {
 			isa = PBXGroup;
 			children = (
+				27EEC8E716D1CA70000F00A0 /* MapIcons.icns */,
 				2738619F16D084E800E794F3 /* MapHelper.xcodeproj */,
 				2738615016D0791400E794F3 /* ServiceManagement.framework */,
 				27A3E5E4156852B2009FB65C /* Map */,
@@ -517,6 +520,7 @@
 				2742958D15819AC9004EE5C2 /* AdvancedPrefsView.xib in Resources */,
 				2742959015819AC9004EE5C2 /* GeneralPrefsView.xib in Resources */,
 				2738615616D07D6600E794F3 /* README.md in Resources */,
+				27EEC8E816D1CA70000F00A0 /* MapIcons.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,6 +13,7 @@
 		2738619316D084E800E794F3 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2738619116D084E800E794F3 /* Credits.rtf */; };
 		2738619616D084E800E794F3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2738619516D084E800E794F3 /* AppDelegate.m */; };
 		2738619916D084E800E794F3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2738619716D084E800E794F3 /* MainMenu.xib */; };
+		27EEC8EC16D1CE88000F00A0 /* MapIcons.icns in Resources */ = {isa = PBXBuildFile; fileRef = 27EEC8EB16D1CE88000F00A0 /* MapIcons.icns */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		2738619516D084E800E794F3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		2738619816D084E800E794F3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		273861A616D0871C00E794F3 /* MapHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MapHelper.entitlements; sourceTree = "<group>"; };
+		27EEC8EB16D1CE88000F00A0 /* MapIcons.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = MapIcons.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +49,7 @@
 		2738617616D084E800E794F3 = {
 			isa = PBXGroup;
 			children = (
+				27EEC8EB16D1CE88000F00A0 /* MapIcons.icns */,
 				2738618816D084E800E794F3 /* MapHelper */,
 				2738618116D084E800E794F3 /* Frameworks */,
 				2738618016D084E800E794F3 /* Products */,
@@ -158,6 +161,7 @@
 				2738618D16D084E800E794F3 /* InfoPlist.strings in Resources */,
 				2738619316D084E800E794F3 /* Credits.rtf in Resources */,
 				2738619916D084E800E794F3 /* MainMenu.xib in Resources */,
+				27EEC8EC16D1CE88000F00A0 /* MapIcons.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,6 +317,7 @@
 				2738619E16D084E800E794F3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

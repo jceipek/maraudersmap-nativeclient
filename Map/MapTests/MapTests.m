@@ -3,7 +3,7 @@
 //  MapTests
 //
 //  Created by Julian Ceipek on 5/19/12.
-//  Copyright (c) 2012-2013 ohack. All rights reserved.
+//  Copyright (c) 2012-2013 SLAC. All rights reserved.
 //
 
 #import "MapTests.h"
