@@ -9,7 +9,7 @@ Enter the Marauder's Map @ Olin, a voluntary automated tracking system that uses
 Wifi access points to locate student laptops.
 -----
 
-![Icon](https://raw.github.com/jceipek/maraudersmap-nativeclient/master/screenshot.png "Marauder's Map Icon")
+![Icon](https://raw.github.com/jceipek/maraudersmap-nativeclient/master/MapIcon.png "Marauder's Map Icon")
 
 This repository is for client-side code only.
 
