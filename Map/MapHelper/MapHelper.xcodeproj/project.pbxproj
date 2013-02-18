@@ -10,7 +10,6 @@
 		2738618316D084E800E794F3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2738618216D084E800E794F3 /* Cocoa.framework */; };
 		2738618D16D084E800E794F3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2738618B16D084E800E794F3 /* InfoPlist.strings */; };
 		2738618F16D084E800E794F3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2738618E16D084E800E794F3 /* main.m */; };
-		2738619316D084E800E794F3 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2738619116D084E800E794F3 /* Credits.rtf */; };
 		2738619616D084E800E794F3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2738619516D084E800E794F3 /* AppDelegate.m */; };
 		2738619916D084E800E794F3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2738619716D084E800E794F3 /* MainMenu.xib */; };
 		27EEC8EC16D1CE88000F00A0 /* MapIcons.icns in Resources */ = {isa = PBXBuildFile; fileRef = 27EEC8EB16D1CE88000F00A0 /* MapIcons.icns */; };
@@ -26,7 +25,6 @@
 		2738618C16D084E800E794F3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2738618E16D084E800E794F3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2738619016D084E800E794F3 /* MapHelper-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MapHelper-Prefix.pch"; sourceTree = "<group>"; };
-		2738619216D084E800E794F3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		2738619416D084E800E794F3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2738619516D084E800E794F3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		2738619816D084E800E794F3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -102,7 +100,6 @@
 				2738618B16D084E800E794F3 /* InfoPlist.strings */,
 				2738618E16D084E800E794F3 /* main.m */,
 				2738619016D084E800E794F3 /* MapHelper-Prefix.pch */,
-				2738619116D084E800E794F3 /* Credits.rtf */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -159,7 +156,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2738618D16D084E800E794F3 /* InfoPlist.strings in Resources */,
-				2738619316D084E800E794F3 /* Credits.rtf in Resources */,
 				2738619916D084E800E794F3 /* MainMenu.xib in Resources */,
 				27EEC8EC16D1CE88000F00A0 /* MapIcons.icns in Resources */,
 			);
@@ -186,14 +182,6 @@
 				2738618C16D084E800E794F3 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		2738619116D084E800E794F3 /* Credits.rtf */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2738619216D084E800E794F3 /* en */,
-			);
-			name = Credits.rtf;
 			sourceTree = "<group>";
 		};
 		2738619716D084E800E794F3 /* MainMenu.xib */ = {

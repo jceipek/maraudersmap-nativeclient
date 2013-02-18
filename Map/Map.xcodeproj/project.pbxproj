@@ -30,7 +30,6 @@
 		27A3E5DF156852B2009FB65C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27A3E5DE156852B2009FB65C /* Cocoa.framework */; };
 		27A3E5E9156852B2009FB65C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27A3E5E7156852B2009FB65C /* InfoPlist.strings */; };
 		27A3E5EB156852B2009FB65C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A3E5EA156852B2009FB65C /* main.m */; };
-		27A3E5EF156852B2009FB65C /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 27A3E5ED156852B2009FB65C /* Credits.rtf */; };
 		27A3E5F2156852B2009FB65C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A3E5F1156852B2009FB65C /* AppDelegate.m */; };
 		27A3E5F5156852B2009FB65C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27A3E5F3156852B2009FB65C /* MainMenu.xib */; };
 		27A3E5FD156852B3009FB65C /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27A3E5FC156852B3009FB65C /* SenTestingKit.framework */; };
@@ -108,7 +107,6 @@
 		275AB0531578612300EFD9B5 /* demoIconDisabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = demoIconDisabled.png; sourceTree = "<group>"; };
 		275AB05D157866A500EFD9B5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		275AB05F157866C700EFD9B5 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
-		2761A2831584221E00E17BC2 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = de; path = de.lproj/Credits.rtf; sourceTree = "<group>"; };
 		276CFA3016A7B27100A51AEE /* FakeScanResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FakeScanResult.h; sourceTree = "<group>"; };
 		276CFA3116A7B27100A51AEE /* FakeScanResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FakeScanResult.m; sourceTree = "<group>"; };
 		276DBC5D1654169C00AF5659 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -125,7 +123,6 @@
 		27A3E5E8156852B2009FB65C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		27A3E5EA156852B2009FB65C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		27A3E5EC156852B2009FB65C /* Map-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Map-Prefix.pch"; sourceTree = "<group>"; };
-		27A3E5EE156852B2009FB65C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		27A3E5F0156852B2009FB65C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		27A3E5F1156852B2009FB65C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		27A3E5F4156852B2009FB65C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -343,7 +340,6 @@
 				27A3E5E7156852B2009FB65C /* InfoPlist.strings */,
 				27A3E5EA156852B2009FB65C /* main.m */,
 				27A3E5EC156852B2009FB65C /* Map-Prefix.pch */,
-				27A3E5ED156852B2009FB65C /* Credits.rtf */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -510,7 +506,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				27A3E5E9156852B2009FB65C /* InfoPlist.strings in Resources */,
-				27A3E5EF156852B2009FB65C /* Credits.rtf in Resources */,
 				27A3E5F5156852B2009FB65C /* MainMenu.xib in Resources */,
 				27A3E6141568627F009FB65C /* demoIcon.png in Resources */,
 				27A3E6151568627F009FB65C /* demoIconWhite.png in Resources */,
@@ -615,15 +610,6 @@
 				27CAEB45158422C10036D787 /* de */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		27A3E5ED156852B2009FB65C /* Credits.rtf */ = {
-			isa = PBXVariantGroup;
-			children = (
-				27A3E5EE156852B2009FB65C /* en */,
-				2761A2831584221E00E17BC2 /* de */,
-			);
-			name = Credits.rtf;
 			sourceTree = "<group>";
 		};
 		27A3E5F3156852B2009FB65C /* MainMenu.xib */ = {
